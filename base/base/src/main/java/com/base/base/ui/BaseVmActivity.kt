@@ -29,6 +29,7 @@ abstract class BaseVmActivity<VM : BaseViewModel, BD : ViewDataBinding> : CoreVm
     override fun doOnBefore() {
         super.doOnBefore()
         mLoadService = LoadStatus.getDefault().register(mBinding.root) {
+            showLoad()
             start()
         }
         // 加载框
