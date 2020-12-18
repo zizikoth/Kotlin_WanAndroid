@@ -13,5 +13,5 @@ package com.base.base.http
 object ApiCode {
     const val NetError = 404
     const val ServerError = 502
-    const val Success = 1000
+    const val Success = 0
 }

@@ -27,7 +27,7 @@ open class ApiResponseParser<T> : AbstractParser<T> {
         val type: Type = ParameterizedTypeImpl[ApiResponse::class.java, mType]
         val data: ApiResponse<T> = response.convert(type)
         if (!data.isSuccess()) {
-            throw ApiException(data.code, data.msg)
+            throw ApiException(data.errorCode, data.errorMsg)
         }
         return data.data
     }

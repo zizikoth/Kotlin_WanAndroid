@@ -15,10 +15,13 @@ import com.frame.core.core.CoreActivity
  * Talk is cheap, Show me the code.
  */
 abstract class BaseActivity<BD : ViewDataBinding> : CoreActivity<BD>() {
+
     private val mLoadDialog by lazy { LoadingDialog() }
 
     fun showLoad() {
-        mLoadDialog.show(supportFragmentManager)
+        if (!mLoadDialog.isVisible) {
+            mLoadDialog.show(supportFragmentManager)
+        }
     }
 
     fun hideLoad() {

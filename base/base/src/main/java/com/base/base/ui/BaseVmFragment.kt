@@ -1,5 +1,10 @@
 package com.base.base.ui
 
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.base.base.http.ApiCode
 import com.base.base.ui.mvvm.BaseViewModel
@@ -21,13 +26,11 @@ import com.load.status.core.LoadStatus
  */
 abstract class BaseVmFragment<VM : BaseViewModel, BD : ViewDataBinding> : CoreVmFragment<VM, BD>() {
 
-    private var mLoadService: LoadService<*>? = null
+    protected var mLoadService: LoadService<*>? = null
 
     override fun doOnBefore() {
         super.doOnBefore()
-        mLoadService = LoadStatus.getDefault().register(mBinding.root) {
-            start()
-        }
+        mLoadService = LoadStatus.getDefault().register(mBinding.root){ start() }
         // 加载框
         mViewModel.loadingEvent.observe(this) { if (it) showLoad() else hideLoad() }
         // 加载页面

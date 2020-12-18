@@ -3,8 +3,8 @@ package com.base.base.http
 /**
  * 网络请求回调
  */
-data class ApiResponse<T>(val code: Int, val data: T, val msg: String) {
-    fun isSuccess() = code == ApiCode.Success
+data class ApiResponse<T>(val data: T, val errorCode: Int = 0, val errorMsg: String = "") {
+    fun isSuccess() = errorCode == ApiCode.Success
 }
 
 /**

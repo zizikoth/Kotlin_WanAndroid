@@ -24,7 +24,7 @@ abstract class BaseVmActivity<VM : BaseViewModel, BD : ViewDataBinding> : CoreVm
 
     private val mLoadDialog by lazy { LoadingDialog() }
 
-    private var mLoadService: LoadService<*>? = null
+    protected var mLoadService: LoadService<*>? = null
 
     override fun doOnBefore() {
         super.doOnBefore()
@@ -47,7 +47,9 @@ abstract class BaseVmActivity<VM : BaseViewModel, BD : ViewDataBinding> : CoreVm
     }
 
     fun showLoad() {
-        mLoadDialog.show(supportFragmentManager)
+        if(!mLoadDialog.isVisible) {
+            mLoadDialog.show(supportFragmentManager)
+        }
     }
 
     fun hideLoad() {

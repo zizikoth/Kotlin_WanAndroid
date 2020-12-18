@@ -59,7 +59,7 @@ abstract class CoreActivity<BD : ViewDataBinding> : AppCompatActivity() {
             BarUtils.setStatusBarColor(this, Color.TRANSPARENT, true)
         } else {
             // 状态栏颜色
-            BarUtils.setStatusBarLightMode(this, false)
+            BarUtils.setStatusBarLightMode(this, true)
             BarUtils.setStatusBarColor(this, statusBarColor(), true)
             BarUtils.addMarginTopEqualStatusBarHeight(mBinding.root)
         }

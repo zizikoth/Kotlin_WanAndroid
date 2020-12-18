@@ -6,16 +6,20 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.base.base.BuildConfig
 import com.base.base.R
 import com.base.base.config.AppConfig
-import com.base.base.ui.status.ServerErrorCallback
 import com.base.base.ui.status.LoadCallback
+import com.base.base.ui.status.NetErrorCallback
+import com.base.base.ui.status.ServerErrorCallback
 import com.blankj.utilcode.util.LogUtils
 import com.blankj.utilcode.util.ProcessUtils
 import com.blankj.utilcode.util.Utils
+import com.frame.core.utils.GsonHelper
 import com.frame.core.utils.extra.dimen
 import com.load.status.core.LoadStatus
 import com.scwang.smart.refresh.footer.BallPulseFooter
 import com.scwang.smart.refresh.header.ClassicsHeader
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
+import rxhttp.wrapper.converter.GsonConverter
+import rxhttp.wrapper.param.RxHttp
 
 /**
  * title:
@@ -43,6 +47,10 @@ object InitManager {
                 ARouter.openDebug()
             }
             ARouter.init(app)
+
+            RxHttp.setDebug(AppConfig.isOpenLog, true)
+            RxHttp.setConverter(GsonConverter.create(GsonHelper.getGson()))
+
         }
     }
 
@@ -54,6 +62,7 @@ object InitManager {
         LoadStatus.beginBuilder()
             .addCallback(LoadCallback())
             .addCallback(ServerErrorCallback())
+            .addCallback(NetErrorCallback())
             .setDefaultCallback(LoadCallback::class.java)
             .commit()
 

@@ -18,10 +18,10 @@ import com.blankj.utilcode.util.ToastUtils
  *
  * Talk is cheap, Show me the code.
  */
-open class BaseViewModel : ViewModel() {
+abstract class BaseViewModel : ViewModel() {
 
     /*** 是否是第一次加载 ***/
-    private var isFirstLoad = false
+    private var isFirstLoad = true
 
     /*** 请求加载框 ***/
     val loadingEvent: MutableLiveData<Boolean> = MutableLiveData()
@@ -29,7 +29,11 @@ open class BaseViewModel : ViewModel() {
     /*** 页面展示状态 ***/
     val statusEvent: MutableLiveData<UiStatus> = MutableLiveData()
 
-    fun <T> request(request: (suspend () -> T), onSuccess: ((data: T) -> Unit), onError: ((code: Int) -> Unit)) {
+    fun <T> request(
+        request: (suspend () -> T),
+        onSuccess: ((data: T) -> Unit),
+        onError: ((code: Int) -> Unit)? = null,
+        hideLoad: Boolean = true) {
         rxLifeScope.launch(
             block = {
                 onSuccess(request.invoke())
@@ -40,14 +44,17 @@ open class BaseViewModel : ViewModel() {
                 val error = ExceptionHandler.handleException(it)
                 ToastUtils.showShort(error.message)
                 statusEvent.postValue(UiStatus(isFirstLoad, error.code))
-                onError(error.code)
+                onError?.invoke(error.code)
             },
             onStart = {
-                loadingEvent.postValue(true)
+                if (!isFirstLoad) {
+                    loadingEvent.postValue(true)
+                }
             },
             onFinally = {
-                loadingEvent.postValue(false)
-
+                if (hideLoad) {
+                    loadingEvent.postValue(false)
+                }
             })
     }
 

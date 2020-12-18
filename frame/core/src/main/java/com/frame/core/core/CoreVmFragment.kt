@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModelProvider
  * Talk is cheap, Show me the code.
  */
 abstract class CoreVmFragment<VM : ViewModel, BD : ViewDataBinding> : CoreFragment<BD>() {
+
     protected lateinit var mViewModel: VM
 
     override fun doOnBefore() {

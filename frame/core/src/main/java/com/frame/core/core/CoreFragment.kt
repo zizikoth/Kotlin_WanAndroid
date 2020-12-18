@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import com.blankj.utilcode.util.LogUtils
 
 /**
  * title:CoreFragment
@@ -47,6 +48,12 @@ abstract class CoreFragment<BD : ViewDataBinding> : Fragment() {
             isPrepared = false
             initialize()
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (isPrepared) onVisibleToUser()
+        LogUtils.iTag("TopPage", this::class.java.simpleName)
     }
 
     protected open fun doOnBefore() {}
