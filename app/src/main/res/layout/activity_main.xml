@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <com.base.widget.titleview.TitleView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title_left_text="返回"
+        app:title_right_text="设置"
+        app:title_subtitle_text="副标题"
+        app:title_title_text="标题" />
+
+    <com.base.widget.textview.AverageTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:average_text="BAA尊老敬老空间2311（）*门" />
+
+    <com.base.widget.itemview.ItemView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:item_divider_shown="true"
+        app:item_ripple_enable="true"
+        app:item_extra_text="123"
+        app:item_main_text="条目" />
+
+</LinearLayout>

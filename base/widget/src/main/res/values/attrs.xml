@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="TitleView">
+        <!--背景颜色-->
+        <attr name="title_background" format="color" />
+
+        <!--主标题-->
+        <attr name="title_title_text" format="string" />
+        <attr name="title_marquee_enable" format="boolean" />
+        <attr name="title_title_color" format="color" />
+        <attr name="title_title_size" format="dimension" />
+        <attr name="title_title_bold" format="boolean" />
+
+        <!--副标题-->
+        <attr name="title_subtitle_text" format="string" />
+        <attr name="title_subtitle_color" format="color" />
+        <attr name="title_subtitle_size" format="dimension" />
+        <attr name="title_subtitle_bold" format="boolean" />
+
+        <!--左侧-->
+        <attr name="title_left_text" format="string" />
+        <attr name="title_left_text_color" format="color" />
+        <attr name="title_left_text_size" format="dimension" />
+        <attr name="title_left_text_bold" format="boolean" />
+        <attr name="title_left_drawable" format="reference" />
+        <attr name="title_left_drawable_padding" format="dimension" />
+        <attr name="title_left_shown" format="boolean" />
+
+        <!--右侧-->
+        <attr name="title_right_text" format="string" />
+        <attr name="title_right_text_color" format="color" />
+        <attr name="title_right_text_size" format="dimension" />
+        <attr name="title_right_text_bold" format="boolean" />
+        <attr name="title_right_drawable" format="reference" />
+        <attr name="title_right_drawable_padding" format="dimension" />
+
+        <!--标题阴影-->
+        <attr name="title_shadow_shown" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="ItemView">
+        <attr name="item_padding" format="dimension" />
+        <attr name="item_main_text" format="string" />
+        <attr name="item_main_textSize" format="dimension" />
+        <attr name="item_main_textColor" format="color" />
+        <attr name="item_main_textBold" format="boolean" />
+        <attr name="item_main_drawable" format="reference" />
+        <attr name="item_main_drawablePadding" format="dimension" />
+        <attr name="item_extra_text" format="string" />
+        <attr name="item_extra_textSize" format="dimension" />
+        <attr name="item_extra_textColor" format="color" />
+        <attr name="item_extra_textBold" format="boolean" />
+        <attr name="item_extra_drawable" format="reference" />
+        <attr name="item_extra_drawablePadding" format="dimension" />
+        <attr name="item_ripple_enable" format="boolean" />
+        <attr name="item_divider_shown" format="boolean" />
+        <attr name="item_divider_height" format="dimension" />
+        <attr name="item_divider_color" format="color" />
+        <attr name="item_divider_margin" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="AverageTextView">
+        <attr name="average_text" format="string" />
+        <attr name="average_text_size" format="dimension" />
+        <attr name="average_text_color" format="color" />
+    </declare-styleable>
+
+</resources>

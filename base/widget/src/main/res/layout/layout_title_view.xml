@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp45"
+        tools:ignore="ContentDescription,NewApi,RtlHardcoded">
+
+        <TextView
+            android:id="@+id/mTvLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:background="?android:selectableItemBackgroundBorderless"
+            android:drawableLeft="@drawable/ic_back"
+            android:gravity="center"
+            android:paddingStart="@dimen/dp10"
+            android:paddingEnd="@dimen/dp10"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/mTvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/dp45"
+            android:layout_marginEnd="@dimen/dp45"
+            android:gravity="center"
+            android:maxLines="1"
+            android:textSize="@dimen/sp18"
+            app:layout_constraintBottom_toTopOf="@id/mTvSubTitle"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="标题" />
+
+        <TextView
+            android:id="@+id/mTvSubTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:maxLines="1"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@id/mTvTitle"
+            app:layout_constraintRight_toRightOf="@id/mTvTitle"
+            app:layout_constraintTop_toBottomOf="@id/mTvTitle" />
+
+        <TextView
+            android:id="@+id/mTvRight"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="?android:selectableItemBackgroundBorderless"
+            android:gravity="center"
+            android:maxLines="1"
+            android:minWidth="@dimen/dp45"
+            android:padding="@dimen/dp10"
+            android:visibility="gone"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

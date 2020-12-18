@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/error_view"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+	
+	<TextView
+		android:id="@+id/status_error_view"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="center"
+		android:drawableTop="@mipmap/icon_status_server_error"
+		android:drawablePadding="@dimen/dp15"
+		android:gravity="center"
+		android:text="连接失败"
+		android:textStyle="bold"
+		android:textColor="#666666"
+		android:textSize="@dimen/sp18" />
+
+
+	<androidx.cardview.widget.CardView
+		android:id="@+id/back"
+		android:layout_width="@dimen/dp45"
+		android:layout_height="@dimen/dp45"
+		android:layout_margin="@dimen/dp15"
+		android:visibility="gone"
+		app:cardBackgroundColor="@color/white"
+		app:cardCornerRadius="@dimen/dp30"
+		app:cardElevation="@dimen/dp3"
+		tools:visibility="visible">
+
+		<ImageView
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:padding="@dimen/dp10"
+			android:src="@drawable/ic_back" />
+
+	</androidx.cardview.widget.CardView>
+</FrameLayout>

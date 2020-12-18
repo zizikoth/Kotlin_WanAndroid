@@ -1,0 +1,78 @@
+import com.frame.version.*
+
+plugins {
+    id 'com.android.library'
+    id 'version-plugin'
+    id 'kotlin-android'
+    id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdkVersion Config.compileSdkVersion
+    buildToolsVersion Config.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion Config.minSdkVersion
+        targetSdkVersion Config.targetSdkVersion
+        versionCode Config.versionCode
+        versionName Config.versionName
+        testInstrumentationRunner Config.testInstrumentationRunner
+        multiDexEnabled true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        dataBinding = true
+    }
+}
+
+dependencies {
+    implementation project(path: ':frame:proguard')
+    api fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+    api Dep.BoostMultiDex
+    api Dep.Kotlin
+    api Dep.AppCompat
+    api Dep.ARouter
+    api Dep.Material
+    api Dep.AndroidUtilCode
+    api Dep.CoreKtx
+    api Dep.ConstraintLayout
+    api Dep.ViewPager2
+    api Dep.Coroutine
+    api Dep.Glide
+    api Dep.GlideOkHttp
+    api Dep.Gson
+    api Dep.BaseRecyclerViewAdapterHelper
+    api Dep.RecyclerView
+    api Dep.RWidgetHelper
+    api Dep.RefreshLayout
+    api Dep.RefreshLayoutHeader
+    api Dep.RefreshLayoutFooter
+    api Dep.LifecycleExtensions
+    api Dep.LifecycleRuntimeKtx
+    api Dep.LifecycleLiveDataKtx
+    api Dep.LifecycleViewModelKtx
+    api Dep.RxHttp
+    api Dep.RxHttpCoroutine
+    api Dep.OkHttp
+    api Dep.LoadStatus
+
+    debugApi Dep.DoKitDebug
+    debugApi Dep.LeakCanaryDebug
+
+    releaseApi Dep.DoKitRelease
+
+    kapt Dep.GlideCompiler
+
+    testImplementation Dep.TestJunit
+    androidTestImplementation Dep.TestAndroidJunit
+    androidTestImplementation Dep.TestAndroidEspresso
+
+
+}

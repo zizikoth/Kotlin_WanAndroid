@@ -1,0 +1,45 @@
+import com.frame.version.*
+
+plugins {
+    id 'com.android.library'
+    id 'version-plugin'
+    id 'kotlin-android'
+    id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdkVersion Config.compileSdkVersion
+    buildToolsVersion Config.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion Config.minSdkVersion
+        targetSdkVersion Config.targetSdkVersion
+        versionCode Config.versionCode
+        versionName Config.versionName
+        testInstrumentationRunner Config.testInstrumentationRunner
+        multiDexEnabled true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        dataBinding = true
+    }
+}
+
+
+dependencies {
+    api project(path: ':base:widget')
+    api project(path: ':frame:core')
+
+    kapt Dep.RxHttpCompiler
+
+    testImplementation Dep.TestJunit
+    androidTestImplementation Dep.TestAndroidJunit
+    androidTestImplementation Dep.TestAndroidEspresso
+}

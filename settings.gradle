@@ -1,0 +1,7 @@
+include ':app'
+include ':base:base'
+include ':base:widget'
+include ':frame:core'
+include ':frame:proguard'
+rootProject.name = "Core"
+includeBuild '../version'
