@@ -7,7 +7,3 @@ data class ApiResponse<T>(val data: T, val errorCode: Int = 0, val errorMsg: Str
     fun isSuccess() = errorCode == ApiCode.Success
 }
 
-/**
- * 请求失败异常
- */
-class ApiException(var code: Int, override var message: String) : Exception(message)
