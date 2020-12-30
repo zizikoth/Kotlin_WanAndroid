@@ -76,6 +76,7 @@ class FlowCountDownTimer internal constructor(
 		return startInternal(currentTimeInUnit = start)
 	}
 
+	@ExperimentalCoroutinesApi
 	private fun startInternal(
 		dispatcher: CoroutineDispatcher = Dispatchers.Main,
 		currentTimeInUnit: Int = start

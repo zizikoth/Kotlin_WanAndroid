@@ -2,6 +2,10 @@ package com.frame.core.core
 
 import android.app.Application
 import com.bytedance.boost_multidex.BoostMultiDexApplication
+import com.frame.core.utils.SystemLeakIgnore
+import leakcanary.AndroidLeakFixes
+import leakcanary.AppWatcher
+import leakcanary.LeakCanary
 
 /**
  * title:CoreApp
@@ -22,5 +26,6 @@ open class CoreApp : BoostMultiDexApplication() {
     override fun onCreate() {
         super.onCreate()
         app = this
+        SystemLeakIgnore.ignoreLeak()
     }
 }

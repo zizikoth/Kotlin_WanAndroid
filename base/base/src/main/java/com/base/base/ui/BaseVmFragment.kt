@@ -1,11 +1,12 @@
 package com.base.base.ui
 
 import androidx.databinding.ViewDataBinding
+import androidx.lifecycle.ViewModelProvider
 import com.base.base.http.ApiCode
 import com.base.base.ui.mvvm.BaseViewModel
 import com.base.base.ui.status.NetErrorCallback
 import com.base.base.ui.status.ServerErrorCallback
-import com.frame.core.core.CoreVmFragment
+import com.frame.core.core.getViewModelClass
 import com.load.status.core.LoadService
 import com.load.status.core.LoadStatus
 
@@ -19,12 +20,15 @@ import com.load.status.core.LoadStatus
  *
  * Talk is cheap, Show me the code.
  */
-abstract class BaseVmFragment<VM : BaseViewModel, BD : ViewDataBinding> : CoreVmFragment<VM, BD>() {
+abstract class BaseVmFragment<VM : BaseViewModel, BD : ViewDataBinding> : BaseFragment<BD>() {
+
+    protected lateinit var mViewModel: VM
 
     protected var mLoadService: LoadService<*>? = null
 
     override fun doOnBefore() {
         super.doOnBefore()
+        mViewModel = ViewModelProvider(this).get(getViewModelClass(this) as Class<VM>)
         mLoadService = LoadStatus.getDefault().register(mBinding.root) {
             showLoad()
             start()
@@ -44,19 +48,27 @@ abstract class BaseVmFragment<VM : BaseViewModel, BD : ViewDataBinding> : CoreVm
         }
     }
 
+    override fun initialize() {
+        initData()
+        initView()
+        initListener()
+        start()
+    }
+
+    abstract fun initData()
+    abstract fun initView()
+    abstract fun initListener()
+    abstract fun start()
+
     protected fun showLoad() {
         if (mContext is BaseActivity<*>) {
             (mContext as BaseActivity<*>).showLoad()
-        } else if (mContext is BaseVmActivity<*, *>) {
-            (mContext as BaseVmActivity<*, *>).showLoad()
         }
     }
 
     protected fun hideLoad() {
         if (mContext is BaseActivity<*>) {
             (mContext as BaseActivity<*>).hideLoad()
-        } else if (mContext is BaseVmActivity<*, *>) {
-            (mContext as BaseVmActivity<*, *>).hideLoad()
         }
     }
 }

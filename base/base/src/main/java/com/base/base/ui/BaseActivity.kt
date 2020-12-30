@@ -1,8 +1,8 @@
 package com.base.base.ui
 
 import androidx.databinding.ViewDataBinding
-import com.base.base.dialog.LoadingDialog
 import com.frame.core.core.CoreActivity
+import com.kongzue.dialogx.dialogs.WaitDialog
 
 /**
  * title:
@@ -16,17 +16,11 @@ import com.frame.core.core.CoreActivity
  */
 abstract class BaseActivity<BD : ViewDataBinding> : CoreActivity<BD>() {
 
-    private val mLoadDialog by lazy { LoadingDialog() }
-
     fun showLoad() {
-        if (!mLoadDialog.isVisible) {
-            mLoadDialog.show(supportFragmentManager)
-        }
+        WaitDialog.show("加载中")
     }
 
     fun hideLoad() {
-        if (mLoadDialog.isVisible) {
-            mLoadDialog.dismiss()
-        }
+        WaitDialog.dismiss()
     }
 }

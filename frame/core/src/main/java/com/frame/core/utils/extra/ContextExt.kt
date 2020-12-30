@@ -1,12 +1,17 @@
 package com.frame.core.utils.extra
 
+import android.app.Activity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.IdRes
 import androidx.annotation.LayoutRes
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import com.blankj.utilcode.util.ConvertUtils
 import com.frame.core.core.CoreApp
 
@@ -45,6 +50,12 @@ val Float.sp2pxf get() = this.sp2px.toFloat()
 
 fun <BD : ViewDataBinding> ViewGroup.bindView(@LayoutRes layoutRes: Int): BD {
     return DataBindingUtil.inflate(LayoutInflater.from(context),layoutRes,this,true)
+}
+
+fun FragmentActivity.showFragment(@IdRes container:Int, fragment:Fragment){
+    supportFragmentManager.beginTransaction()
+        .add(container,fragment)
+        .commit()
 }
 
 

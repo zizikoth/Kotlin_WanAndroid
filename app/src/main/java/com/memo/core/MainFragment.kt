@@ -1,6 +1,5 @@
 package com.memo.core
 
-import android.os.Bundle
 import com.base.base.ui.BaseVmFragment
 import com.memo.core.databinding.FragmentMainBinding
 
@@ -19,13 +18,17 @@ class MainFragment : BaseVmFragment<MainViewModel, FragmentMainBinding>() {
     /*** 绑定界面 ***/
     override fun bindLayoutRes(): Int = R.layout.fragment_main
 
-    override fun initData(arguments: Bundle?) {
+    override fun initData() {
+        mBinding.viewModel = mViewModel
     }
 
     override fun initView() {
     }
 
     override fun initListener() {
+        mViewModel.bannerLiveData.observe(this) {
+            mBinding.mTvContent.text = it.toString()
+        }
     }
 
     override fun start() {

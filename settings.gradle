@@ -1,6 +1,6 @@
 include ':app'
 include ':module:home'
-include ':business:article'
+include ':business:web'
 include ':base:base'
 include ':base:widget'
 include ':frame:core'

@@ -8,7 +8,7 @@ class MainActivity : BaseVmActivity<MainViewModel, ActivityMainBinding>() {
 
     override fun bindLayoutRes(): Int = R.layout.activity_main
 
-    override fun initData(intent: Intent) {
+    override fun initData() {
     }
 
     override fun initView() {

@@ -36,7 +36,7 @@ private object Versions {
     const val RxHttp = "2.5.1"
     const val RxHttpCoroutine = "2.0.1"
     const val OkHttp = "4.9.0"
-    const val LoadStatus = "1.0.1"
+    const val LoadStatus = "1.0.3"
 
     const val DoKit = "3.3.5"
     const val LeakCanary = "2.5"

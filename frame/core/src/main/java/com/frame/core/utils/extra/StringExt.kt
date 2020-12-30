@@ -60,7 +60,6 @@ fun String.md5(): String = EncryptUtils.encryptMD5ToString(this)
 
 /**
  * 判断字符串是否为空或者是null的任意变化
- * 曾经出现过后台返回"Null" 然后判断isNullOrEmpty()通过 显示在界面上的时候悲剧了
  */
 fun String?.isNull() = isNullOrEmpty() || this.trim().toLowerCase(Locale.getDefault()) == "null"
 
@@ -73,16 +72,6 @@ fun String.fromHtml() =
 	} else {
 		Html.fromHtml(this).toString()
 	}
-
-/**
- * 最后一个字符
- */
-fun String.lastChar() = this[length - 1]
-
-/**
- * 第一个字符
- */
-fun String.firstChar() = this[0]
 
 /**
  * 保留两位小数

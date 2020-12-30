@@ -12,8 +12,11 @@ import com.base.base.ui.status.ServerErrorCallback
 import com.blankj.utilcode.util.LogUtils
 import com.blankj.utilcode.util.ProcessUtils
 import com.blankj.utilcode.util.Utils
+import com.didichuxing.doraemonkit.util.WebUtil
+import com.frame.core.core.CoreApp
 import com.frame.core.utils.GsonHelper
 import com.frame.core.utils.extra.dimen
+import com.kongzue.dialogx.DialogX
 import com.load.status.core.LoadStatus
 import com.scwang.smart.refresh.footer.BallPulseFooter
 import com.scwang.smart.refresh.header.ClassicsHeader
@@ -39,7 +42,7 @@ object InitManager {
     fun initInApp(app: Application) {
         if (ProcessUtils.isMainProcess()) {
             Utils.init(app)
-            LogUtils.getConfig().setLogSwitch(AppConfig.isOpenLog)
+            LogUtils.getConfig().setLogSwitch(AppConfig.logSwitch)
 
             // ARouter
             if (BuildConfig.DEBUG) {
@@ -48,7 +51,7 @@ object InitManager {
             }
             ARouter.init(app)
 
-            RxHttp.setDebug(AppConfig.isOpenLog, true)
+            RxHttp.setDebug(AppConfig.logSwitch, true)
             RxHttp.setConverter(GsonConverter.create(GsonHelper.getGson()))
 
         }
@@ -58,6 +61,9 @@ object InitManager {
      * 延迟初始化
      */
     fun initLater() {
+        // WebView
+        // Dialog
+        DialogX.init(CoreApp.app)
         // LoadStatus
         LoadStatus.beginBuilder()
             .addCallback(LoadCallback())

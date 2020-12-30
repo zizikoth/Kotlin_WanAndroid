@@ -1,12 +1,15 @@
 package com.base.base.ui
 
+import android.content.Intent
 import androidx.databinding.ViewDataBinding
-import com.base.base.dialog.LoadingDialog
+import androidx.lifecycle.ViewModelProvider
 import com.base.base.http.ApiCode
 import com.base.base.ui.mvvm.BaseViewModel
 import com.base.base.ui.status.NetErrorCallback
 import com.base.base.ui.status.ServerErrorCallback
-import com.frame.core.core.CoreVmActivity
+import com.frame.core.core.CoreActivity
+import com.frame.core.core.getViewModelClass
+import com.kongzue.dialogx.dialogs.WaitDialog
 import com.load.status.core.LoadService
 import com.load.status.core.LoadStatus
 
@@ -20,14 +23,15 @@ import com.load.status.core.LoadStatus
  *
  * Talk is cheap, Show me the code.
  */
-abstract class BaseVmActivity<VM : BaseViewModel, BD : ViewDataBinding> : CoreVmActivity<VM, BD>() {
+abstract class BaseVmActivity<VM : BaseViewModel, BD : ViewDataBinding> : BaseActivity<BD>() {
 
-    private val mLoadDialog by lazy { LoadingDialog() }
+    protected lateinit var mViewModel:VM
 
     protected var mLoadService: LoadService<*>? = null
 
     override fun doOnBefore() {
         super.doOnBefore()
+        mViewModel = ViewModelProvider(this).get(getViewModelClass(this) as Class<VM>)
         mLoadService = LoadStatus.getDefault().register(mBinding.root) {
             showLoad()
             start()
@@ -47,15 +51,16 @@ abstract class BaseVmActivity<VM : BaseViewModel, BD : ViewDataBinding> : CoreVm
         }
     }
 
-    fun showLoad() {
-        if(!mLoadDialog.isVisible) {
-            mLoadDialog.show(supportFragmentManager)
-        }
+    override fun initialize() {
+        initData()
+        initView()
+        initListener()
+        start()
     }
 
-    fun hideLoad() {
-        if (mLoadDialog.isVisible) {
-            mLoadDialog.dismiss()
-        }
-    }
+    abstract fun initData()
+    abstract fun initView()
+    abstract fun initListener()
+    abstract fun start()
+
 }

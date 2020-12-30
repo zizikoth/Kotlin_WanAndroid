@@ -28,7 +28,7 @@
             <option value="$PROJECT_DIR$/base/base" />
             <option value="$PROJECT_DIR$/base/widget" />
             <option value="$PROJECT_DIR$/business" />
-            <option value="$PROJECT_DIR$/business/article" />
+            <option value="$PROJECT_DIR$/business/web" />
             <option value="$PROJECT_DIR$/frame" />
             <option value="$PROJECT_DIR$/frame/core" />
             <option value="$PROJECT_DIR$/frame/proguard" />

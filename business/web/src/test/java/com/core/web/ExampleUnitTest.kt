@@ -1,4 +1,4 @@
-package com.core.article
+package com.core.web
 
 import org.junit.Test
 

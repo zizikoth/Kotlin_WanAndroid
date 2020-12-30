@@ -6,7 +6,7 @@ import androidx.lifecycle.rxLifeScope
 import com.base.base.entity.uistatus.UiStatus
 import com.base.base.http.ApiCode
 import com.base.base.http.ExceptionHandler
-import com.blankj.utilcode.util.ToastUtils
+import com.base.base.utils.toast
 
 /**
  * title:
@@ -42,7 +42,7 @@ abstract class BaseViewModel : ViewModel() {
             },
             onError = {
                 val error = ExceptionHandler.handleException(it)
-                ToastUtils.showShort(error.message)
+                toast(error.message)
                 statusEvent.postValue(UiStatus(isFirstLoad, error.code))
                 onError?.invoke(error.code)
             },

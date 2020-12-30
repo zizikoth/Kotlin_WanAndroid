@@ -10,7 +10,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.blankj.utilcode.util.BarUtils
 import com.blankj.utilcode.util.LogUtils
-import com.frame.core.R
 import com.frame.core.utils.KeyboardHelper
 
 /**
@@ -40,7 +39,6 @@ abstract class CoreActivity<BD : ViewDataBinding> : AppCompatActivity() {
     protected open fun statusBarColor(): Int = Color.WHITE
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        overridePendingTransition(R.anim.slide_in_from_right, R.anim.activity_fade_hide)
         super.onCreate(savedInstanceState)
         doOnBefore()
         initialize()
@@ -54,15 +52,11 @@ abstract class CoreActivity<BD : ViewDataBinding> : AppCompatActivity() {
     protected open fun doOnBefore() {
         mBinding = DataBindingUtil.setContentView(mContext, bindLayoutRes())
         mBinding.lifecycleOwner = this
-        if (transparentStatusBar()) {
-            // 状态栏透明
-            BarUtils.setStatusBarColor(this, Color.TRANSPARENT, true)
-        } else {
-            // 状态栏颜色
-            BarUtils.setStatusBarLightMode(this, true)
-            BarUtils.setStatusBarColor(this, statusBarColor(), true)
-            BarUtils.addMarginTopEqualStatusBarHeight(mBinding.root)
-        }
+        // 状态栏
+        BarUtils.setStatusBarColor(this, Color.TRANSPARENT, false)
+        BarUtils.setStatusBarLightMode(this, true)
+        mBinding.root.fitsSystemWindows = !transparentStatusBar()
+
     }
 
     /*** 分发点击事件 用来隐藏软键盘 ***/
@@ -71,11 +65,6 @@ abstract class CoreActivity<BD : ViewDataBinding> : AppCompatActivity() {
             KeyboardHelper.clickBlank2HideKeyboard(this, currentFocus, ev)
         }
         return super.dispatchTouchEvent(ev)
-    }
-
-    override fun finish() {
-        super.finish()
-        overridePendingTransition(R.anim.activity_fade_show, R.anim.slide_out_to_right)
     }
 
     override fun onResume() {

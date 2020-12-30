@@ -43,9 +43,6 @@ abstract class BaseDialog<BD : ViewDataBinding> : FixDialogFragment(), Lifecycle
     @StyleRes
     protected abstract fun bindAnimStyleRes(): Int
 
-    /*** 绑定Dialog ***/
-    protected abstract fun bindDialog(dialog: Dialog)
-
     /*** 设置窗体配置 ***/
     protected abstract fun bindParams(params: WindowManager.LayoutParams)
 
@@ -70,7 +67,8 @@ abstract class BaseDialog<BD : ViewDataBinding> : FixDialogFragment(), Lifecycle
         dialog?.let {
             it.setCancelable(false)
             it.setCanceledOnTouchOutside(false)
-            bindDialog(it)
+            it.setOnCancelListener(null)
+            it.setOnDismissListener(null)
         }
 
         // 设置窗体配置

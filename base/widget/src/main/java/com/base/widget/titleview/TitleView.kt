@@ -44,13 +44,13 @@ class TitleView @JvmOverloads constructor(
     private var titleMarqueeEnable: Boolean = false
 
     /*** 副标题 ***/
-    private var subtitleText: String = if (isInEditMode) "副标题" else ""
+    private var subtitleText: String =  ""
     private var subtitleSize: Float = if (isInEditMode) 30f else dimen(R.dimen.sp13)
     private var subtitleColor: Int = if (isInEditMode) Color.BLACK else color(R.color.color_333333)
     private var subtitleBold: Boolean = false
 
     /*** 左侧图标 ***/
-    private var leftText: String = if (isInEditMode) "返回" else ""
+    private var leftText: String = ""
     private var leftTextSize: Float = if (isInEditMode) 40f else dimen(R.dimen.sp14)
     private var leftTextColor: Int = if (isInEditMode) Color.BLACK else color(R.color.color_333333)
     private var leftTextBold: Boolean = false
@@ -59,7 +59,7 @@ class TitleView @JvmOverloads constructor(
     private var leftShown: Boolean = true
 
     /*** 右侧图标 ***/
-    private var rightText: String = if (isInEditMode) "设置" else ""
+    private var rightText: String =  ""
     private var rightTextSize: Float = if (isInEditMode) 40f else dimen(R.dimen.sp14)
     private var rightTextColor: Int = if (isInEditMode) Color.BLACK else color(R.color.color_333333)
     private var rightTextBold: Boolean = false

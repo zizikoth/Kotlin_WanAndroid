@@ -1,4 +1,5 @@
-import com.frame.version.*
+import com.frame.version.Config
+import com.frame.version.Dep
 
 plugins {
     id 'com.android.library'
@@ -62,6 +63,7 @@ dependencies {
     api Dep.RxHttpCoroutine
     api Dep.OkHttp
     api Dep.LoadStatus
+    api Dep.DialogX
 
     debugApi Dep.DoKitDebug
     debugApi Dep.LeakCanaryDebug

@@ -1,7 +1,5 @@
 package com.frame.core.utils
 
-import com.blankj.utilcode.util.ToastUtils
-
 /**
  * title:点击工具类 防止过快点击
  * tip:
@@ -57,8 +55,7 @@ object ClickHelper {
      * 判断是否双击返回键进行退出
      *
      *  override fun onBackPressed() {
-     *      if (ClickHelper.isDoubleClickExit) {
-     *          toastCancel()
+     *      if (ClickHelper.isDoubleClickExit(...)) {
      *          super.onBackPressed()
      *      }
      *  }
@@ -66,15 +63,14 @@ object ClickHelper {
      * @return true 退出引用  false 提示弹窗
      */
     @JvmStatic
-    val isDoubleClickExit: Boolean
-        get() {
-            var flag = true
-            val curClickTime = System.currentTimeMillis()
-            if (curClickTime - lastExitTime > 1500) {
-                flag = false
-                lastExitTime = curClickTime
-                ToastUtils.showShort("再次点击退出应用")
-            }
-            return flag
+    fun isDoubleClickExit(showToast: () -> Unit): Boolean {
+        var flag = true
+        val curClickTime = System.currentTimeMillis()
+        if (curClickTime - lastExitTime > 1500) {
+            flag = false
+            lastExitTime = curClickTime
+            showToast.invoke()
         }
+        return flag
+    }
 }
