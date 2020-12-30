@@ -34,7 +34,6 @@ android {
 
 
 dependencies {
-    api project(path: ':base:widget')
     api project(path: ':frame:core')
 
     kapt Dep.RxHttpCompiler

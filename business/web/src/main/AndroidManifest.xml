@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.core.web">
+    package="com.memo.web">
 
     <application>
         <service
-            android:name=".service.WebService"
+            android:name="com.memo.web.service.WebService"
             android:process=":web" />
     </application>
 

@@ -4,7 +4,7 @@ object Config {
     const val applicationId = "com.frame.core"
     const val compileSdkVersion = 30
     const val buildToolsVersion = "30.0.2"
-    const val minSdkVersion = 19
+    const val minSdkVersion = 21
     const val targetSdkVersion = 30
     const val versionCode = 1000
     const val versionName = "1.0.0"
@@ -37,6 +37,7 @@ private object Versions {
     const val RxHttpCoroutine = "2.0.1"
     const val OkHttp = "4.9.0"
     const val LoadStatus = "1.0.3"
+    const val DialogX = "0.0.25"
 
     const val DoKit = "3.3.5"
     const val LeakCanary = "2.5"
@@ -76,6 +77,7 @@ object Dep {
     const val RxHttpCoroutine = "com.ljx.rxlife:rxlife-coroutine:${Versions.RxHttpCoroutine}"
     const val OkHttp = "com.squareup.okhttp3:okhttp:${Versions.OkHttp}"
     const val LoadStatus = "com.github.zizikoth:Status:${Versions.LoadStatus}"
+    const val DialogX = "com.kongzue.dialogx:DialogX:${Versions.DialogX}"
 
     // debugApi
     const val DoKitDebug = "com.didichuxing.doraemonkit:dokitx:${Versions.DoKit}"
@@ -88,6 +90,15 @@ object Dep {
     const val GlideCompiler = "com.github.bumptech.glide:compiler:${Versions.Glide}"
     const val RxHttpCompiler = "com.ljx.rxhttp:rxhttp-compiler:${Versions.RxHttp}"
     const val ARouterCompiler = "com.alibaba:arouter-compiler:${Versions.ARouterCompiler}"
+
+
+    object Proguard {
+        const val proguard = "com.blankj:free-proguard:1.0.2"
+    }
+
+    object Web {
+        const val AgentWeb = "com.just.agentweb:agentweb-androidx:4.1.4"
+    }
 }
 
 

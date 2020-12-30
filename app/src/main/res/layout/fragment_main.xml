@@ -15,7 +15,7 @@
         android:layout_height="match_parent"
         android:background="@color/color_F5F5F5">
 
-        <com.base.widget.titleview.TitleView
+        <com.base.base.widget.titleview.TitleView
             app:title_title_text="这里是标题"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>

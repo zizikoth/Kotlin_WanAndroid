@@ -35,7 +35,6 @@ android {
 
 dependencies {
     api project(path: ':base:base')
-
     testImplementation Dep.TestJunit
     androidTestImplementation Dep.TestAndroidJunit
     androidTestImplementation Dep.TestAndroidEspresso

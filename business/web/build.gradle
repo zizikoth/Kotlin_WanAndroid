@@ -34,7 +34,7 @@ android {
 
 
 dependencies {
-    api project(path: ':base:base')
+    implementation project(path: ':base:base')
     implementation Dep.Web.AgentWeb
     testImplementation Dep.TestJunit
     androidTestImplementation Dep.TestAndroidJunit
