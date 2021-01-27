@@ -1,8 +1,8 @@
 package com.memo.web.utils
 
 import android.content.Intent
-import com.memo.web.service.WebService
 import com.frame.core.core.CoreApp
+import com.memo.web.service.WebService
 
 /**
  * title:

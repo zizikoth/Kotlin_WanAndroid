@@ -19,15 +19,13 @@
         <option name="disableWrapperSourceDistributionNotification" value="true" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleJvm" value="1.8" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/base" />
             <option value="$PROJECT_DIR$/base/base" />
-            <option value="$PROJECT_DIR$/business" />
-            <option value="$PROJECT_DIR$/business/web" />
+            <option value="$PROJECT_DIR$/base/web" />
             <option value="$PROJECT_DIR$/frame" />
             <option value="$PROJECT_DIR$/frame/core" />
             <option value="$PROJECT_DIR$/frame/proguard" />
