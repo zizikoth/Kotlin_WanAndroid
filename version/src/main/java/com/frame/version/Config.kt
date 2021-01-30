@@ -12,6 +12,7 @@ object Config {
 }
 
 object Module {
+    const val isModuleMainRunAlone = true
     const val isModuleHomeRunAlone = true
 }
 
@@ -24,6 +25,7 @@ private object Versions {
     const val Proguard = "1.0.2"
 
     const val BoostMultiDex = "1.0.1"
+    const val Banner ="2.1.0"
     const val Kotlin = "1.4.21"
     const val AppCompat = "1.2.0"
     const val ARouterApi = "1.5.0"
@@ -37,14 +39,13 @@ private object Versions {
     const val Gson = "2.8.6"
     const val BaseRecyclerViewAdapterHelper = "3.0.4"
     const val RecycleView = "1.0.0"
-    const val RWidgetHelper = "0.0.7"
     const val RefreshLayout = "2.0.1"
     const val Lifecycle = "2.2.0"
     const val RxHttp = "2.5.1"
     const val RxHttpCoroutine = "2.0.1"
     const val OkHttp = "4.9.0"
     const val LoadStatus = "1.0.3"
-    const val DialogX = "0.0.25"
+    const val DialogX = "0.0.29"
 
     const val DoKit = "3.3.5"
     const val LeakCanary = "2.5"
@@ -61,6 +62,7 @@ object Dep {
     const val Proguard = "com.blankj:free-proguard:${Versions.Proguard}"
 
     const val BoostMultiDex = "com.bytedance.boost_multidex:boost_multidex:${Versions.BoostMultiDex}"
+    const val Banner = "com.youth.banner:banner:${Versions.Banner}"
     const val Kotlin = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.Kotlin}"
     const val AppCompat = "androidx.appcompat:appcompat:${Versions.AppCompat}"
     const val ARouter = "com.alibaba:arouter-api:${Versions.ARouterApi}"
@@ -75,7 +77,6 @@ object Dep {
     const val Gson = "com.google.code.gson:gson:${Versions.Gson}"
     const val BaseRecyclerViewAdapterHelper = "com.github.CymChad:BaseRecyclerViewAdapterHelper:${Versions.BaseRecyclerViewAdapterHelper}"
     const val RecyclerView = "androidx.recyclerview:recyclerview:${Versions.RecycleView}"
-    const val RWidgetHelper = "com.ruffian.library:RWidgetHelper-AndroidX:${Versions.RWidgetHelper}"
     const val RefreshLayout = "com.scwang.smart:refresh-layout-kernel:${Versions.RefreshLayout}"
     const val RefreshLayoutHeader = "com.scwang.smart:refresh-header-classics:${Versions.RefreshLayout}"
     const val RefreshLayoutFooter = "com.scwang.smart:refresh-footer-ball:${Versions.RefreshLayout}"
