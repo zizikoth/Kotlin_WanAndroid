@@ -2,4 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.module.business.common">
 
+    <application>
+        <activity
+            android:name="com.business.common.ui.WebActivity"
+            android:configChanges="keyboard|screenSize|orientation|layoutDirection"
+            android:process=":web" />
+    </application>
+
 </manifest>

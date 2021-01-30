@@ -1,5 +1,6 @@
 import com.frame.version.Config
 import com.frame.version.Dep
+import com.frame.version.Module
 
 plugins {
     id 'com.android.application'
@@ -93,7 +94,8 @@ android {
 }
 
 dependencies {
-    implementation project(path: ':base:base')
+    if (!Module.isModuleMainRunAlone) implementation project(path: ':module:main')
+    if (!Module.isModuleHomeRunAlone) implementation project(path: ':module:home')
     testImplementation Dep.TestJunit
     androidTestImplementation Dep.TestAndroidJunit
     androidTestImplementation Dep.TestAndroidEspresso

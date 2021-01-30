@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.base.base.entity.remote.ArticleList
 import com.base.base.entity.remote.HomeBanner
 import com.base.base.ui.BaseVmFragment
+import com.business.common.ui.WebActivity
 import com.frame.core.utils.extra.*
 import com.google.android.material.appbar.AppBarLayout
 import com.module.home.R
@@ -87,14 +88,13 @@ class HomeFragment : BaseVmFragment<HomeViewModel, FragmentHomeBinding>() {
                 // TODO: 1/30/21 跳转搜索
             }
             // 轮播图
-            mBanner.setOnBannerListener { data, position ->
-                // TODO: 1/30/21 点击轮播图
-
+            mBanner.setOnBannerListener { data, _ ->
+                (data as HomeBanner?)?.let { WebActivity.start(mContext, it.title, it.url) }
             }
 
             // 列表
             mAdapter.setOnItemClickListener { _, _, position ->
-                // TODO: 1/30/21 列表点击
+                mAdapter.getItem(position).let { WebActivity.start(mContext, it.title, it.link) }
             }
         }
         observe(mViewModel.bannerLiveData, this::onBanner)

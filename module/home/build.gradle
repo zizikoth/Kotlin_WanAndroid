@@ -56,10 +56,7 @@ kapt {
 
 dependencies {
     api project(path: ':base:base')
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    api project(path: ':business:common')
     kapt Dep.ARouterCompiler
     testImplementation Dep.TestJunit
     androidTestImplementation Dep.TestAndroidJunit
