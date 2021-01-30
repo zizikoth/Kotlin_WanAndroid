@@ -3,8 +3,8 @@ package com.base.base.widget.textview
 
 import android.content.Context
 import android.util.AttributeSet
+import androidx.appcompat.widget.AppCompatEditText
 import com.blankj.utilcode.util.StringUtils
-import com.ruffian.library.widget.REditText
 
 /**
  * title: 搜索使用的EditText 用于一边输入一边搜索
@@ -13,7 +13,7 @@ import com.ruffian.library.widget.REditText
  * @author zhou
  * @date 2019-09-11 11:35
  */
-class SearchEditText : REditText {
+class SearchEditText : AppCompatEditText {
 
     private var limitDuration: Long = 800
 

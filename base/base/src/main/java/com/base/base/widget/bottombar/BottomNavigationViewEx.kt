@@ -1,4 +1,4 @@
-package com.base.widget.bottombar
+package com.base.base.widget.bottombar
 
 
 import android.content.Context
@@ -9,7 +9,6 @@ import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.viewpager.widget.ViewPager
-import com.base.base.widget.bottombar.BottomNavigationViewInner
 import com.google.android.material.bottomnavigation.BottomNavigationItemView
 
 

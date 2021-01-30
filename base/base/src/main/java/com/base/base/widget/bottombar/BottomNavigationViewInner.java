@@ -16,7 +16,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.widget.TintTypedArray;
 import androidx.viewpager.widget.ViewPager;
 
@@ -865,31 +864,25 @@ public class BottomNavigationViewInner extends BottomNavigationView {
     /**
      * 条目点击更换监听
      */
-    public void setOnItemChangeListener(final OnItemChangeListener listener) {
+    public void setOnItemChangeListener(OnItemChangeListener listener) {
         lastPosition = getCurrentItem();
-        super.setOnNavigationItemSelectedListener(new OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                int position = getMenuItemPosition(menuItem);
-                if (lastPosition != position) {
-                    lastPosition = position;
-                    listener.onItemChanged(menuItem, position);
-                }
-                return true;
+        super.setOnNavigationItemSelectedListener(menuItem -> {
+            int position = getMenuItemPosition(menuItem);
+            if (lastPosition != position) {
+                lastPosition = position;
+                listener.onItemChanged(menuItem, position);
             }
+            return true;
         });
     }
 
     /**
      * 条目点击事件
      */
-    public void setOnItemClickListener(final OnItemClickListener listener) {
-        super.setOnNavigationItemSelectedListener(new OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                listener.onItemClicked(menuItem, getMenuItemPosition(menuItem));
-                return true;
-            }
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        super.setOnNavigationItemSelectedListener(menuItem -> {
+            listener.onItemClicked(menuItem, getMenuItemPosition(menuItem));
+            return true;
         });
     }
 

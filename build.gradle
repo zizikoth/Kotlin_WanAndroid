@@ -1,4 +1,7 @@
 buildscript {
+    ext {
+        kotlin_version = '1.4.21'
+    }
     repositories {
         google()
         jcenter()
@@ -8,6 +11,10 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.21"
         classpath "com.alibaba:arouter-register:1.0.2"
     }
+}
+
+plugins {
+    id 'version-plugin' apply true
 }
 
 allprojects {
@@ -20,6 +27,10 @@ allprojects {
         options.addStringOption('Xdoclint:none', '-quiet')
         options.addStringOption('encoding', 'UTF-8')
     }
+}
+
+subprojects { project ->
+    apply plugin: 'version-plugin'
 }
 
 task clean(type: Delete) {

@@ -9,7 +9,7 @@ enum class RunMode {
 
 object AppConfig {
     /*** 是否开启日志 ***/
-    const val logSwitch: Boolean = true
+    const val isOpenLog: Boolean = true
 
     /*** 打包运行模式 ***/
     var runMode: RunMode = RunMode.Debug

@@ -1,7 +1,7 @@
 package com.frame.version
 
 object Config {
-    const val applicationId = "com.frame.core"
+    const val applicationId = "com.memo.core"
     const val compileSdkVersion = 30
     const val buildToolsVersion = "30.0.2"
     const val minSdkVersion = 21
@@ -11,10 +11,17 @@ object Config {
     const val testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 }
 
+object Module {
+    const val isModuleHomeRunAlone = true
+}
+
 private object Versions {
     const val TestJunit = "4.13.1"
     const val TestExtJunit = "1.1.2"
     const val TextEspresso = "3.3.0"
+
+    const val AgentWeb = "4.1.4"
+    const val Proguard = "1.0.2"
 
     const val BoostMultiDex = "1.0.1"
     const val Kotlin = "1.4.21"
@@ -49,6 +56,9 @@ object Dep {
     const val TestJunit = "junit:junit:${Versions.TestJunit}"
     const val TestAndroidJunit = "androidx.test.ext:junit:${Versions.TestExtJunit}"
     const val TestAndroidEspresso = "androidx.test.espresso:espresso-core:${Versions.TextEspresso}"
+
+    const val AgentWeb = "com.just.agentweb:agentweb-androidx:${Versions.AgentWeb}"
+    const val Proguard = "com.blankj:free-proguard:${Versions.Proguard}"
 
     const val BoostMultiDex = "com.bytedance.boost_multidex:boost_multidex:${Versions.BoostMultiDex}"
     const val Kotlin = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.Kotlin}"
@@ -92,13 +102,6 @@ object Dep {
     const val ARouterCompiler = "com.alibaba:arouter-compiler:${Versions.ARouterCompiler}"
 
 
-    object Proguard {
-        const val proguard = "com.blankj:free-proguard:1.0.2"
-    }
-
-    object Web {
-        const val AgentWeb = "com.just.agentweb:agentweb-androidx:4.1.4"
-    }
 }
 
 

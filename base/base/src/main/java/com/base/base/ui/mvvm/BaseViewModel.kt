@@ -3,9 +3,9 @@ package com.base.base.ui.mvvm
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.rxLifeScope
+import com.base.base.api.ApiCode
+import com.base.base.api.ExceptionHandler
 import com.base.base.entity.uistatus.UiStatus
-import com.base.base.http.ApiCode
-import com.base.base.http.ExceptionHandler
 import com.base.base.utils.toast
 
 /**
@@ -33,7 +33,7 @@ abstract class BaseViewModel : ViewModel() {
         request: (suspend () -> T),
         onSuccess: ((data: T) -> Unit),
         onError: ((code: Int) -> Unit)? = null,
-        hideLoad: Boolean = true) {
+        showLoading: Boolean = false) {
         rxLifeScope.launch(
             block = {
                 onSuccess(request.invoke())
@@ -47,12 +47,12 @@ abstract class BaseViewModel : ViewModel() {
                 onError?.invoke(error.code)
             },
             onStart = {
-                if (!isFirstLoad) {
+                if (!isFirstLoad && showLoading) {
                     loadingEvent.postValue(true)
                 }
             },
             onFinally = {
-                if (hideLoad) {
+                if (showLoading) {
                     loadingEvent.postValue(false)
                 }
             })

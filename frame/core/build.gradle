@@ -3,9 +3,7 @@ import com.frame.version.Dep
 
 plugins {
     id 'com.android.library'
-    id 'version-plugin'
     id 'kotlin-android'
-    id 'kotlin-parcelize'
     id 'kotlin-kapt'
 }
 
@@ -37,6 +35,7 @@ dependencies {
     implementation project(path: ':frame:proguard')
     api fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
     api Dep.BoostMultiDex
+    api Dep.Banner
     api Dep.Kotlin
     api Dep.AppCompat
     api Dep.ARouter
@@ -51,7 +50,6 @@ dependencies {
     api Dep.Gson
     api Dep.BaseRecyclerViewAdapterHelper
     api Dep.RecyclerView
-    api Dep.RWidgetHelper
     api Dep.RefreshLayout
     api Dep.RefreshLayoutHeader
     api Dep.RefreshLayoutFooter
@@ -75,6 +73,5 @@ dependencies {
     testImplementation Dep.TestJunit
     androidTestImplementation Dep.TestAndroidJunit
     androidTestImplementation Dep.TestAndroidEspresso
-
 
 }

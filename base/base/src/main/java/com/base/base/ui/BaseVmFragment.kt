@@ -2,7 +2,7 @@ package com.base.base.ui
 
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
-import com.base.base.http.ApiCode
+import com.base.base.api.ApiCode
 import com.base.base.ui.mvvm.BaseViewModel
 import com.base.base.ui.status.NetErrorCallback
 import com.base.base.ui.status.ServerErrorCallback

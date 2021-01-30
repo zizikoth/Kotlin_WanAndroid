@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mClContent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/dp15"
+    android:paddingTop="@dimen/dp10"
+    android:paddingRight="@dimen/dp15">
+
+
+    <ImageView
+        android:id="@+id/mIvPic"
+        android:layout_width="@dimen/dp60"
+        android:layout_height="@dimen/dp90"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:background="@color/color_333333" />
+
+    <ImageView
+        android:id="@+id/mIvIcon"
+        android:layout_width="@dimen/dp18"
+        android:layout_height="@dimen/dp18"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@id/mIvPic"
+        tools:src="@drawable/ic_ahri" />
+
+    <TextView
+        android:id="@+id/mTvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp10"
+        android:text="作者：faith-hb"
+        app:layout_constraintBottom_toBottomOf="@id/mIvIcon"
+        app:layout_constraintLeft_toRightOf="@id/mIvIcon"
+        app:layout_constraintTop_toTopOf="@id/mIvIcon" />
+
+    <TextView
+        android:id="@+id/mTvTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp10"
+        android:layout_marginRight="@dimen/dp15"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textColor="@color/color_333333"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/mTvDesc"
+        app:layout_constraintLeft_toLeftOf="@id/mIvIcon"
+        app:layout_constraintRight_toLeftOf="@id/mIvPic"
+        app:layout_constraintTop_toBottomOf="@id/mTvName"
+        tools:text="自定义控件通用库 WidgetCase" />
+
+    <TextView
+        android:id="@+id/mTvDesc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp10"
+        android:ellipsize="end"
+        android:lines="2"
+        android:maxLines="2"
+        app:layout_constraintLeft_toLeftOf="@id/mTvTitle"
+        app:layout_constraintRight_toRightOf="@id/mTvTitle"
+        app:layout_constraintTop_toBottomOf="@id/mTvTitle"
+        tools:text="自定义控件通用库：拿来就用，API文档详细，持续集成，长期维护" />
+
+
+    <TextView
+        android:id="@+id/mTvChapter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp10"
+        android:textSize="@dimen/sp10"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mTvDesc"
+        app:layout_goneMarginLeft="0dp"
+        tools:text="开源项目主Tab · 跨平台应用" />
+
+    <TextView
+        android:id="@+id/mTvTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sp12"
+        app:layout_constraintBottom_toBottomOf="@id/mTvChapter"
+        app:layout_constraintRight_toRightOf="@id/mIvPic"
+        app:layout_constraintTop_toTopOf="@id/mTvChapter"
+        tools:text="15分钟前" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dp0_5"
+        android:layout_marginTop="@dimen/dp10"
+        android:background="@color/color_EEEEEE"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mTvChapter" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

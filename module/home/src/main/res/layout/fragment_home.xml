@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <com.scwang.smart.refresh.layout.SmartRefreshLayout
+        android:id="@+id/mRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.fragment.home.HomeFragment">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.coordinatorlayout.widget.CoordinatorLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.appbar.AppBarLayout
+                    android:id="@+id/mAppBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:expanded="true">
+
+                    <com.google.android.material.appbar.CollapsingToolbarLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+                        <com.youth.banner.Banner
+                            android:id="@+id/mBanner"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dp200"
+                            app:banner_indicator_normal_color="@color/white"
+                            app:banner_indicator_selected_color="@color/color_red" />
+
+                        <androidx.appcompat.widget.Toolbar
+                            android:id="@+id/mToolBar"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            app:contentInsetEnd="0dp"
+                            app:contentInsetStart="0dp"
+                            app:layout_collapseMode="pin">
+
+                            <com.base.base.widget.titleview.TitleView
+                                android:id="@+id/mTitleView"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:title_left_shown="false"
+                                app:title_title_text="首页" />
+                        </androidx.appcompat.widget.Toolbar>
+
+                    </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+                </com.google.android.material.appbar.AppBarLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/mRvList"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:overScrollMode="never"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+            </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+            <ImageView
+                android:id="@+id/mFlSearch"
+                android:layout_width="@dimen/dp45"
+                android:layout_height="@dimen/dp45"
+                android:layout_gravity="end"
+                android:padding="@dimen/dp13"
+                android:src="@drawable/ic_search" />
+
+        </FrameLayout>
+
+    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+</layout>

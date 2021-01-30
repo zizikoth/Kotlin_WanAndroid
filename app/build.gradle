@@ -3,7 +3,6 @@ import com.frame.version.Dep
 
 plugins {
     id 'com.android.application'
-    id 'version-plugin'
     id 'kotlin-android'
     id 'kotlin-kapt'
 }

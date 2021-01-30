@@ -2,9 +2,7 @@ import com.frame.version.*
 
 plugins {
     id 'com.android.library'
-    id 'version-plugin'
     id 'kotlin-android'
-    id 'kotlin-parcelize'
     id 'kotlin-kapt'
 }
 
@@ -34,8 +32,8 @@ android {
 
 
 dependencies {
-    implementation project(path: ':base:base')
-    implementation Dep.Web.AgentWeb
+    implementation project(path: ':frame:core')
+    implementation Dep.AgentWeb
     testImplementation Dep.TestJunit
     androidTestImplementation Dep.TestAndroidJunit
     androidTestImplementation Dep.TestAndroidEspresso

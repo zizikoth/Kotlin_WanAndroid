@@ -9,6 +9,7 @@ import android.os.Build
 import android.text.TextUtils
 import android.util.AttributeSet
 import android.util.TypedValue
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewOutlineProvider
 import android.widget.FrameLayout
@@ -16,6 +17,7 @@ import androidx.annotation.ColorInt
 import androidx.annotation.DimenRes
 import androidx.annotation.DrawableRes
 import androidx.core.view.ViewCompat
+import androidx.databinding.DataBindingUtil
 import com.base.base.R
 import com.base.base.databinding.LayoutTitleViewBinding
 import com.frame.core.utils.extra.*
@@ -44,7 +46,7 @@ class TitleView @JvmOverloads constructor(
     private var titleMarqueeEnable: Boolean = false
 
     /*** 副标题 ***/
-    private var subtitleText: String =  ""
+    private var subtitleText: String = ""
     private var subtitleSize: Float = if (isInEditMode) 30f else dimen(R.dimen.sp13)
     private var subtitleColor: Int = if (isInEditMode) Color.BLACK else color(R.color.color_333333)
     private var subtitleBold: Boolean = false
@@ -59,7 +61,7 @@ class TitleView @JvmOverloads constructor(
     private var leftShown: Boolean = true
 
     /*** 右侧图标 ***/
-    private var rightText: String =  ""
+    private var rightText: String = ""
     private var rightTextSize: Float = if (isInEditMode) 40f else dimen(R.dimen.sp14)
     private var rightTextColor: Int = if (isInEditMode) Color.BLACK else color(R.color.color_333333)
     private var rightTextBold: Boolean = false
@@ -130,7 +132,7 @@ class TitleView @JvmOverloads constructor(
     }
 
     private fun initView() {
-        binding = bindView(R.layout.layout_title_view)
+        binding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.layout_title_view, this, true)
         binding.apply {
             // 标题
             mTvTitle.text = titleText

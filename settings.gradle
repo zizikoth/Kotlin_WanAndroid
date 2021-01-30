@@ -1,16 +1,18 @@
 include ':app'
+include ':module:main'
 include ':module:home'
-include ':base:web'
+include ':business:common'
 include ':base:base'
+include ':base:web'
 include ':frame:core'
 include ':frame:proguard'
 rootProject.name = "Core"
 includeBuild '../version'
 
 /**
- app:项目壳
- module: 项目模块 整个项目可以分为几个模块
- business: 业务模块 业务逻辑的拆分 业务组件
- base: 根据业务逻辑将基类组装 功能组件 base widget share push pay web ...
- frame: 项目基础模块，不包含任何业务逻辑
+ app:
+ module:    项目模块        整个项目的拆分         例如首页底部tab分为4个模块
+ business:  业务模块        业务逻辑的拆分         例如页面Grid中的每一个小功能模块
+ base:      业务基类模块    根据业务逻辑将基类组装   包含业务逻辑 base widget share push pay web ...
+ frame:     项目基础模块    不包含任何业务逻辑
  **/

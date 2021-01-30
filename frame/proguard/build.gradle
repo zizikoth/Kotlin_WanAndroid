@@ -2,7 +2,6 @@ import com.frame.version.*
 
 plugins {
 	id 'com.android.library'
-	id 'version-plugin'
 }
 
 android {
@@ -35,5 +34,5 @@ android {
 }
 
 dependencies {
-	implementation Dep.Proguard.proguard
+	implementation Dep.Proguard
 }

@@ -1,4 +1,4 @@
-package com.memo.core.tool.lifecycle
+package com.module.core.tool.lifecycle
 
 
 import android.util.Log

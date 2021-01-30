@@ -1,10 +1,9 @@
-import com.frame.version.*
+import com.frame.version.Config
+import com.frame.version.Dep
 
 plugins {
     id 'com.android.library'
-    id 'version-plugin'
     id 'kotlin-android'
-    id 'kotlin-parcelize'
     id 'kotlin-kapt'
 }
 
@@ -35,7 +34,7 @@ android {
 
 dependencies {
     api project(path: ':frame:core')
-
+    api project(path: ':base:web')
     kapt Dep.RxHttpCompiler
 
     testImplementation Dep.TestJunit
