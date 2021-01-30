@@ -10,6 +10,7 @@ import com.frame.core.utils.extra.*
 import com.google.android.material.appbar.AppBarLayout
 import com.module.home.R
 import com.module.home.databinding.FragmentHomeBinding
+import com.module.home.ui.activity.search.SearchActivity
 import com.module.home.ui.adapter.ArticleAdapter
 import com.youth.banner.adapter.BannerImageAdapter
 import com.youth.banner.holder.BannerImageHolder
@@ -85,7 +86,7 @@ class HomeFragment : BaseVmFragment<HomeViewModel, FragmentHomeBinding>() {
             })
             // 搜索
             mFlSearch.onClick {
-                // TODO: 1/30/21 跳转搜索
+                startActivity<SearchActivity>()
             }
             // 轮播图
             mBanner.setOnBannerListener { data, _ ->
@@ -97,6 +98,7 @@ class HomeFragment : BaseVmFragment<HomeViewModel, FragmentHomeBinding>() {
                 mAdapter.getItem(position).let { WebActivity.start(mContext, it.title, it.link) }
             }
         }
+        //网络数据回调
         observe(mViewModel.bannerLiveData, this::onBanner)
         observe(mViewModel.articleLiveData, this::onArticle)
     }

@@ -4,6 +4,10 @@
     <declare-styleable name="TitleView">
         <!--背景颜色-->
         <attr name="title_background" format="color" />
+        <attr name="title_mode" format="enum">
+            <enum name="title" value="0" />
+            <enum name="edit" value="1" />
+        </attr>
 
         <!--主标题-->
         <attr name="title_title_text" format="string" />
@@ -11,6 +15,13 @@
         <attr name="title_title_color" format="color" />
         <attr name="title_title_size" format="dimension" />
         <attr name="title_title_bold" format="boolean" />
+
+        <!--输入框-->
+        <attr name="title_edit_hint" format="string" />
+        <attr name="title_edit_text" format="string" />
+        <attr name="title_edit_hint_color" format="color" />
+        <attr name="title_edit_text_color" format="color" />
+        <attr name="title_edit_text_size" format="dimension" />
 
         <!--副标题-->
         <attr name="title_subtitle_text" format="string" />

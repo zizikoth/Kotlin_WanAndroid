@@ -12,6 +12,7 @@ import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewOutlineProvider
+import android.view.inputmethod.EditorInfo
 import android.widget.FrameLayout
 import androidx.annotation.ColorInt
 import androidx.annotation.DimenRes
@@ -36,25 +37,33 @@ class TitleView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
+    companion object {
+        const val MODE_TITLE = 0
+        const val MODE_EDIT = 1
+    }
+
     private lateinit var binding: LayoutTitleViewBinding
+
+    /*** 标题模式 ***/
+    private var titleMode: Int = MODE_TITLE
 
     /*** 标题 ***/
     private var titleText: String = if (isInEditMode) "标题" else ""
     private var titleSize: Float = if (isInEditMode) 50f else dimen(R.dimen.sp18)
-    private var titleColor: Int = if (isInEditMode) Color.BLACK else color(R.color.color_333333)
+    private var titleColor: Int = if (isInEditMode) Color.BLACK else color(R.color.textDark)
     private var titleBold: Boolean = true
     private var titleMarqueeEnable: Boolean = false
 
     /*** 副标题 ***/
     private var subtitleText: String = ""
     private var subtitleSize: Float = if (isInEditMode) 30f else dimen(R.dimen.sp13)
-    private var subtitleColor: Int = if (isInEditMode) Color.BLACK else color(R.color.color_333333)
+    private var subtitleColor: Int = if (isInEditMode) Color.BLACK else color(R.color.textDark)
     private var subtitleBold: Boolean = false
 
     /*** 左侧图标 ***/
     private var leftText: String = ""
     private var leftTextSize: Float = if (isInEditMode) 40f else dimen(R.dimen.sp14)
-    private var leftTextColor: Int = if (isInEditMode) Color.BLACK else color(R.color.color_333333)
+    private var leftTextColor: Int = if (isInEditMode) Color.BLACK else color(R.color.textDark)
     private var leftTextBold: Boolean = false
     private var leftDrawablePadding: Float = if (isInEditMode) 13f else dimen(R.dimen.dp5)
     private var leftDrawable: Int = R.drawable.ic_back
@@ -63,10 +72,17 @@ class TitleView @JvmOverloads constructor(
     /*** 右侧图标 ***/
     private var rightText: String = ""
     private var rightTextSize: Float = if (isInEditMode) 40f else dimen(R.dimen.sp14)
-    private var rightTextColor: Int = if (isInEditMode) Color.BLACK else color(R.color.color_333333)
+    private var rightTextColor: Int = if (isInEditMode) Color.BLACK else color(R.color.textDark)
     private var rightTextBold: Boolean = false
     private var rightDrawable: Int = 0
     private var rightDrawablePadding: Float = if (isInEditMode) 13f else dimen(R.dimen.dp5)
+
+    /*** 输入框 ***/
+    private var editHint: String = "请输入内容"
+    private var editText: String = ""
+    private var editHintColor: Int = color(R.color.textLight)
+    private var editTextColor: Int = color(R.color.textDark)
+    private var editTextSize: Float = if (isInEditMode) 40f else dimen(R.dimen.sp14)
 
 
     private var mElevation: Float = if (isInEditMode) 10f else dimen(R.dimen.dp2)
@@ -81,6 +97,7 @@ class TitleView @JvmOverloads constructor(
     private var mLeftListener: LeftClickListener? = null
     private var mRightListener: RightClickListener? = null
     private var mTitleListener: TitleClickListener? = null
+    private var mSearchListener: SearchListener? = null
 
     init {
         val attr: TypedArray = context.obtainStyledAttributes(attrs, R.styleable.TitleView)
@@ -91,12 +108,13 @@ class TitleView @JvmOverloads constructor(
     }
 
     private fun initOption(attr: TypedArray) {
+        titleMode = attr.getInt(R.styleable.TitleView_title_mode, MODE_TITLE)
+
         titleText = attr.getString(R.styleable.TitleView_title_title_text) ?: titleText
         titleSize = attr.getDimension(R.styleable.TitleView_title_title_size, titleSize)
         titleColor = attr.getColor(R.styleable.TitleView_title_title_color, titleColor)
         titleBold = attr.getBoolean(R.styleable.TitleView_title_title_bold, titleBold)
-        titleMarqueeEnable =
-            attr.getBoolean(R.styleable.TitleView_title_marquee_enable, titleMarqueeEnable)
+        titleMarqueeEnable = attr.getBoolean(R.styleable.TitleView_title_marquee_enable, titleMarqueeEnable)
 
         subtitleText = attr.getString(R.styleable.TitleView_title_subtitle_text) ?: subtitleText
         subtitleSize = attr.getDimension(R.styleable.TitleView_title_subtitle_size, subtitleSize)
@@ -107,24 +125,22 @@ class TitleView @JvmOverloads constructor(
         leftTextSize = attr.getDimension(R.styleable.TitleView_title_left_text_size, leftTextSize)
         leftTextColor = attr.getColor(R.styleable.TitleView_title_left_text_color, leftTextColor)
         leftTextBold = attr.getBoolean(R.styleable.TitleView_title_left_text_bold, leftTextBold)
-        leftDrawablePadding = attr.getDimension(
-            R.styleable.TitleView_title_left_drawable_padding,
-            leftDrawablePadding
-        )
+        leftDrawablePadding = attr.getDimension(R.styleable.TitleView_title_left_drawable_padding, leftDrawablePadding)
         leftDrawable = attr.getResourceId(R.styleable.TitleView_title_left_drawable, leftDrawable)
         leftShown = attr.getBoolean(R.styleable.TitleView_title_left_shown, leftShown)
 
         rightText = attr.getString(R.styleable.TitleView_title_right_text) ?: rightText
-        rightTextSize =
-            attr.getDimension(R.styleable.TitleView_title_right_text_size, rightTextSize)
+        rightTextSize = attr.getDimension(R.styleable.TitleView_title_right_text_size, rightTextSize)
         rightTextColor = attr.getColor(R.styleable.TitleView_title_right_text_color, rightTextColor)
         rightTextBold = attr.getBoolean(R.styleable.TitleView_title_right_text_bold, rightTextBold)
-        rightDrawable =
-            attr.getResourceId(R.styleable.TitleView_title_right_drawable, rightDrawable)
-        rightDrawablePadding = attr.getDimension(
-            R.styleable.TitleView_title_right_drawable_padding,
-            rightDrawablePadding
-        )
+        rightDrawable = attr.getResourceId(R.styleable.TitleView_title_right_drawable, rightDrawable)
+        rightDrawablePadding = attr.getDimension(R.styleable.TitleView_title_right_drawable_padding, rightDrawablePadding)
+
+        editHint = attr.getString(R.styleable.TitleView_title_edit_hint) ?: editHint
+        editText = attr.getString(R.styleable.TitleView_title_edit_text) ?: editText
+        editHintColor = attr.getColor(R.styleable.TitleView_title_edit_hint_color, editHintColor)
+        editTextColor = attr.getColor(R.styleable.TitleView_title_edit_text_color, editTextColor)
+        editTextSize = attr.getDimension(R.styleable.TitleView_title_edit_text_size, editTextSize)
 
         shadowShown = attr.getBoolean(R.styleable.TitleView_title_shadow_shown, shadowShown)
 
@@ -134,6 +150,9 @@ class TitleView @JvmOverloads constructor(
     private fun initView() {
         binding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.layout_title_view, this, true)
         binding.apply {
+            mTvTitle.setVisible(titleMode == MODE_TITLE)
+            mTvSubTitle.setVisible(titleMode == MODE_TITLE)
+            mEtEdit.setVisible(titleMode == MODE_EDIT)
             // 标题
             mTvTitle.text = titleText
             mTvTitle.setTextSize(TypedValue.COMPLEX_UNIT_PX, titleSize)
@@ -162,11 +181,7 @@ class TitleView @JvmOverloads constructor(
             if (leftShown) {
                 mTvLeft.visibility = View.VISIBLE
                 //左侧图标
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-                    mTvLeft.setCompoundDrawablesRelativeWithIntrinsicBounds(leftDrawable, 0, 0, 0)
-                } else {
-                    mTvLeft.setCompoundDrawablesWithIntrinsicBounds(leftDrawable, 0, 0, 0)
-                }
+                mTvLeft.setCompoundDrawablesRelativeWithIntrinsicBounds(leftDrawable, 0, 0, 0)
                 mTvRight.compoundDrawablePadding = leftDrawablePadding.toInt()
                 //左侧文字
                 if (leftText.isNotEmpty()) {
@@ -192,13 +207,15 @@ class TitleView @JvmOverloads constructor(
             }
             if (rightDrawable != 0) {
                 mTvRight.visibility = View.VISIBLE
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-                    mTvRight.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, rightDrawable, 0)
-                } else {
-                    mTvRight.setCompoundDrawablesWithIntrinsicBounds(0, 0, rightDrawable, 0)
-                }
+                mTvRight.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, rightDrawable, 0)
                 mTvRight.compoundDrawablePadding = rightDrawablePadding.toInt()
             }
+            //输入模式
+            mEtEdit.hint = editHint
+            mEtEdit.setText(editText)
+            mEtEdit.setHintTextColor(editHintColor)
+            mEtEdit.setTextColor(editTextColor)
+            mEtEdit.setTextSize(TypedValue.COMPLEX_UNIT_PX, editTextSize)
             //设置背景颜色
             setBackgroundColor(background)
             //是否显示边框阴影
@@ -226,6 +243,13 @@ class TitleView @JvmOverloads constructor(
             }
             mTvRight.onClick {
                 mRightListener?.onRightClick()
+            }
+            mEtEdit.setOnEditorActionListener { _, actionId, _ ->
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    mSearchListener?.onSearch(mEtEdit.value)
+                    mEtEdit.setText("")
+                }
+                true
             }
         }
     }
@@ -446,6 +470,17 @@ class TitleView @JvmOverloads constructor(
     }
 
     /**
+     * 搜索
+     */
+    fun setOnSearchListener(onSearch: (text: String) -> Unit) {
+        mSearchListener = object : SearchListener {
+            override fun onSearch(text: String) {
+                onSearch.invoke(text)
+            }
+        }
+    }
+
+    /**
      * 左侧点击
      */
     private interface LeftClickListener {
@@ -464,6 +499,13 @@ class TitleView @JvmOverloads constructor(
      */
     private interface TitleClickListener {
         fun onTitleClick()
+    }
+
+    /**
+     * 点击搜索
+     */
+    private interface SearchListener {
+        fun onSearch(text: String)
     }
 
 

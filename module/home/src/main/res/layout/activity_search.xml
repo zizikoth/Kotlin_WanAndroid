@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.activity.search.SearchActivity">
+
+        <com.base.base.widget.titleview.TitleView
+            android:id="@+id/mTitleView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title_edit_hint="搜点什么吧"
+            app:title_mode="edit"
+            app:title_right_drawable="@drawable/ic_remove" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/mViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never" />
+
+    </LinearLayout>
+</layout>
