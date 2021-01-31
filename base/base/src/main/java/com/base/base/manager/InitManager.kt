@@ -9,6 +9,7 @@ import com.base.base.config.AppConfig
 import com.base.base.ui.status.LoadCallback
 import com.base.base.ui.status.NetErrorCallback
 import com.base.base.ui.status.ServerErrorCallback
+import com.base.web.utils.WebUtils
 import com.blankj.utilcode.util.LogUtils
 import com.blankj.utilcode.util.ProcessUtils
 import com.blankj.utilcode.util.Utils
@@ -17,7 +18,6 @@ import com.frame.core.utils.GsonHelper
 import com.frame.core.utils.extra.dimen
 import com.kongzue.dialogx.DialogX
 import com.load.status.core.LoadStatus
-import com.base.web.utils.WebUtils
 import com.scwang.smart.refresh.footer.BallPulseFooter
 import com.scwang.smart.refresh.header.ClassicsHeader
 import com.scwang.smart.refresh.layout.SmartRefreshLayout

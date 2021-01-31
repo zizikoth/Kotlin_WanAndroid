@@ -3,6 +3,7 @@ package com.base.web.utils
 import android.content.Intent
 import com.base.web.service.WebService
 import com.frame.core.core.CoreApp
+import com.queue.library.GlobalQueue
 
 /**
  * title:
@@ -20,7 +21,9 @@ object WebUtils {
      * 请在合适的地方进行初始化
      */
     fun preInit() {
-        CoreApp.app.startService(Intent(CoreApp.app, WebService::class.java))
+        GlobalQueue.getMainQueue().postRunnableInIdleRunning {
+            CoreApp.app.startService(Intent(CoreApp.app, WebService::class.java))
+        }
     }
 
 }

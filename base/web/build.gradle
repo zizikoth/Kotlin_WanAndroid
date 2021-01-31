@@ -1,4 +1,5 @@
-import com.frame.version.*
+import com.frame.version.Config
+import com.frame.version.Dep
 
 plugins {
     id 'com.android.library'
@@ -34,6 +35,7 @@ android {
 dependencies {
     implementation project(path: ':frame:core')
     implementation Dep.AgentWeb
+    implementation Dep.AgentWebQueue
     testImplementation Dep.TestJunit
     androidTestImplementation Dep.TestAndroidJunit
     androidTestImplementation Dep.TestAndroidEspresso
