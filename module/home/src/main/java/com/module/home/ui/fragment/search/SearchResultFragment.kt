@@ -3,7 +3,7 @@ package com.module.home.ui.fragment.search
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.base.base.entity.remote.ArticleList
 import com.base.base.ui.BaseVmFragment
-import com.business.common.ui.WebActivity
+import com.business.common.ui.activity.web.WebActivity
 import com.frame.core.utils.extra.finish
 import com.frame.core.utils.extra.observe
 import com.frame.core.utils.extra.onRefreshAndLoadMore

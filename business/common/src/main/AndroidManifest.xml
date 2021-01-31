@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.module.business.common">
+    package="com.business.common">
 
     <application>
         <activity
-            android:name="com.business.common.ui.WebActivity"
+            android:name=".ui.activity.web.WebActivity"
             android:configChanges="keyboard|screenSize|orientation|layoutDirection"
             android:process=":web" />
     </application>

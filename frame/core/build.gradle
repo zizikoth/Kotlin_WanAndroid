@@ -63,6 +63,7 @@ dependencies {
     api Dep.OkHttp
     api Dep.LoadStatus
     api Dep.DialogX
+    api Dep.MagicIndicator
 
     debugApi Dep.DoKitDebug
     debugApi Dep.LeakCanaryDebug

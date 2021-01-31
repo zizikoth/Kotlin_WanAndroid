@@ -35,6 +35,7 @@
             <option value="$PROJECT_DIR$/module" />
             <option value="$PROJECT_DIR$/module/home" />
             <option value="$PROJECT_DIR$/module/main" />
+            <option value="$PROJECT_DIR$/module/project" />
             <option value="$PROJECT_DIR$/../version" />
           </set>
         </option>

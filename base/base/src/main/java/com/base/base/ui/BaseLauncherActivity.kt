@@ -19,7 +19,7 @@ abstract class BaseLauncherActivity : BaseActivity<ActivityBaseLauncherBinding>(
 
     abstract fun bindFragment(): Fragment
     override fun bindLayoutRes(): Int = R.layout.activity_base_launcher
-
+    override fun transparentStatusBar(): Boolean = true
     override fun initialize() {
         showFragment(R.id.mContainer, bindFragment())
     }

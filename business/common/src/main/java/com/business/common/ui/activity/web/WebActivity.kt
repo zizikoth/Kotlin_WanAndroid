@@ -1,10 +1,10 @@
-package com.business.common.ui
+package com.business.common.ui.activity.web
 
 import android.content.Context
 import com.base.base.ui.BaseActivity
 import com.base.web.utils.WebHelper
+import com.business.common.R
 import com.frame.core.utils.extra.startActivity
-import com.module.business.common.R
 import com.module.business.common.databinding.ActivityWebBinding
 
 /**

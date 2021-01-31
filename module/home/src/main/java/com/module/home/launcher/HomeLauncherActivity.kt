@@ -15,7 +15,6 @@ import com.module.home.ui.fragment.home.HomeFragment
  * Talk is cheap, Show me the code.
  */
 class HomeLauncherActivity : BaseLauncherActivity() {
-    override fun transparentStatusBar(): Boolean = true
 
     override fun bindFragment(): Fragment = HomeFragment()
 }

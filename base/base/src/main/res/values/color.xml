@@ -2,4 +2,6 @@
 <resources>
     <color name="dialog_mask">#4D000000</color>
     <color name="background_article_top">#08FE4365</color>
+    <color name="tab_normal">#BBBBBB</color>
+    <color name="tab_select">#E94220</color>
 </resources>

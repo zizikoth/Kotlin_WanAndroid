@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.base.base.entity.remote.ArticleList
 import com.base.base.entity.remote.HomeBanner
 import com.base.base.ui.BaseVmFragment
-import com.business.common.ui.WebActivity
+import com.business.common.ui.activity.web.WebActivity
 import com.frame.core.utils.extra.*
 import com.google.android.material.appbar.AppBarLayout
 import com.module.home.R
