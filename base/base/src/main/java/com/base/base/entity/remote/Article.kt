@@ -56,7 +56,15 @@ data class Article(
     val userId: Int = 0,
     val visible: Int = 0,
     val zan: Int = 0
-)
+) {
+    fun getCurrentAuthor() = if (author.isNotEmpty()) {
+        "作者：${author}"
+    } else if (shareUser.isNotEmpty()) {
+        "分享者：${shareUser}"
+    } else {
+        "匿名"
+    }
+}
 
 data class ArticleTag(
     val name: String = "",

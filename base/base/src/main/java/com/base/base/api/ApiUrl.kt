@@ -12,6 +12,7 @@ package com.base.base.api
  */
 object ApiUrl {
     object Home {
+
         /**
          * Banner图
          */
@@ -27,5 +28,17 @@ object ApiUrl {
          * %d 页码
          */
         const val Articles = "article/list/%d/json"
+
+        /**
+         * 更具关键字搜索文章列表
+         * %d 页码
+         */
+        const val ArticlesByWord = "article/query/%d/json"
+
+        /**
+         * 搜索热词
+         */
+        const val HotWord = "hotkey/json"
+
     }
 }

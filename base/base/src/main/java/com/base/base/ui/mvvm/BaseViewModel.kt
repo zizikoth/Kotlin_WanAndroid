@@ -6,7 +6,9 @@ import androidx.lifecycle.rxLifeScope
 import com.base.base.api.ApiCode
 import com.base.base.api.ExceptionHandler
 import com.base.base.entity.uistatus.UiStatus
+import com.base.base.utils.tip
 import com.base.base.utils.toast
+import com.blankj.utilcode.util.LogUtils
 
 /**
  * title:
@@ -52,14 +54,18 @@ abstract class BaseViewModel : ViewModel() {
                 }
             },
             onFinally = {
-                if (showLoading) {
-                    loadingEvent.postValue(false)
-                }
+                loadingEvent.postValue(false)
             })
     }
 
     fun requestNoCheck(request: suspend () -> Unit) {
         rxLifeScope.launch { request.invoke() }
+    }
+
+    fun <T> requestNoStatus(
+        request: suspend () -> T,
+        onSuccess: ((data: T) -> Unit)) {
+        rxLifeScope.launch { onSuccess(request.invoke()) }
     }
 
 }

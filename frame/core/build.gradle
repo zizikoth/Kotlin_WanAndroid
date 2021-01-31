@@ -44,6 +44,7 @@ dependencies {
     api Dep.CoreKtx
     api Dep.ConstraintLayout
     api Dep.ViewPager2
+    api Dep.FlexBox
     api Dep.Coroutine
     api Dep.Glide
     api Dep.GlideOkHttp

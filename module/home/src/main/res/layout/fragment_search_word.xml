@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.fragment.search.SearchWordFragment">
+
+        <TextView
+            android:id="@+id/mTvHistory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/ic_clear"
+            android:padding="@dimen/dp15"
+            android:text="历史记录"
+            android:textColor="@color/color_333333"
+            android:textSize="@dimen/sp15"
+            android:textStyle="bold"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/mRvHistory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:overScrollMode="never"
+            android:paddingLeft="@dimen/dp10"
+            android:paddingRight="@dimen/dp10"
+            android:visibility="gone"
+            tools:itemCount="1"
+            tools:listitem="@layout/layout_item_search"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/mTvHot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp15"
+            android:text="热门搜索"
+            android:textColor="@color/color_333333"
+            android:textSize="@dimen/sp15"
+            android:textStyle="bold"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/mRvHot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:overScrollMode="never"
+            android:paddingLeft="@dimen/dp10"
+            android:paddingRight="@dimen/dp10"
+            android:visibility="gone"
+            tools:itemCount="1"
+            tools:listitem="@layout/layout_item_search"
+            tools:visibility="visible" />
+
+
+    </LinearLayout>
+</layout>

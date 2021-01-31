@@ -21,7 +21,7 @@ import java.util.*
  */
 
 private const val httpRegex =
-	"(((https|http)?://)?([a-z0-9]+[.])|(www.))\\w+[.|/]([a-z0-9]*)?[[.]([a-z0-9]{0,})]+((/[\\S&&[^,;\u4E00-\u9FA5]]+)+)?([.][a-z0-9]{0,}+|/?)"
+    "(((https|http)?://)?([a-z0-9]+[.])|(www.))\\w+[.|/]([a-z0-9]*)?[[.]([a-z0-9]{0,})]+((/[\\S&&[^,;\u4E00-\u9FA5]]+)+)?([.][a-z0-9]{0,}+|/?)"
 private const val phoneRegex = "1\\d{10}$"
 private const val emailRegex = "\\w+@\\w+\\.[a-z]+(\\.[a-z]+)?"
 private const val idCardRegex = "[1-9]\\d{16}[a-zA-Z0-9]"
@@ -67,30 +67,36 @@ fun String?.isNull() = isNullOrEmpty() || this.trim().toLowerCase(Locale.getDefa
  * Html格式化
  */
 fun String.fromHtml() =
-	if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-		Html.fromHtml(this, Html.FROM_HTML_MODE_LEGACY).toString()
-	} else {
-		Html.fromHtml(this).toString()
-	}
+    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+        Html.fromHtml(this, Html.FROM_HTML_MODE_LEGACY).toString()
+    } else {
+        Html.fromHtml(this).toString()
+    }
 
 /**
  * 保留两位小数
  */
 fun Double.keep2Decimal(): String {
-	val df = DecimalFormat()
-	df.maximumFractionDigits = 2
-	df.groupingSize = 0
-	df.roundingMode = RoundingMode.FLOOR
-	val style = "###0.00" // 定义要显示的数字的格式
-	df.applyPattern(style)
-	return df.format(this)
+    val df = DecimalFormat()
+    df.maximumFractionDigits = 2
+    df.groupingSize = 0
+    df.roundingMode = RoundingMode.FLOOR
+    val style = "###0.00" // 定义要显示的数字的格式
+    df.applyPattern(style)
+    return df.format(this)
 }
 
 /**
  * 首航缩进
  */
 fun String.firstLineIndent(): SpannableStringBuilder {
-	val span = SpannableStringBuilder("缩进$this")
-	span.setSpan(ForegroundColorSpan(Color.TRANSPARENT), 0, 2, Spanned.SPAN_INCLUSIVE_EXCLUSIVE)
-	return span
+    val span = SpannableStringBuilder("缩进$this")
+    span.setSpan(ForegroundColorSpan(Color.TRANSPARENT), 0, 2, Spanned.SPAN_INCLUSIVE_EXCLUSIVE)
+    return span
 }
+
+/**
+ * 字符串切割
+ */
+fun String.convert2List(split: String = ",") =
+    if (this.isEmpty()) arrayListOf() else this.split(split).toArrayList()

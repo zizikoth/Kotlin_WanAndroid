@@ -22,7 +22,7 @@ class BaseFragmentPager2Adapter : FragmentStateAdapter {
 
     private val fragments: ArrayList<Fragment> = arrayListOf()
 
-    fun setData(fragments: ArrayList<Fragment>): com.frame.core.adapter.BaseFragmentPager2Adapter {
+    fun setData(fragments: ArrayList<Fragment>): BaseFragmentPager2Adapter {
         this.fragments.clear()
         this.fragments.addAll(fragments)
         return this

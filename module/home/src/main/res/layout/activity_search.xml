@@ -24,8 +24,7 @@
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/mViewPager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:overScrollMode="never" />
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 </layout>

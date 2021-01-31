@@ -60,6 +60,8 @@ abstract class BaseVmFragment<VM : BaseViewModel, BD : ViewDataBinding> : BaseFr
     abstract fun initListener()
     abstract fun start()
 
+    protected fun showContent() = mLoadService?.showSuccess()
+
     protected fun showLoad() {
         if (mContext is BaseActivity<*>) {
             (mContext as BaseActivity<*>).showLoad()

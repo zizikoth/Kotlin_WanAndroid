@@ -21,6 +21,7 @@ import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
 import com.base.base.R
 import com.base.base.databinding.LayoutTitleViewBinding
+import com.blankj.utilcode.util.KeyboardUtils
 import com.frame.core.utils.extra.*
 
 /**
@@ -150,10 +151,8 @@ class TitleView @JvmOverloads constructor(
     private fun initView() {
         binding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.layout_title_view, this, true)
         binding.apply {
-            mTvTitle.setVisible(titleMode == MODE_TITLE)
-            mTvSubTitle.setVisible(titleMode == MODE_TITLE)
-            mEtEdit.setVisible(titleMode == MODE_EDIT)
             // 标题
+            mTvTitle.setVisible(titleMode == MODE_TITLE)
             mTvTitle.text = titleText
             mTvTitle.setTextSize(TypedValue.COMPLEX_UNIT_PX, titleSize)
             mTvTitle.setTextColor(titleColor)
@@ -168,7 +167,7 @@ class TitleView @JvmOverloads constructor(
                 mTvTitle.isFocusableInTouchMode = true
             }
             // 副标题
-            if (subtitleText.isNotEmpty()) {
+            if (subtitleText.isNotEmpty() && titleMode == MODE_TITLE) {
                 mTvSubTitle.visible()
                 mTvSubTitle.text = subtitleText
                 mTvSubTitle.setTextSize(TypedValue.COMPLEX_UNIT_PX, subtitleSize)
@@ -179,7 +178,7 @@ class TitleView @JvmOverloads constructor(
             }
             // 左侧图标
             if (leftShown) {
-                mTvLeft.visibility = View.VISIBLE
+                mTvLeft.visible()
                 //左侧图标
                 mTvLeft.setCompoundDrawablesRelativeWithIntrinsicBounds(leftDrawable, 0, 0, 0)
                 mTvRight.compoundDrawablePadding = leftDrawablePadding.toInt()
@@ -197,7 +196,7 @@ class TitleView @JvmOverloads constructor(
             }
             // 右侧文字
             if (rightText.isNotEmpty()) {
-                mTvRight.visibility = View.VISIBLE
+                mTvRight.visible()
                 mTvRight.text = rightText
                 mTvRight.setTextSize(TypedValue.COMPLEX_UNIT_PX, rightTextSize)
                 mTvRight.setTextColor(rightTextColor)
@@ -206,16 +205,19 @@ class TitleView @JvmOverloads constructor(
                 }
             }
             if (rightDrawable != 0) {
-                mTvRight.visibility = View.VISIBLE
+                mTvRight.visible()
                 mTvRight.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, rightDrawable, 0)
                 mTvRight.compoundDrawablePadding = rightDrawablePadding.toInt()
             }
             //输入模式
-            mEtEdit.hint = editHint
-            mEtEdit.setText(editText)
-            mEtEdit.setHintTextColor(editHintColor)
-            mEtEdit.setTextColor(editTextColor)
-            mEtEdit.setTextSize(TypedValue.COMPLEX_UNIT_PX, editTextSize)
+            if (titleMode == MODE_EDIT) {
+                mEtEdit.visible()
+                mEtEdit.hint = editHint
+                mEtEdit.setText(editText)
+                mEtEdit.setHintTextColor(editHintColor)
+                mEtEdit.setTextColor(editTextColor)
+                mEtEdit.setTextSize(TypedValue.COMPLEX_UNIT_PX, editTextSize)
+            }
             //设置背景颜色
             setBackgroundColor(background)
             //是否显示边框阴影
@@ -246,8 +248,8 @@ class TitleView @JvmOverloads constructor(
             }
             mEtEdit.setOnEditorActionListener { _, actionId, _ ->
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    KeyboardUtils.hideSoftInput(mEtEdit)
                     mSearchListener?.onSearch(mEtEdit.value)
-                    mEtEdit.setText("")
                 }
                 true
             }
@@ -432,9 +434,55 @@ class TitleView @JvmOverloads constructor(
         binding.mTvRight.compoundDrawablePadding = padding
     }
 
+    /**
+     * 设置搜索提示
+     * @param hint String
+     */
+    fun setEditHint(hint: String) {
+        binding.mEtEdit.hint = hint
+    }
+
+    /**
+     * 设置搜索文字
+     * @param text String
+     */
+    fun setEditText(text: String) {
+        binding.mEtEdit.setText(text)
+    }
+
+    /**
+     * 设置搜索提示文字颜色
+     * @param color Int
+     */
+    fun setEditHintColor(color: Int) {
+        binding.mEtEdit.setHintTextColor(color)
+    }
+
+    /**
+     * 设置搜索文字颜色
+     * @param color Int
+     */
+    fun setEditTextColor(color: Int) {
+        binding.mEtEdit.setTextColor(color)
+    }
+
+    /**
+     * 设置搜索文字大小
+     * @param textSize Float
+     */
+    fun setEditTextSize(textSize: Float) {
+        binding.mEtEdit.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize)
+    }
+
+    fun getTitleView() = binding.mTvTitle
+
+    fun getSubTitleView() = binding.mTvSubTitle
+
     fun getLeftView() = binding.mTvLeft
 
     fun getRightView() = binding.mTvRight
+
+    fun getSearchView() = binding.mEtEdit
 
     /**
      * 设置左侧点击

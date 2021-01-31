@@ -28,7 +28,7 @@ class ArticleAdapter : BaseRvAdapter<Article>(R.layout.layout_item_article) {
         holder.run {
             setImageResource(R.id.mIvIcon, IconHelper.randomIcon(item.chapterId))
 
-            setText(R.id.mTvName, "作者：${if (item.author.isEmpty()) "匿名" else item.author}")
+            setText(R.id.mTvName, item.getCurrentAuthor())
 
             setText(R.id.mTvTitle, item.title.fromHtml())
 

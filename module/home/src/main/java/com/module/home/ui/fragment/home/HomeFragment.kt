@@ -119,13 +119,13 @@ class HomeFragment : BaseVmFragment<HomeViewModel, FragmentHomeBinding>() {
      * 文章列表回调
      */
     private fun onArticle(data: ArticleList) {
+        if (data.hasMore()) page++
         mBinding.mRefreshLayout.finish(data.hasMore())
         if (data.isFirst()) {
             mAdapter.setList(data.datas)
         } else {
             mAdapter.addData(data.datas)
         }
-        if (data.hasMore()) page++
     }
 
 

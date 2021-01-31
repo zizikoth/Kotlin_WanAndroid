@@ -4,6 +4,7 @@ import com.base.base.api.ApiUrl
 import com.base.base.entity.remote.Article
 import com.base.base.entity.remote.ArticleList
 import com.base.base.entity.remote.HomeBanner
+import com.base.base.entity.remote.HotWord
 import rxhttp.wrapper.param.RxHttp
 import rxhttp.wrapper.param.toApiResponse
 
@@ -45,8 +46,31 @@ object HomeRepository {
      * @return ArrayList<Article>
      */
     suspend fun getArticle(page: Int): ArticleList {
-        return RxHttp.get(ApiUrl.Home.Articles.format(page))
+        return RxHttp.get(ApiUrl.Home.Articles, page)
             .toApiResponse<ArticleList>()
+            .await()
+    }
+
+    /**
+     *
+     * @param word String
+     * @param page Int
+     * @return ArticleList
+     */
+    suspend fun getArticleByWord(word: String, page: Int): ArticleList {
+        return RxHttp.postForm(ApiUrl.Home.ArticlesByWord, page)
+            .add("k", word)
+            .toApiResponse<ArticleList>()
+            .await()
+    }
+
+    /**
+     * 获取搜索热词
+     * @return ArrayList<HotWord>
+     */
+    suspend fun getHotWord(): ArrayList<HotWord> {
+        return RxHttp.get(ApiUrl.Home.HotWord)
+            .toApiResponse<ArrayList<HotWord>>()
             .await()
     }
 
