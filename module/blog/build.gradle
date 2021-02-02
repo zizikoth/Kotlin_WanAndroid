@@ -1,0 +1,64 @@
+import com.frame.version.Config
+import com.frame.version.Dep
+import com.frame.version.Module
+
+def runAlone = Module.isModuleBlogRunAlone
+if (runAlone) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+
+android {
+    compileSdkVersion Config.compileSdkVersion
+    buildToolsVersion Config.buildToolsVersion
+
+    defaultConfig {
+        if (runAlone) {
+            applicationId Config.applicationId + "." + project.name
+        }
+        minSdkVersion Config.minSdkVersion
+        targetSdkVersion Config.targetSdkVersion
+        versionCode Config.versionCode
+        versionName Config.versionName
+        testInstrumentationRunner Config.testInstrumentationRunner
+        multiDexEnabled true
+    }
+    sourceSets {
+        main {
+            if (runAlone) {
+                manifest.srcFile 'src/main/manifest/application/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/manifest/module/AndroidManifest.xml'
+            }
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        dataBinding = true
+    }
+}
+
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
+
+dependencies {
+    api project(path: ':base:base')
+    api project(path: ':business:common')
+    kapt Dep.ARouterCompiler
+    testImplementation Dep.TestJunit
+    androidTestImplementation Dep.TestAndroidJunit
+    androidTestImplementation Dep.TestAndroidEspresso
+}

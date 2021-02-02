@@ -1,13 +1,18 @@
 package com.business.common.indicator
 
 import android.content.Context
+import android.util.TypedValue
+import android.view.animation.AccelerateInterpolator
+import android.view.animation.DecelerateInterpolator
 import com.business.common.R
 import com.frame.core.utils.extra.color
+import com.frame.core.utils.extra.dp2px
+import com.frame.core.utils.extra.sp2px
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.CommonNavigator
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.CommonNavigatorAdapter
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerIndicator
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerTitleView
-import net.lucode.hackware.magicindicator.buildins.commonnavigator.indicators.WrapPagerIndicator
+import net.lucode.hackware.magicindicator.buildins.commonnavigator.indicators.LinePagerIndicator
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.SimplePagerTitleView
 
 /**
@@ -20,7 +25,7 @@ import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.Simple
  *
  * Talk is cheap, Show me the code.
  */
-class CommonIndicator(context: Context) : CommonNavigator(context) {
+class ElasticLineIndicator(context: Context) : CommonNavigator(context) {
 
     private val titles = arrayListOf<String>()
     private var onTabClick: (index: Int) -> Unit = {}
@@ -31,28 +36,36 @@ class CommonIndicator(context: Context) : CommonNavigator(context) {
             override fun getCount(): Int = titles.size
 
             override fun getTitleView(context: Context, index: Int): IPagerTitleView {
-                val tab = ColorFlipPagerTitleView(context)
-                tab.text = titles[index]
-                tab.normalColor = color(R.color.tab_normal)
-                tab.selectedColor = color(R.color.tab_select)
-                tab.setOnClickListener { onTabClick.invoke(index) }
-                return tab
+                return ColorFlipPagerTitleView(context).apply {
+                    text = titles[index]
+                    setTextSize(TypedValue.COMPLEX_UNIT_PX, 15.sp2px.toFloat())
+                    paint.isFakeBoldText = true
+                    normalColor = color(R.color.tab_normal)
+                    selectedColor = color(R.color.tab_select)
+                    setOnClickListener { onTabClick.invoke(index) }
+                }
             }
 
             override fun getIndicator(context: Context): IPagerIndicator {
-                val indicator = WrapPagerIndicator(context)
-                indicator.fillColor = color(R.color.tab_select)
-                return indicator
+                return LinePagerIndicator(context).apply {
+                    mode = LinePagerIndicator.MODE_EXACTLY
+                    lineHeight = 6.dp2px.toFloat()
+                    lineWidth = 10.dp2px.toFloat()
+                    roundRadius = 3.dp2px.toFloat()
+                    startInterpolator = AccelerateInterpolator()
+                    endInterpolator = DecelerateInterpolator(2f)
+                    setColors(color(R.color.tab_select))
+                }
             }
         }
     }
 
-    fun setOnTabClickListener(onTabClickListener: (index: Int) -> Unit): CommonIndicator {
+    fun setOnTabClickListener(onTabClickListener: (index: Int) -> Unit): ElasticLineIndicator {
         this.onTabClick = onTabClickListener
         return this
     }
 
-    fun setTitles(titles: ArrayList<String>): CommonIndicator {
+    fun setTitles(titles: List<String>): ElasticLineIndicator {
         this.titles.clear()
         this.titles.addAll(titles)
         notifyDataSetChanged()
@@ -80,10 +93,6 @@ class CommonIndicator(context: Context) : CommonNavigator(context) {
 
         override fun onSelected(index: Int, totalCount: Int) {}
         override fun onDeselected(index: Int, totalCount: Int) {}
-        fun getChangePercent(): Float = mChangePercent
-        fun setChangePercent(changePercent: Float) {
-            mChangePercent = changePercent
-        }
     }
 
 }

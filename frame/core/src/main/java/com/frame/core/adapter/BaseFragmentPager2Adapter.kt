@@ -25,6 +25,7 @@ class BaseFragmentPager2Adapter : FragmentStateAdapter {
     fun setData(fragments: ArrayList<Fragment>): BaseFragmentPager2Adapter {
         this.fragments.clear()
         this.fragments.addAll(fragments)
+        notifyDataSetChanged()
         return this
     }
 

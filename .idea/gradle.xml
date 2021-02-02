@@ -33,9 +33,11 @@
             <option value="$PROJECT_DIR$/frame/core" />
             <option value="$PROJECT_DIR$/frame/proguard" />
             <option value="$PROJECT_DIR$/module" />
+            <option value="$PROJECT_DIR$/module/blog" />
             <option value="$PROJECT_DIR$/module/home" />
             <option value="$PROJECT_DIR$/module/main" />
             <option value="$PROJECT_DIR$/module/project" />
+            <option value="$PROJECT_DIR$/module/system" />
             <option value="$PROJECT_DIR$/../version" />
           </set>
         </option>

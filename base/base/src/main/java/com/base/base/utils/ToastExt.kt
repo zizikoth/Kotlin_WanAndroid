@@ -1,8 +1,15 @@
 package com.base.base.utils
 
+import android.view.Gravity
+import android.widget.TextView
+import com.base.base.R
 import com.blankj.utilcode.util.ToastUtils
-import com.kongzue.dialogx.dialogs.TipDialog
 
-fun toast(message: Any) = ToastUtils.showShort(message.toString())
-
-fun tip(message: Any) = TipDialog.show(message.toString())
+fun toast(message: Any?) {
+    message?.let {
+        if (it.toString().isNotEmpty()) {
+            ToastUtils.setGravity(Gravity.CENTER, -1, -1)
+            ToastUtils.showCustomShort(R.layout.layout_toast_view).findViewById<TextView>(R.id.mTvMessage).text = it.toString()
+        }
+    }
+}

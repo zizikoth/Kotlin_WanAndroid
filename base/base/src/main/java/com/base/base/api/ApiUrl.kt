@@ -12,7 +12,6 @@ package com.base.base.api
  */
 object ApiUrl {
     object Home {
-
         /**
          * Banner图
          */
@@ -39,6 +38,50 @@ object ApiUrl {
          * 搜索热词
          */
         const val HotWord = "hotkey/json"
+    }
 
+    object Project {
+        /**
+         * 项目类型列表
+         */
+        const val ProjectTree = "project/tree/json"
+
+        /**
+         * 项目类型文章列表
+         * %d 页码
+         * %d cid
+         */
+        const val ProjectArticles = "project/list/%d/json?cid=%d"
+    }
+
+    object Blog {
+        /**
+         * 博客名称列表
+         */
+        const val BlogTree = "wxarticle/chapters/json"
+
+        /**
+         * 博客文章列表
+         * %d cid
+         * %d page
+         */
+        const val BlogArticles = "wxarticle/list/%d/%d/json"
+    }
+
+    object System {
+        /**
+         * 体系列表
+         */
+        const val SystemTree = "tree/json"
+
+        /**
+         * 体系文章列表
+         */
+        const val SystemArticles = "article/list/%d/json"
+
+        /**
+         * 导航列表
+         */
+        const val NaviTree = "navi/json"
     }
 }

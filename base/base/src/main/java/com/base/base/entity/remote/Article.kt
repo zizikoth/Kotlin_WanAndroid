@@ -11,13 +11,11 @@ package com.base.base.entity.remote
  * Talk is cheap, Show me the code.
  */
 data class ArticleList(
-    val curPage: Int,
-    val over: Boolean,
+    val over: Boolean?,
     val datas: ArrayList<Article>
 ) {
-    fun isFirst() = curPage == 1
     fun isEmpty() = datas.isNullOrEmpty()
-    fun hasMore() = !over
+    fun hasMore() = over == false
 }
 
 

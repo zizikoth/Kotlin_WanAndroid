@@ -1,9 +1,11 @@
 package com.frame.core.utils.extra
 
+import android.content.Context
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SimpleItemAnimator
 import androidx.viewpager2.widget.ViewPager2
+import com.chad.library.adapter.base.BaseQuickAdapter
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import com.scwang.smart.refresh.layout.api.RefreshLayout
 import com.scwang.smart.refresh.layout.constant.RefreshState

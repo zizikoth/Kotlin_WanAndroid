@@ -1,6 +1,7 @@
 package com.module.home.ui.fragment.search
 
 import com.base.base.ui.BaseVmFragment
+import com.base.base.utils.onItemClickListener
 import com.frame.core.utils.extra.*
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.module.home.R
@@ -51,14 +52,13 @@ class SearchWordFragment : BaseVmFragment<SearchViewModel, FragmentSearchWordBin
             mHistoryAdapter.setList(listOf())
         }
         // 点击历史条目
-        mHistoryAdapter.setOnItemClickListener { _, _, position ->
-            (mContext as SearchActivity).search(mHistoryAdapter.getItem(position))
+        mHistoryAdapter.onItemClickListener {
+            (mContext as SearchActivity).search(it)
         }
         // 点击热门条目
-        mHotAdapter.setOnItemClickListener { _, _, position ->
-            val word = mHotAdapter.getItem(position)
-            search(word)
-            (mContext as SearchActivity).search(word)
+        mHotAdapter.onItemClickListener {
+            search(it)
+            (mContext as SearchActivity).search(it)
         }
 
         // 获取历史搜索

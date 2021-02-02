@@ -6,9 +6,7 @@ import androidx.lifecycle.rxLifeScope
 import com.base.base.api.ApiCode
 import com.base.base.api.ExceptionHandler
 import com.base.base.entity.uistatus.UiStatus
-import com.base.base.utils.tip
 import com.base.base.utils.toast
-import com.blankj.utilcode.util.LogUtils
 
 /**
  * title:
@@ -48,14 +46,9 @@ abstract class BaseViewModel : ViewModel() {
                 statusEvent.postValue(UiStatus(isFirstLoad, error.code))
                 onError?.invoke(error.code)
             },
-            onStart = {
-                if (!isFirstLoad && showLoading) {
-                    loadingEvent.postValue(true)
-                }
-            },
-            onFinally = {
-                loadingEvent.postValue(false)
-            })
+            onStart = { if (showLoading) loadingEvent.postValue(true) },
+            onFinally = { loadingEvent.postValue(false) }
+        )
     }
 
     fun requestNoCheck(request: suspend () -> Unit) {

@@ -5,9 +5,12 @@ package com.base.base.entity.remote
  * describe:
  *
  * @author memo
- * @date 2021-01-31 8:53 PM
+ * @date 2021-02-01 9:50 AM
  * @email zhou_android@163.com
  *
  * Talk is cheap, Show me the code.
  */
-data class HotWord(val name: String)
+data class ArticleTree(
+    val id: Int,
+    val name: String
+)

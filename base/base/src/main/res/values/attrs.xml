@@ -77,4 +77,11 @@
         <attr name="average_text_color" format="color" />
     </declare-styleable>
 
+    <declare-styleable name="DragFloatingActionButton">
+        <attr name="drag_margin" format="float" />
+        <attr name="drag_limit_top" format="dimension" />
+        <attr name="drag_enable_drag" format="boolean" />
+        <attr name="drag_enable_attach" format="boolean" />
+    </declare-styleable>
+
 </resources>

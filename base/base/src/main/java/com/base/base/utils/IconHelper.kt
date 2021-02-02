@@ -1,6 +1,7 @@
 package com.base.base.utils
 
 import com.base.base.R
+import kotlin.math.abs
 
 /**
  * title:
@@ -27,9 +28,8 @@ object IconHelper {
         R.drawable.ic_teemo,
         R.drawable.ic_tristana)
 
-    @JvmStatic
     fun randomIcon(id: Int): Int {
-        return icons[id % 10]
+        return icons[abs(id) % 10]
     }
 }
 

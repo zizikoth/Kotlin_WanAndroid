@@ -16,5 +16,4 @@ import com.module.project.ui.fragment.project.ProjectFragment
  */
 class ProjectLauncherActivity : BaseLauncherActivity() {
     override fun bindFragment(): Fragment = ProjectFragment()
-
 }

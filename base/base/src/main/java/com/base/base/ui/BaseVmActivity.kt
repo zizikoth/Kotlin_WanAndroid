@@ -22,7 +22,7 @@ import com.load.status.core.LoadStatus
  */
 abstract class BaseVmActivity<VM : BaseViewModel, BD : ViewDataBinding> : BaseActivity<BD>() {
 
-    protected lateinit var mViewModel:VM
+    protected lateinit var mViewModel: VM
 
     protected var mLoadService: LoadService<*>? = null
 
@@ -47,6 +47,8 @@ abstract class BaseVmActivity<VM : BaseViewModel, BD : ViewDataBinding> : BaseAc
             }
         }
     }
+
+    protected fun showContent() = mLoadService?.showSuccess()
 
     override fun initialize() {
         initData()

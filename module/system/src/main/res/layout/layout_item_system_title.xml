@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mTvTitle"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp40"
+    android:drawableStart="@drawable/system_title_tag"
+    android:drawablePadding="@dimen/dp10"
+    android:gravity="center_vertical"
+    android:paddingStart="5dp"
+    android:paddingEnd="5dp"
+    android:textColor="@color/textDark"
+    android:textSize="@dimen/sp15"
+    android:textStyle="bold"
+    tools:text="知识体系" />

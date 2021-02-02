@@ -1,11 +1,11 @@
 package com.base.base.entity.remote
 
 /**
- * title:首页Banner
+ * title:
  * describe:
  *
  * @author memo
- * @date 2021-01-30 2:23 PM
+ * @date 2021-02-01 9:50 AM
  * @email zhou_android@163.com
  *
  * Talk is cheap, Show me the code.
@@ -20,3 +20,5 @@ data class HomeBanner (
     var type: Int = 0,
     var url: String = ""
 )
+
+data class HotWord(val name: String)

@@ -3,9 +3,10 @@ package com.business.common.ui.activity.web
 import android.content.Context
 import com.base.base.ui.BaseActivity
 import com.base.web.utils.WebHelper
+import com.blankj.utilcode.util.LogUtils
 import com.business.common.R
+import com.business.common.databinding.ActivityWebBinding
 import com.frame.core.utils.extra.startActivity
-import com.module.business.common.databinding.ActivityWebBinding
 
 /**
  * title:网页详情界面
@@ -34,6 +35,7 @@ class WebActivity : BaseActivity<ActivityWebBinding>() {
     override fun initialize() {
         title = intent.getStringExtra("title").orEmpty()
         url = intent.getStringExtra("url").orEmpty()
+        LogUtils.iTag("Web", "title = $title", "url = $url")
         mBinding.mTitleView.setTitle(title)
         webHelper.init(mContext, mBinding.mFlContainer, R.layout.layout_web_error, url)
     }

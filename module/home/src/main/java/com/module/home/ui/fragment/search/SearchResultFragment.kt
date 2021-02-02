@@ -3,13 +3,15 @@ package com.module.home.ui.fragment.search
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.base.base.entity.remote.ArticleList
 import com.base.base.ui.BaseVmFragment
+import com.base.base.utils.onItemClickListener
+import com.base.base.utils.showEmpty
 import com.business.common.ui.activity.web.WebActivity
+import com.business.common.ui.adapter.ArticleAdapter
 import com.frame.core.utils.extra.finish
 import com.frame.core.utils.extra.observe
 import com.frame.core.utils.extra.onRefreshAndLoadMore
 import com.module.home.R
 import com.module.home.databinding.FragmentSearchResultBinding
-import com.module.home.ui.adapter.ArticleAdapter
 
 /**
  * title:搜索 - 搜索文章列表
@@ -41,9 +43,8 @@ class SearchResultFragment : BaseVmFragment<SearchViewModel, FragmentSearchResul
 
     override fun initListener() {
         // 条目点击
-        mAdapter.setOnItemClickListener { _, _, position ->
-            mAdapter.getItem(position).let { WebActivity.start(mContext, it.title, it.link) }
-        }
+        mAdapter.onItemClickListener { WebActivity.start(mContext, it.title, it.link) }
+
         // 刷新加载
         mBinding.mRefreshLayout.onRefreshAndLoadMore({
             page = 0
@@ -77,13 +78,14 @@ class SearchResultFragment : BaseVmFragment<SearchViewModel, FragmentSearchResul
      * 搜索文章回调
      */
     private fun onArticle(data: ArticleList) {
-        if (data.hasMore()) page++
         mBinding.mRefreshLayout.finish(data.hasMore())
-        if (data.isFirst()) {
+        if (page == 0) {
             mAdapter.setList(data.datas)
+            mAdapter.showEmpty(mContext, data.isEmpty())
         } else {
             mAdapter.addData(data.datas)
         }
+        if (data.hasMore()) page++
     }
 
 

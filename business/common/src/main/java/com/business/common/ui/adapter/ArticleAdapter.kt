@@ -1,16 +1,16 @@
-package com.module.home.ui.adapter
+package com.business.common.ui.adapter
 
 import android.graphics.Color
 import android.widget.ImageView
 import com.base.base.entity.remote.Article
 import com.base.base.utils.IconHelper
+import com.business.common.R
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.frame.core.adapter.BaseRvAdapter
 import com.frame.core.utils.extra.color
 import com.frame.core.utils.extra.dp2px
 import com.frame.core.utils.extra.fromHtml
 import com.frame.core.utils.extra.loadRound
-import com.module.home.R
 
 /**
  * title:文章列表适配器
@@ -26,7 +26,7 @@ class ArticleAdapter : BaseRvAdapter<Article>(R.layout.layout_item_article) {
 
     override fun convert(holder: BaseViewHolder, item: Article) {
         holder.run {
-            setImageResource(R.id.mIvIcon, IconHelper.randomIcon(item.chapterId))
+            setImageResource(R.id.mIvIcon, IconHelper.randomIcon(item.userId))
 
             setText(R.id.mTvName, item.getCurrentAuthor())
 

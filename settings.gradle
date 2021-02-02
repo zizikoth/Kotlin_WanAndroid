@@ -1,4 +1,6 @@
+include ':module:system'
 include ':app'
+include ':module:blog'
 include ':module:project'
 include ':module:main'
 include ':module:home'

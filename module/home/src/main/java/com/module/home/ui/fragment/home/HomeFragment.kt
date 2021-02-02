@@ -5,13 +5,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.base.base.entity.remote.ArticleList
 import com.base.base.entity.remote.HomeBanner
 import com.base.base.ui.BaseVmFragment
+import com.base.base.utils.onItemClickListener
+import com.base.base.utils.showEmpty
 import com.business.common.ui.activity.web.WebActivity
+import com.business.common.ui.adapter.ArticleAdapter
 import com.frame.core.utils.extra.*
 import com.google.android.material.appbar.AppBarLayout
 import com.module.home.R
 import com.module.home.databinding.FragmentHomeBinding
 import com.module.home.ui.activity.search.SearchActivity
-import com.module.home.ui.adapter.ArticleAdapter
 import com.youth.banner.adapter.BannerImageAdapter
 import com.youth.banner.holder.BannerImageHolder
 import com.youth.banner.indicator.CircleIndicator
@@ -94,9 +96,7 @@ class HomeFragment : BaseVmFragment<HomeViewModel, FragmentHomeBinding>() {
             }
 
             // 列表
-            mAdapter.setOnItemClickListener { _, _, position ->
-                mAdapter.getItem(position).let { WebActivity.start(mContext, it.title, it.link) }
-            }
+            mAdapter.onItemClickListener { WebActivity.start(mContext, it.title, it.link) }
         }
         //网络数据回调
         observe(mViewModel.bannerLiveData, this::onBanner)
@@ -119,13 +119,14 @@ class HomeFragment : BaseVmFragment<HomeViewModel, FragmentHomeBinding>() {
      * 文章列表回调
      */
     private fun onArticle(data: ArticleList) {
-        if (data.hasMore()) page++
         mBinding.mRefreshLayout.finish(data.hasMore())
-        if (data.isFirst()) {
+        if (page == 0) {
             mAdapter.setList(data.datas)
+            mAdapter.showEmpty(mContext, data.isEmpty())
         } else {
             mAdapter.addData(data.datas)
         }
+        if (data.hasMore()) page++
     }
 
 

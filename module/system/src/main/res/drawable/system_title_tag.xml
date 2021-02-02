@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <size
+        android:width="4dp"
+        android:height="15dp" />
+
+    <corners android:radius="1dp" />
+
+    <gradient
+        android:endColor="@color/tab_select"
+        android:startColor="@color/tab_select" />
+</shape>
