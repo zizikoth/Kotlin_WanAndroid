@@ -35,7 +35,7 @@ dependencies {
     implementation project(path: ':frame:proguard')
     api fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
     api Dep.BoostMultiDex
-    api Dep.Banner
+    api Dep.BannerViewPager
     api Dep.Kotlin
     api Dep.AppCompat
     api Dep.ARouter

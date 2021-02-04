@@ -32,12 +32,16 @@
                         android:layout_height="wrap_content"
                         app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
-                        <com.youth.banner.Banner
+                        <com.zhpan.bannerview.BannerViewPager
                             android:id="@+id/mBanner"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/dp200"
-                            app:banner_indicator_normal_color="@color/white"
-                            app:banner_indicator_selected_color="@color/color_red" />
+                            app:bvp_indicator_checked_color="@color/banner_indicator_select"
+                            app:bvp_indicator_normal_color="@color/banner_indicator_normal"
+                            app:bvp_indicator_slide_mode="worm"
+                            app:bvp_indicator_style="round_rect"
+                            app:bvp_interval="4000"
+                            app:bvp_scroll_duration="800" />
 
                         <androidx.appcompat.widget.Toolbar
                             android:id="@+id/mToolBar"
@@ -65,7 +69,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:overScrollMode="never"
-                    app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                    tools:listitem="@layout/layout_item_article" />
 
             </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

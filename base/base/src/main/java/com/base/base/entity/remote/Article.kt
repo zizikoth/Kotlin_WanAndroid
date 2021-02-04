@@ -18,42 +18,30 @@ data class ArticleList(
     fun hasMore() = over == false
 }
 
+const val HOME_TYPE_TITLE = 1
+const val HOME_TYPE_NEW_ARTICLE = 2
+const val HOME_TYPE_NORMAL_ARTICLE = 3
 
 data class Article(
-    var top: Boolean = false,
-    val apkLink: String = "",
-    val audit: Int = 0,
     val author: String = "",
-    val canEdit: Boolean = false,
-    val chapterId: Int = 0,
     val chapterName: String = "",
     val collect: Boolean = false,
-    val courseId: Int = 0,
     val desc: String = "",
-    val descMd: String = "",
     val envelopePic: String = "",
-    val fresh: Boolean = false,
-    val host: String = "",
     val id: Int = 0,
     val link: String = "",
     val niceDate: String = "",
-    val niceShareDate: String = "",
-    val origin: String = "",
-    val prefix: String = "",
-    val projectLink: String = "",
-    val publishTime: Long = 0,
-    val realSuperChapterId: Int = 0,
-    val selfVisible: Int = 0,
-    val shareDate: Long = 0,
     val shareUser: String = "",
-    val superChapterId: Int = 0,
     val superChapterName: String = "",
-    val tags: List<ArticleTag> = listOf(),
     val title: String = "",
-    val type: Int = 0,
     val userId: Int = 0,
-    val visible: Int = 0,
-    val zan: Int = 0
+    val zan: Int = 0,
+    // 自定义属性
+    // 类型
+    var itemType: Int = HOME_TYPE_NORMAL_ARTICLE,
+    // 标题是否显示更多
+    var hasMore: Boolean = false,
+    var newArticles: ArrayList<Article> = arrayListOf()
 ) {
     fun getCurrentAuthor() = if (author.isNotEmpty()) {
         "作者：${author}"

@@ -18,6 +18,11 @@ object ApiUrl {
         const val Banner = "banner/json"
 
         /**
+         * 最新项目
+         */
+        const val NewArticles = "article/listproject/0/json"
+
+        /**
          * 置顶文章
          */
         const val TopArticles = "article/top/json"

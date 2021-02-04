@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:gravity="center"
-    android:background="@color/black"
     android:orientation="vertical">
 
 
@@ -23,6 +23,6 @@
         android:gravity="center"
         android:text="加载中"
         android:textColor="#666666"
-        android:textSize="@dimen/sp18"/>
+        android:textSize="@dimen/sp18" />
 
 </LinearLayout>

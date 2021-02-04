@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/dp300"
+    android:layout_height="@dimen/dp100"
+    android:layout_margin="@dimen/dp15"
+    android:elevation="0dp"
+    app:cardCornerRadius="@dimen/dp8">
+
+    <ImageView
+        android:id="@+id/mItemBg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#88BBBBBB" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/mItemCover"
+            android:layout_width="@dimen/dp55"
+            android:layout_height="@dimen/dp80"
+            android:layout_marginStart="@dimen/dp15"
+            android:src="@drawable/image_holder"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/mItemTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_marginEnd="@dimen/dp15"
+            android:layout_marginRight="@dimen/dp15"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp14"
+            app:layout_constraintLeft_toRightOf="@id/mItemCover"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="自定义控件通用库 WidgetCase" />
+
+        <TextView
+            android:id="@+id/mItemDesc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_marginBottom="@dimen/dp10"
+            android:ellipsize="end"
+            android:lines="2"
+            android:maxLines="2"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp13"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@id/mItemTitle"
+            app:layout_constraintRight_toRightOf="@id/mItemTitle"
+            tools:text="自定义控件通用库：拿来就用，API文档详细，持续集成，长期维护" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.cardview.widget.CardView>

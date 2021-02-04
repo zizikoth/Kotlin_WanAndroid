@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp45"
+    android:background="@color/color_F5F5F5"
+    android:paddingLeft="@dimen/dp15"
+    android:paddingRight="@dimen/dp15">
+
+    <TextView
+        android:id="@+id/mTvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textColor="@color/textDark"
+        android:textSize="@dimen/sp18"
+        android:textStyle="bold"
+        tools:text="最新文章" />
+
+    <TextView
+        android:id="@+id/mTvMore"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp25"
+        android:layout_gravity="center_vertical|end"
+        android:gravity="center"
+        android:paddingLeft="@dimen/dp10"
+        android:paddingRight="@dimen/dp10"
+        android:text="更多"
+        android:textColor="@color/white"
+        tools:background="@color/color_shape" />
+
+</FrameLayout>

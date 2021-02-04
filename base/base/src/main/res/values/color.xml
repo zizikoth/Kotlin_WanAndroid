@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="dialog_mask">#4D000000</color>
-    <color name="background_article_top">#08FE4365</color>
-    <color name="tab_normal">#666666</color>
-    <color name="tab_select">#E94220</color>
+    <color name="banner_indicator_normal">#46485F</color>
+    <color name="banner_indicator_select">#F58F98</color>
+    <color name="tab_normal">#46485F</color>
+    <color name="tab_select">#F58F98</color>
+    <color name="color_shape">#F58F98</color>
 </resources>

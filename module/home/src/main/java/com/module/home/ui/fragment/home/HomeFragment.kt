@@ -3,10 +3,13 @@ package com.module.home.ui.fragment.home
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.base.base.entity.remote.ArticleList
+import com.base.base.entity.remote.HOME_TYPE_NORMAL_ARTICLE
+import com.base.base.entity.remote.HOME_TYPE_TITLE
 import com.base.base.entity.remote.HomeBanner
 import com.base.base.ui.BaseVmFragment
-import com.base.base.utils.onItemClickListener
+import com.base.base.utils.onItemTypeClickListener
 import com.base.base.utils.showEmpty
+import com.base.base.utils.toast
 import com.business.common.ui.activity.web.WebActivity
 import com.business.common.ui.adapter.ArticleAdapter
 import com.frame.core.utils.extra.*
@@ -14,9 +17,7 @@ import com.google.android.material.appbar.AppBarLayout
 import com.module.home.R
 import com.module.home.databinding.FragmentHomeBinding
 import com.module.home.ui.activity.search.SearchActivity
-import com.youth.banner.adapter.BannerImageAdapter
-import com.youth.banner.holder.BannerImageHolder
-import com.youth.banner.indicator.CircleIndicator
+import com.module.home.ui.adapter.BannerAdapter
 import kotlin.math.abs
 
 /**
@@ -36,13 +37,6 @@ class HomeFragment : BaseVmFragment<HomeViewModel, FragmentHomeBinding>() {
 
     private val mAdapter = ArticleAdapter()
 
-    private val mBannerAdapter = object : BannerImageAdapter<HomeBanner>(null) {
-        override fun onBindView(holder: BannerImageHolder, data: HomeBanner, position: Int, size: Int) {
-            holder.imageView.load(data.imagePath)
-        }
-    }
-
-
     /*** 绑定界面 ***/
     override fun bindLayoutRes(): Int = R.layout.fragment_home
 
@@ -52,9 +46,7 @@ class HomeFragment : BaseVmFragment<HomeViewModel, FragmentHomeBinding>() {
         mBinding.run {
             mToolBar.paddingStatusBar()
             mFlSearch.marginStatusBar()
-            mBanner.setAdapter(mBannerAdapter)
-                .setIndicator(CircleIndicator(mContext))
-                .addBannerLifecycleObserver(mContext)
+            mBanner.setLifecycleRegistry(this@HomeFragment.lifecycle).setAdapter(BannerAdapter())
             mRvList.run {
                 layoutManager = LinearLayoutManager(mContext)
                 adapter = mAdapter
@@ -91,12 +83,15 @@ class HomeFragment : BaseVmFragment<HomeViewModel, FragmentHomeBinding>() {
                 startActivity<SearchActivity>()
             }
             // 轮播图
-            mBanner.setOnBannerListener { data, _ ->
-                (data as HomeBanner?)?.let { WebActivity.start(mContext, it.title, it.url) }
+            mBanner.setOnPageClickListener { _, position ->
+                (mBanner.data[position] as HomeBanner).let { WebActivity.start(mContext, it.title, it.url) }
             }
-
             // 列表
-            mAdapter.onItemClickListener { WebActivity.start(mContext, it.title, it.link) }
+            mAdapter.onItemTypeClickListener { data, itemType ->
+                if (itemType == HOME_TYPE_NORMAL_ARTICLE) WebActivity.start(mContext, data.title, data.link)
+                else if (itemType == HOME_TYPE_TITLE && data.hasMore) toast("更多")
+            }
+            mAdapter.onNewArticleClick = { title, link -> WebActivity.start(mContext, title, link) }
         }
         //网络数据回调
         observe(mViewModel.bannerLiveData, this::onBanner)
@@ -111,8 +106,7 @@ class HomeFragment : BaseVmFragment<HomeViewModel, FragmentHomeBinding>() {
      * Banner回调
      */
     private fun onBanner(data: ArrayList<HomeBanner>) {
-        mBannerAdapter.setDatas(data)
-        mBannerAdapter.notifyDataSetChanged()
+        mBinding.mBanner.create(data)
     }
 
     /**

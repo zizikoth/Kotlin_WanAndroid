@@ -37,6 +37,6 @@ class WebActivity : BaseActivity<ActivityWebBinding>() {
         url = intent.getStringExtra("url").orEmpty()
         LogUtils.iTag("Web", "title = $title", "url = $url")
         mBinding.mTitleView.setTitle(title)
-        webHelper.init(mContext, mBinding.mFlContainer, R.layout.layout_web_error, url)
+        webHelper.init(mContext, mBinding.mFlContainer, R.layout.layout_status_web_error, url)
     }
 }

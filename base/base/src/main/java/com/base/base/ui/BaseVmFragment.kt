@@ -1,5 +1,10 @@
 package com.base.base.ui
 
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
 import com.base.base.api.ApiCode
@@ -26,13 +31,19 @@ abstract class BaseVmFragment<VM : BaseViewModel, BD : ViewDataBinding> : BaseFr
 
     protected var mLoadService: LoadService<*>? = null
 
-    override fun doOnBefore() {
-        super.doOnBefore()
-        mViewModel = ViewModelProvider(this).get(getViewModelClass(this) as Class<VM>)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        mBinding = DataBindingUtil.inflate(inflater, bindLayoutRes(), container, false)
+        mBinding.lifecycleOwner = this
         mLoadService = LoadStatus.getDefault().register(mBinding.root) {
             showLoad()
             start()
         }
+        return mLoadService?.loadLayout
+    }
+
+    override fun doOnBefore() {
+        super.doOnBefore()
+        mViewModel = ViewModelProvider(this).get(getViewModelClass(this) as Class<VM>)
         // 加载框
         mViewModel.loadingEvent.observe(this) { if (it) showLoad() else hideLoad() }
         // 加载页面

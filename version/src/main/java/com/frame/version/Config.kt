@@ -14,18 +14,22 @@ object Config {
 object Module {
     const val isModuleMainRunAlone = true
     const val isModuleHomeRunAlone = true
+    const val isModuleProjectRunAlone = true
+    const val isModuleBlogRunAlone = true
+    const val isModuleSystemRunAlone = true
 }
 
 private object Versions {
     const val TestJunit = "4.13.1"
     const val TestExtJunit = "1.1.2"
     const val TextEspresso = "3.3.0"
-
     const val AgentWeb = "4.1.4"
-    const val Proguard = "1.0.2"
+    const val AgentWebQueue = "v1.0.5"
 
+    const val Proguard = "1.0.2"
     const val BoostMultiDex = "1.0.1"
-    const val Banner ="2.1.0"
+
+    const val Banner = "2.1.0"
     const val Kotlin = "1.4.21"
     const val AppCompat = "1.2.0"
     const val ARouterApi = "1.5.0"
@@ -34,6 +38,7 @@ private object Versions {
     const val CoreKtx = "1.3.1"
     const val ConstraintLayout = "2.0.2"
     const val ViewPager2 = "1.0.0"
+    const val FlexBox = "2.0.1"
     const val Coroutine = "1.3.3"
     const val Glide = "4.11.0"
     const val Gson = "2.8.6"
@@ -46,6 +51,7 @@ private object Versions {
     const val OkHttp = "4.9.0"
     const val LoadStatus = "1.0.3"
     const val DialogX = "0.0.29"
+    const val MagicIndicator = "1.7.0"
 
     const val DoKit = "3.3.5"
     const val LeakCanary = "2.5"
@@ -59,6 +65,7 @@ object Dep {
     const val TestAndroidEspresso = "androidx.test.espresso:espresso-core:${Versions.TextEspresso}"
 
     const val AgentWeb = "com.just.agentweb:agentweb-androidx:${Versions.AgentWeb}"
+    const val AgentWebQueue = "com.github.Justson:dispatch-queue:${Versions.AgentWebQueue}"
     const val Proguard = "com.blankj:free-proguard:${Versions.Proguard}"
 
     const val BoostMultiDex = "com.bytedance.boost_multidex:boost_multidex:${Versions.BoostMultiDex}"
@@ -71,6 +78,7 @@ object Dep {
     const val CoreKtx = "androidx.core:core-ktx:${Versions.CoreKtx}"
     const val ConstraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.ConstraintLayout}"
     const val ViewPager2 = "androidx.viewpager2:viewpager2:${Versions.ViewPager2}"
+    const val FlexBox = "com.google.android:flexbox:${Versions.FlexBox}"
     const val Coroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.Coroutine}"
     const val Glide = "com.github.bumptech.glide:glide:${Versions.Glide}"
     const val GlideOkHttp = "com.github.bumptech.glide:okhttp3-integration:${Versions.Glide}"
@@ -89,6 +97,7 @@ object Dep {
     const val OkHttp = "com.squareup.okhttp3:okhttp:${Versions.OkHttp}"
     const val LoadStatus = "com.github.zizikoth:Status:${Versions.LoadStatus}"
     const val DialogX = "com.kongzue.dialogx:DialogX:${Versions.DialogX}"
+    const val MagicIndicator = "com.github.hackware1993:MagicIndicator:${Versions.MagicIndicator}"
 
     // debugApi
     const val DoKitDebug = "com.didichuxing.doraemonkit:dokitx:${Versions.DoKit}"

@@ -1,8 +1,7 @@
 package com.module.home.ui.fragment.home
 
 import androidx.lifecycle.MutableLiveData
-import com.base.base.entity.remote.ArticleList
-import com.base.base.entity.remote.HomeBanner
+import com.base.base.entity.remote.*
 import com.base.base.entity.zip.Zip2
 import com.base.base.ui.mvvm.BaseViewModel
 import com.module.home.data.HomeRepository
@@ -25,11 +24,30 @@ class HomeViewModel : BaseViewModel() {
     fun getHomeData() {
         request(
             request = {
+                // 轮播图
                 val banner = HomeRepository.getBanner()
-                val topArticles = HomeRepository.getTopArticles().onEach { it.top = true }
-                val articles = HomeRepository.getArticle(0)
-                articles.datas.addAll(0, topArticles)
-                Zip2(banner, articles)
+                // 置顶文章
+                val topArticles = HomeRepository.getTopArticles()
+                // 最新文章
+                val newArticleList = HomeRepository.getNewArticles(0)
+                // 首页文章
+                val normalArticles = HomeRepository.getArticles(0)
+                val articles: ArrayList<Article> = arrayListOf()
+                if (topArticles.isNotEmpty()) {
+                    articles.add(Article(itemType = HOME_TYPE_TITLE, title = "置顶推荐"))
+                    articles.addAll(topArticles)
+                }
+                if (!newArticleList.isEmpty()) {
+                    articles.add(Article(itemType = HOME_TYPE_TITLE, title = "最新项目", hasMore = newArticleList.hasMore()))
+                    articles.add(Article(itemType = HOME_TYPE_NEW_ARTICLE, newArticles = newArticleList.datas))
+                }
+                if (!normalArticles.isEmpty()) {
+                    articles.add(Article(itemType = HOME_TYPE_TITLE, title = "首页文章"))
+                    articles.addAll(normalArticles.datas)
+                }
+                normalArticles.datas.clear()
+                normalArticles.datas.addAll(articles)
+                Zip2(banner, normalArticles)
             },
             onSuccess = {
                 bannerLiveData.postValue(it.first)
@@ -40,7 +58,7 @@ class HomeViewModel : BaseViewModel() {
 
     fun getArticles(page: Int) {
         request(
-            request = { HomeRepository.getArticle(page) },
+            request = { HomeRepository.getArticles(page) },
             onSuccess = { articleLiveData.postValue(it) })
     }
 }

@@ -15,6 +15,7 @@ import com.blankj.utilcode.util.ProcessUtils
 import com.blankj.utilcode.util.Utils
 import com.frame.core.core.CoreApp
 import com.frame.core.utils.GsonHelper
+import com.frame.core.utils.OOMHelper
 import com.frame.core.utils.extra.dimen
 import com.kongzue.dialogx.DialogX
 import com.load.status.core.LoadStatus
@@ -61,6 +62,8 @@ object InitManager {
      * 延迟初始化
      */
     fun initLater() {
+        // oom
+        OOMHelper.startMonitorLowMemory()
         // WebView
         WebUtils.preInit()
         // Dialog

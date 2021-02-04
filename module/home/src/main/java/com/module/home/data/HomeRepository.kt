@@ -41,11 +41,21 @@ object HomeRepository {
     }
 
     /**
+     * 获取最新文章
+     * @return ArticleList
+     */
+    suspend fun getNewArticles(page:Int): ArticleList {
+        return RxHttp.get(ApiUrl.Home.NewArticles,page)
+            .toApiResponse<ArticleList>()
+            .await()
+    }
+
+    /**
      * 获取文章列表
      * @param page Int 页码 从0开始
      * @return ArrayList<Article>
      */
-    suspend fun getArticle(page: Int): ArticleList {
+    suspend fun getArticles(page: Int): ArticleList {
         return RxHttp.get(ApiUrl.Home.Articles, page)
             .toApiResponse<ArticleList>()
             .await()

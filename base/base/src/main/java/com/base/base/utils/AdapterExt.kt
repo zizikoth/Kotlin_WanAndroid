@@ -24,6 +24,12 @@ fun <T> BaseQuickAdapter<T, *>.onItemClickListener(onItemClick: (data: T) -> Uni
     }
 }
 
+fun <T> BaseQuickAdapter<T, *>.onItemTypeClickListener(onItemClick: (data: T, itemType: Int) -> Unit) {
+    this.setOnItemClickListener { _, _, position ->
+        onItemClick.invoke(this.getItem(position), this.getItemViewType(position))
+    }
+}
+
 fun <T> BaseQuickAdapter<T, *>.onMultiItemClickListener(onItemClick: (multiType: Int, data: T) -> Unit) {
     this.setOnItemClickListener { _, _, position ->
         onItemClick.invoke(this.getItemViewType(position), this.getItem(position))

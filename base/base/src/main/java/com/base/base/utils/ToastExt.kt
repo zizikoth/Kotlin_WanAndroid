@@ -8,7 +8,6 @@ import com.blankj.utilcode.util.ToastUtils
 fun toast(message: Any?) {
     message?.let {
         if (it.toString().isNotEmpty()) {
-            ToastUtils.setGravity(Gravity.CENTER, -1, -1)
             ToastUtils.showCustomShort(R.layout.layout_toast_view).findViewById<TextView>(R.id.mTvMessage).text = it.toString()
         }
     }
