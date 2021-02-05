@@ -15,7 +15,7 @@ import com.frame.core.utils.extra.onRefreshAndLoadMore
 import com.frame.core.utils.extra.startActivity
 import com.module.system.R
 import com.module.system.databinding.ActivitySystemArticleBinding
-import com.module.system.ui.fragment.system.SystemViewModel
+import com.module.system.viewmodel.SystemViewModel
 
 /**
  * title:体系文章界面
@@ -75,7 +75,7 @@ class SystemArticleActivity : BaseVmActivity<SystemViewModel, ActivitySystemArti
 
     private fun onSystemArticles(data: ArticleList) {
         mBinding.mRefreshLayout.finish(data.hasMore())
-        LogUtils.iTag("data",data.datas)
+        LogUtils.iTag("data", data.datas)
         if (page == 0) {
             mAdapter.setList(data.datas)
             mAdapter.showEmpty(mContext, data.isEmpty())

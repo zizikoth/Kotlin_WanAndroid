@@ -4,10 +4,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.base.base.entity.remote.Article
-import com.base.base.entity.remote.HOME_TYPE_NEW_ARTICLE
-import com.base.base.entity.remote.HOME_TYPE_NORMAL_ARTICLE
-import com.base.base.entity.remote.HOME_TYPE_TITLE
+import com.base.base.entity.remote.*
 import com.base.base.utils.IconHelper
 import com.base.base.utils.onItemClickListener
 import com.base.base.widget.recyclerview.StartSnapHelper
@@ -32,9 +29,10 @@ import com.frame.core.utils.extra.*
 class ArticleAdapter : BaseProviderMultiAdapter<Article>() {
 
     init {
-        addItemProvider(NormalArticleProvider())
+        addItemProvider(GridProvider())
         addItemProvider(TitleProvider())
         addItemProvider(NewArticleProvider())
+        addItemProvider(NormalArticleProvider())
     }
 
     var onNewArticleClick: (title: String, url: String) -> Unit = { _, _ -> }
@@ -44,8 +42,18 @@ class ArticleAdapter : BaseProviderMultiAdapter<Article>() {
     }
 }
 
+private class GridProvider(
+    override val itemViewType: Int = HOME_TYPE_SYSTEM_GRID,
+    override val layoutId: Int = R.layout.layout_item_system_grid) : BaseItemProvider<Article>() {
+    override fun convert(helper: BaseViewHolder, item: Article) {
+        helper.setText(R.id.mTvTitle, item.title)
+        helper.setImageResource(R.id.mIvLogo, IconHelper.randomIcon(item.id))
+    }
+}
+
 private class TitleProvider(
-    override val itemViewType: Int = HOME_TYPE_TITLE, override val layoutId: Int = R.layout.layout_item_title) : BaseItemProvider<Article>() {
+    override val itemViewType: Int = HOME_TYPE_TITLE,
+    override val layoutId: Int = R.layout.layout_item_title) : BaseItemProvider<Article>() {
     override fun convert(helper: BaseViewHolder, item: Article) {
         helper.run {
             setText(R.id.mTvTitle, item.title)
@@ -88,7 +96,9 @@ private class NormalArticleProvider(
 
             setText(R.id.mTvDesc, item.desc.fromHtml())
 
-            setText(R.id.mTvChapter, if (item.superChapterName.isNotEmpty()) "${item.superChapterName} · ${item.chapterName}" else item.chapterName)
+            setText(R.id.mTvChapter,
+                if (item.superChapterName.isNotEmpty()) "${item.superChapterName} · ${item.chapterName}"
+                else item.chapterName)
 
             setText(R.id.mTvTime, item.niceDate)
 

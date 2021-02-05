@@ -3,15 +3,14 @@ package com.module.system.ui.fragment.system
 import com.base.base.entity.remote.SystemTreeItem
 import com.base.base.entity.remote.TYPE_SYSTEM_ITEM
 import com.base.base.ui.BaseVmFragment
-import com.base.base.ui.status.LoadCallback
 import com.base.base.utils.onMultiItemClickListener
-import com.blankj.utilcode.util.LogUtils
 import com.frame.core.utils.extra.observe
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.module.system.R
 import com.module.system.databinding.FragmentSystemItemBinding
 import com.module.system.ui.activity.SystemArticleActivity
 import com.module.system.ui.adapter.SystemAdapter
+import com.module.system.viewmodel.SystemViewModel
 
 /**
  * title:

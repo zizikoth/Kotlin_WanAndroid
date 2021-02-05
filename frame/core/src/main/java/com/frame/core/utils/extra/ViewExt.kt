@@ -4,14 +4,11 @@ import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.os.Build
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import androidx.annotation.RequiresApi
 import androidx.core.view.drawToBitmap
-import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
 import com.blankj.utilcode.util.BarUtils
 import com.frame.core.utils.ClickHelper
 import kotlin.math.min
@@ -229,6 +226,18 @@ fun View.round(color: Int = Color.WHITE, radius: Int = 10.dp2px) {
     background = GradientDrawable().apply {
         setColor(color)
         cornerRadius = radius.toFloat()
+    }
+}
+
+/**
+ * 设置控件圆角
+ * @receiver View
+ */
+fun View.round(color: Int = Color.WHITE, leftTop: Int, rightTop: Int, rightBottom: Int, leftBottom: Int) {
+    background = GradientDrawable().apply {
+        setColor(color)
+        cornerRadii = floatArrayOf(leftTop.toFloat(), leftTop.toFloat(), rightTop.toFloat(), rightTop.toFloat(),
+            rightBottom.toFloat(), rightBottom.toFloat(), leftBottom.toFloat(), leftBottom.toFloat())
     }
 }
 

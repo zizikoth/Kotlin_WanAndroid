@@ -1,5 +1,7 @@
 package com.module.system.ui.fragment
 
+import com.alibaba.android.arouter.facade.annotation.Route
+import com.base.base.manager.RouterManager
 import com.base.base.ui.BaseFragment
 import com.business.common.indicator.IndicatorType
 import com.business.common.indicator.init
@@ -20,6 +22,7 @@ import com.module.system.ui.adapter.SystemFragmentAdapter
  *
  * Talk is cheap, Show me the code.
  */
+@Route(path = RouterManager.System.SYSTEM_FRAGMENT)
 class SystemFragment : BaseFragment<FragmentSystemBinding>() {
 
     private val titles = listOf("体系", "导航")

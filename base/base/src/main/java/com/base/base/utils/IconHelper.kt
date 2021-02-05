@@ -41,6 +41,7 @@ object IconHelper {
     )
 
     fun randomIcon(id: Int): Int {
+        if (id == 9527) return R.drawable.ic_lol
         return icons[abs(id) % 10]
     }
 

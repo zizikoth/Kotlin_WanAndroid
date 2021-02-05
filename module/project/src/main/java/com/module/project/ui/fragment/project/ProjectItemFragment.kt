@@ -13,6 +13,7 @@ import com.frame.core.utils.extra.onRefreshAndLoadMore
 import com.frame.core.utils.extra.withArguments
 import com.module.project.R
 import com.module.project.databinding.FragmentProjectItemBinding
+import com.module.project.viewmodel.ProjectViewModel
 
 /**
  * title:项目类型文章列表

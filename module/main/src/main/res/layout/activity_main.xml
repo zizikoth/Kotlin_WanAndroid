@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -21,7 +22,14 @@
         <com.base.base.widget.bottombar.BottomNavigationViewEx
             android:id="@+id/mBottomBar"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp45" />
+            android:layout_height="@dimen/dp45"
+            android:background="@color/white"
+            android:elevation="@dimen/dp2"
+            app:itemIconSize="@dimen/dp20"
+            app:itemIconTint="@color/selector_color_navi"
+            app:itemTextColor="@color/selector_color_navi"
+            app:labelVisibilityMode="labeled"
+            app:menu="@menu/menu_main_navi" />
 
     </LinearLayout>
 </layout>

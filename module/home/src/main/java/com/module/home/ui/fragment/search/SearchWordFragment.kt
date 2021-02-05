@@ -8,6 +8,7 @@ import com.module.home.R
 import com.module.home.databinding.FragmentSearchWordBinding
 import com.module.home.ui.activity.search.SearchActivity
 import com.module.home.ui.adapter.SearchAdapter
+import com.module.home.viewmodel.SearchViewModel
 
 /**
  * title:搜索 - 历史记录 热门搜索

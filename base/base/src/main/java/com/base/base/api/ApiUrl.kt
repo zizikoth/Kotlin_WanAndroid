@@ -43,6 +43,18 @@ object ApiUrl {
          * 搜索热词
          */
         const val HotWord = "hotkey/json"
+
+        /**
+         * 博客名称列表
+         */
+        const val BlogTree = "wxarticle/chapters/json"
+
+        /**
+         * 博客文章列表
+         * %d cid
+         * %d page
+         */
+        const val BlogArticles = "wxarticle/list/%d/%d/json"
     }
 
     object Project {
@@ -59,19 +71,6 @@ object ApiUrl {
         const val ProjectArticles = "project/list/%d/json?cid=%d"
     }
 
-    object Blog {
-        /**
-         * 博客名称列表
-         */
-        const val BlogTree = "wxarticle/chapters/json"
-
-        /**
-         * 博客文章列表
-         * %d cid
-         * %d page
-         */
-        const val BlogArticles = "wxarticle/list/%d/%d/json"
-    }
 
     object System {
         /**

@@ -2,6 +2,7 @@ package com.base.web.utils
 
 import android.content.Intent
 import com.base.web.service.WebService
+import com.blankj.utilcode.util.LogUtils
 import com.frame.core.core.CoreApp
 import com.queue.library.GlobalQueue
 

@@ -36,7 +36,6 @@ dependencies {
     api project(path: ':frame:core')
     api project(path: ':base:web')
     kapt Dep.RxHttpCompiler
-
     testImplementation Dep.TestJunit
     androidTestImplementation Dep.TestAndroidJunit
     androidTestImplementation Dep.TestAndroidEspresso

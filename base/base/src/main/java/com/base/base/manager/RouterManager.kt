@@ -18,11 +18,49 @@ object RouterManager {
         const val HOME_FRAGMENT = "/Home/HomeFragment"
     }
 
+    object Project {
+        const val PROJECT_FRAGMENT = "/Project/ProjectFragment"
+    }
+
+    object System {
+        const val SYSTEM_FRAGMENT = "/System/SystemFragment"
+    }
+
+    object Mine {
+        const val MINE_FRAGMENT = "/Mine/MineFragment"
+    }
+
     /**
-     * 获取首页HomeFragment
+     * 获取首页页面
      * @return Fragment
      */
     fun getHomeFragment(): Fragment {
         return ARouter.getInstance().build(Home.HOME_FRAGMENT).navigation() as Fragment
     }
+
+    /**
+     * 获取项目页面
+     * @return Fragment
+     */
+    fun getProjectFragment(): Fragment {
+        return ARouter.getInstance().build(Project.PROJECT_FRAGMENT).navigation() as Fragment
+    }
+
+    /**
+     * 获取系统页面
+     * @return Fragment
+     */
+    fun getSystemFragment(): Fragment {
+        return ARouter.getInstance().build(System.SYSTEM_FRAGMENT).navigation() as Fragment
+    }
+
+    /**
+     * 获取我的页面
+     * @return Fragment
+     */
+    fun getMineFragment(): Fragment {
+        return ARouter.getInstance().build(Mine.MINE_FRAGMENT).navigation() as Fragment
+    }
+
+
 }

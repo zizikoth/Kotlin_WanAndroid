@@ -20,11 +20,16 @@ class WebService : Service() {
 
     override fun onCreate() {
         super.onCreate()
-        LogUtils.iTag("WebService", "提前创建WebView","请使用WebView的Activity添加 android:process=\":web\" ")
+        LogUtils.iTag("WebService", "提前创建WebView", "请使用WebView的Activity添加 android:process=\":web\" ")
         WebView(this.applicationContext)
     }
 
     override fun onBind(intent: Intent?): IBinder? {
         return null
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        LogUtils.iTag("WebService", "WebService --> onDestroy")
     }
 }

@@ -1,23 +1,24 @@
 package com.module.home.ui.fragment.home
 
 import androidx.coordinatorlayout.widget.CoordinatorLayout
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.base.base.entity.remote.ArticleList
-import com.base.base.entity.remote.HOME_TYPE_NORMAL_ARTICLE
-import com.base.base.entity.remote.HOME_TYPE_TITLE
-import com.base.base.entity.remote.HomeBanner
+import androidx.recyclerview.widget.GridLayoutManager
+import com.alibaba.android.arouter.facade.annotation.Route
+import com.base.base.entity.remote.*
+import com.base.base.manager.RouterManager
 import com.base.base.ui.BaseVmFragment
 import com.base.base.utils.onItemTypeClickListener
 import com.base.base.utils.showEmpty
-import com.base.base.utils.toast
 import com.business.common.ui.activity.web.WebActivity
 import com.business.common.ui.adapter.ArticleAdapter
 import com.frame.core.utils.extra.*
 import com.google.android.material.appbar.AppBarLayout
 import com.module.home.R
 import com.module.home.databinding.FragmentHomeBinding
+import com.module.home.ui.activity.article.NewArticleActivity
+import com.module.home.ui.activity.blog.BlogActivity
 import com.module.home.ui.activity.search.SearchActivity
 import com.module.home.ui.adapter.BannerAdapter
+import com.module.home.viewmodel.HomeViewModel
 import kotlin.math.abs
 
 /**
@@ -30,6 +31,7 @@ import kotlin.math.abs
  *
  * Talk is cheap, Show me the code.
  */
+@Route(path = RouterManager.Home.HOME_FRAGMENT)
 class HomeFragment : BaseVmFragment<HomeViewModel, FragmentHomeBinding>() {
 
     /*** 页码 ***/
@@ -48,7 +50,14 @@ class HomeFragment : BaseVmFragment<HomeViewModel, FragmentHomeBinding>() {
             mFlSearch.marginStatusBar()
             mBanner.setLifecycleRegistry(this@HomeFragment.lifecycle).setAdapter(BannerAdapter())
             mRvList.run {
-                layoutManager = LinearLayoutManager(mContext)
+                layoutManager = GridLayoutManager(mContext, 4)
+                mAdapter.setGridSpanSizeLookup { _, viewType, position ->
+                    when (viewType) {
+                        HOME_TYPE_TITLE, HOME_TYPE_NORMAL_ARTICLE, HOME_TYPE_NEW_ARTICLE -> 4
+                        HOME_TYPE_SYSTEM_GRID -> 1
+                        else -> 4
+                    }
+                }
                 adapter = mAdapter
             }
         }
@@ -74,7 +83,7 @@ class HomeFragment : BaseVmFragment<HomeViewModel, FragmentHomeBinding>() {
             // 刷新 加载 监听
             mRefreshLayout.onRefreshAndLoadMore({
                 page = 0
-                mViewModel.getArticles(page)
+                mViewModel.getHomeData()
             }, {
                 mViewModel.getArticles(page)
             })
@@ -88,8 +97,9 @@ class HomeFragment : BaseVmFragment<HomeViewModel, FragmentHomeBinding>() {
             }
             // 列表
             mAdapter.onItemTypeClickListener { data, itemType ->
-                if (itemType == HOME_TYPE_NORMAL_ARTICLE) WebActivity.start(mContext, data.title, data.link)
-                else if (itemType == HOME_TYPE_TITLE && data.hasMore) toast("更多")
+                if (itemType == HOME_TYPE_SYSTEM_GRID) BlogActivity.start(mContext, data.id)
+                else if (itemType == HOME_TYPE_NORMAL_ARTICLE) WebActivity.start(mContext, data.title, data.link)
+                else if (itemType == HOME_TYPE_TITLE && data.hasMore) startActivity<NewArticleActivity>()
             }
             mAdapter.onNewArticleClick = { title, link -> WebActivity.start(mContext, title, link) }
         }

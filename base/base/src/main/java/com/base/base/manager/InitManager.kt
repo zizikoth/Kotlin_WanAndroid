@@ -13,6 +13,7 @@ import com.base.web.utils.WebUtils
 import com.blankj.utilcode.util.LogUtils
 import com.blankj.utilcode.util.ProcessUtils
 import com.blankj.utilcode.util.Utils
+import com.didichuxing.doraemonkit.DoraemonKit
 import com.frame.core.core.CoreApp
 import com.frame.core.utils.GsonHelper
 import com.frame.core.utils.OOMHelper
@@ -42,6 +43,10 @@ object InitManager {
      */
     fun initInApp(app: Application) {
         if (ProcessUtils.isMainProcess()) {
+            // DoKit
+            DoraemonKit.install(app)
+
+            // AndroidCodeUtils
             Utils.init(app)
             LogUtils.getConfig().setLogSwitch(AppConfig.isOpenLog)
 
@@ -52,6 +57,7 @@ object InitManager {
             }
             ARouter.init(app)
 
+            // RxHttp
             RxHttp.setDebug(AppConfig.isOpenLog, true)
             RxHttp.setConverter(GsonConverter.create(GsonHelper.getGson()))
 

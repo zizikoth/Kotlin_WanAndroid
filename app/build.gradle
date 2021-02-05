@@ -93,9 +93,19 @@ android {
     buildFeatures { dataBinding = true }
 }
 
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
+
 dependencies {
+    implementation project(path: ':base:base')
     if (!Module.isModuleMainRunAlone) implementation project(path: ':module:main')
     if (!Module.isModuleHomeRunAlone) implementation project(path: ':module:home')
+    if (!Module.isModuleProjectRunAlone) implementation project(path: ':module:project')
+    if (!Module.isModuleSystemRunAlone) implementation project(path: ':module:system')
+    kapt Dep.ARouterCompiler
     testImplementation Dep.TestJunit
     androidTestImplementation Dep.TestAndroidJunit
     androidTestImplementation Dep.TestAndroidEspresso

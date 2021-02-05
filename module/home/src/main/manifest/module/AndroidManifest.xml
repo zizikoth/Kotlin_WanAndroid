@@ -4,6 +4,16 @@
 
     <application>
         <activity
+            android:name=".ui.activity.article.NewArticleActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.blog.BlogActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.blog.BlogSearchActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+        <activity
             android:name=".ui.activity.search.SearchActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />

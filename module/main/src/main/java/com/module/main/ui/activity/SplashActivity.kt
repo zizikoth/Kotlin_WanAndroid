@@ -2,6 +2,7 @@ package com.module.main.ui.activity
 
 import androidx.lifecycle.lifecycleScope
 import com.frame.core.core.CoreSplashActivity
+import com.frame.core.utils.extra.startActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -20,7 +21,9 @@ class SplashActivity : CoreSplashActivity() {
 
     override fun initialize() {
         lifecycleScope.launch(Dispatchers.Main) {
-            delay(1000)
+            delay(1500)
+            startActivity<MainActivity>()
+            finish()
         }
     }
 }

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/id_main_home"
+        android:checked="true"
+        android:icon="@drawable/ic_main_home"
+        android:title="@string/navi_home" />
+    <item
+        android:id="@+id/id_main_project"
+        android:checked="true"
+        android:icon="@drawable/ic_main_project"
+        android:title="@string/navi_project" />
+    <item
+        android:id="@+id/id_main_system"
+        android:checked="true"
+        android:icon="@drawable/ic_main_system"
+        android:title="@string/navi_system" />
+    <item
+        android:id="@+id/id_main_mine"
+        android:checked="true"
+        android:icon="@drawable/ic_main_mine"
+        android:title="@string/navi_mine" />
+</menu>

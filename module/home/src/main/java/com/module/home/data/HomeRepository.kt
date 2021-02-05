@@ -1,10 +1,7 @@
 package com.module.home.data
 
 import com.base.base.api.ApiUrl
-import com.base.base.entity.remote.Article
-import com.base.base.entity.remote.ArticleList
-import com.base.base.entity.remote.HomeBanner
-import com.base.base.entity.remote.HotWord
+import com.base.base.entity.remote.*
 import rxhttp.wrapper.param.RxHttp
 import rxhttp.wrapper.param.toApiResponse
 
@@ -31,6 +28,16 @@ object HomeRepository {
     }
 
     /**
+     * 获取博客名称
+     * @return ArrayList<ArticleTree>
+     */
+    suspend fun getBlogTree(): ArrayList<ArticleTree> {
+        return RxHttp.get(ApiUrl.Home.BlogTree)
+            .toApiResponse<ArrayList<ArticleTree>>()
+            .await()
+    }
+
+    /**
      * 获取首页置顶文章
      * @return ArrayList<Article>
      */
@@ -44,8 +51,8 @@ object HomeRepository {
      * 获取最新文章
      * @return ArticleList
      */
-    suspend fun getNewArticles(page:Int): ArticleList {
-        return RxHttp.get(ApiUrl.Home.NewArticles,page)
+    suspend fun getNewArticles(page: Int): ArticleList {
+        return RxHttp.get(ApiUrl.Home.NewArticles, page)
             .toApiResponse<ArticleList>()
             .await()
     }
@@ -84,5 +91,18 @@ object HomeRepository {
             .await()
     }
 
+    /**
+     * 获取博客文章列表
+     * @param page Int 页码
+     * @param cid Int id
+     * @param word String 关键字
+     * @return ArticleList
+     */
+    suspend fun getBlogArticles(page: Int, cid: Int, word: String): ArticleList {
+        return RxHttp.get(ApiUrl.Home.BlogArticles, cid, page)
+            .add("k", word)
+            .toApiResponse<ArticleList>()
+            .await()
+    }
 
 }

@@ -1,6 +1,8 @@
 package com.module.project.ui.fragment.project
 
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.base.base.entity.remote.ArticleTree
+import com.base.base.manager.RouterManager
 import com.base.base.ui.BaseVmFragment
 import com.business.common.indicator.IndicatorType
 import com.business.common.indicator.init
@@ -11,6 +13,7 @@ import com.frame.core.utils.extra.paddingStatusBar
 import com.module.project.R
 import com.module.project.databinding.FragmentProjectBinding
 import com.module.project.ui.adapter.ProjectFragmentAdapter
+import com.module.project.viewmodel.ProjectViewModel
 
 /**
  * title:项目类型
@@ -22,6 +25,7 @@ import com.module.project.ui.adapter.ProjectFragmentAdapter
  *
  * Talk is cheap, Show me the code.
  */
+@Route(path = RouterManager.Project.PROJECT_FRAGMENT)
 class ProjectFragment : BaseVmFragment<ProjectViewModel, FragmentProjectBinding>() {
 
     private val mAdapter by lazy { ProjectFragmentAdapter(this) }

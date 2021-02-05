@@ -12,11 +12,10 @@ object Config {
 }
 
 object Module {
-    const val isModuleMainRunAlone = true
-    const val isModuleHomeRunAlone = true
-    const val isModuleProjectRunAlone = true
-    const val isModuleBlogRunAlone = true
-    const val isModuleSystemRunAlone = true
+    const val isModuleMainRunAlone = false
+    const val isModuleHomeRunAlone = false
+    const val isModuleProjectRunAlone = false
+    const val isModuleSystemRunAlone = false
 }
 
 private object Versions {
@@ -29,7 +28,7 @@ private object Versions {
     const val Proguard = "1.0.2"
     const val BoostMultiDex = "1.0.1"
 
-    const val Banner = "2.1.0"
+    const val BannerViewPager = "3.5.0"
     const val Kotlin = "1.4.21"
     const val AppCompat = "1.2.0"
     const val ARouterApi = "1.5.0"
@@ -69,7 +68,7 @@ object Dep {
     const val Proguard = "com.blankj:free-proguard:${Versions.Proguard}"
 
     const val BoostMultiDex = "com.bytedance.boost_multidex:boost_multidex:${Versions.BoostMultiDex}"
-    const val Banner = "com.youth.banner:banner:${Versions.Banner}"
+    const val BannerViewPager = "com.github.zhpanvip:BannerViewPager:${Versions.BannerViewPager}"
     const val Kotlin = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.Kotlin}"
     const val AppCompat = "androidx.appcompat:appcompat:${Versions.AppCompat}"
     const val ARouter = "com.alibaba:arouter-api:${Versions.ARouterApi}"

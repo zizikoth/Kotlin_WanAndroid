@@ -18,6 +18,7 @@ data class ArticleList(
     fun hasMore() = over == false
 }
 
+const val HOME_TYPE_SYSTEM_GRID = 0
 const val HOME_TYPE_TITLE = 1
 const val HOME_TYPE_NEW_ARTICLE = 2
 const val HOME_TYPE_NORMAL_ARTICLE = 3

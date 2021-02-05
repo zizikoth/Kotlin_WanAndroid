@@ -12,6 +12,7 @@ import com.frame.core.utils.extra.observe
 import com.frame.core.utils.extra.onRefreshAndLoadMore
 import com.module.home.R
 import com.module.home.databinding.FragmentSearchResultBinding
+import com.module.home.viewmodel.SearchViewModel
 
 /**
  * title:搜索 - 搜索文章列表

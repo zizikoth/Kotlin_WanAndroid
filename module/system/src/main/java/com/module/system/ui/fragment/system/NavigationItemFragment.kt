@@ -4,13 +4,13 @@ import com.base.base.entity.remote.SystemTreeItem
 import com.base.base.entity.remote.TYPE_SYSTEM_ITEM
 import com.base.base.ui.BaseVmFragment
 import com.base.base.utils.onMultiItemClickListener
-import com.blankj.utilcode.util.LogUtils
 import com.business.common.ui.activity.web.WebActivity
 import com.frame.core.utils.extra.observe
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.module.system.R
 import com.module.system.databinding.FragmentSystemItemBinding
 import com.module.system.ui.adapter.SystemAdapter
+import com.module.system.viewmodel.SystemViewModel
 
 /**
  * title:
@@ -40,7 +40,7 @@ class NavigationItemFragment : BaseVmFragment<SystemViewModel, FragmentSystemIte
 
     override fun initListener() {
         mAdapter.onMultiItemClickListener { multiType, data ->
-            if (multiType == TYPE_SYSTEM_ITEM) WebActivity.start(mContext, data.name, data.link)
+            if (multiType == TYPE_SYSTEM_ITEM) WebActivity.start(mContext, data.title, data.link)
         }
         observe(mViewModel.systemLiveData, this::onNaviTree)
     }
@@ -51,10 +51,5 @@ class NavigationItemFragment : BaseVmFragment<SystemViewModel, FragmentSystemIte
 
     private fun onNaviTree(data: ArrayList<SystemTreeItem>) {
         mAdapter.setList(data)
-    }
-
-    override fun onResume() {
-        super.onResume()
-        LogUtils.iTag("onResume",123)
     }
 }

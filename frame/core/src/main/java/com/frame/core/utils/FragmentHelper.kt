@@ -25,7 +25,6 @@ class FragmentHelper constructor(
     /*** 存放Fragment容器 ***/
     private val mStack: Stack<Fragment> by lazy { Stack<Fragment>() }
 
-
     /**
      * 绑定生命周期
      */
@@ -63,6 +62,7 @@ class FragmentHelper constructor(
      * 改变Fragment
      */
     fun show(index: Int = 0) {
+        if (index < 0 || index >= mStack.size) return
         val beginTransaction = fragmentManager.beginTransaction()
         mStack.forEachIndexed { position, fragment ->
             if (position == index) {

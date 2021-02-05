@@ -55,7 +55,7 @@ object ClickHelper {
      * 判断是否双击返回键进行退出
      *
      *  override fun onBackPressed() {
-     *      if (ClickHelper.isDoubleClickExit(...)) {
+     *      if (ClickHelper.isDoubleClickExit { toast("再次点击退出应用") }) {
      *          super.onBackPressed()
      *      }
      *  }
