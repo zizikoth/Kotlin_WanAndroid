@@ -23,8 +23,14 @@ import com.load.status.core.LoadStatus
 import com.scwang.smart.refresh.footer.BallPulseFooter
 import com.scwang.smart.refresh.header.ClassicsHeader
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
+import okhttp3.OkHttpClient
 import rxhttp.wrapper.converter.GsonConverter
+import rxhttp.wrapper.cookie.CookieStore
 import rxhttp.wrapper.param.RxHttp
+import rxhttp.wrapper.ssl.HttpsUtils
+import java.io.File
+import java.util.concurrent.TimeUnit
+
 
 /**
  * title:
@@ -58,6 +64,16 @@ object InitManager {
             ARouter.init(app)
 
             // RxHttp
+            val sslFactory = HttpsUtils.getSslSocketFactory()
+            val client: OkHttpClient = OkHttpClient.Builder()
+                .cookieJar(CookieStore(File(app.externalCacheDir, "HttpCookie")))
+                .connectTimeout(10, TimeUnit.SECONDS)
+                .readTimeout(10, TimeUnit.SECONDS)
+                .writeTimeout(10, TimeUnit.SECONDS)
+                .sslSocketFactory(sslFactory.sSLSocketFactory, sslFactory.trustManager)
+                .hostnameVerifier { _, _ -> true }
+                .build()
+            RxHttp.init(client)
             RxHttp.setDebug(AppConfig.isOpenLog, true)
             RxHttp.setConverter(GsonConverter.create(GsonHelper.getGson()))
 
