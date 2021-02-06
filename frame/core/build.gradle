@@ -64,6 +64,7 @@ dependencies {
     api Dep.LoadStatus
     api Dep.DialogX
     api Dep.MagicIndicator
+    api Dep.Lottie
 
     debugApi Dep.DoKitDebug
     debugApi Dep.LeakCanaryDebug

@@ -28,6 +28,7 @@ object RouterManager {
 
     object Mine {
         const val MINE_FRAGMENT = "/Mine/MineFragment"
+        const val LOGIN_ACTIVITY = "/Mine/LoginActivity"
     }
 
     /**
@@ -60,6 +61,13 @@ object RouterManager {
      */
     fun getMineFragment(): Fragment {
         return ARouter.getInstance().build(Mine.MINE_FRAGMENT).navigation() as Fragment
+    }
+
+    /**
+     * 跳转到登陆界面
+     */
+    fun startLogin() {
+        ARouter.getInstance().build(Mine.LOGIN_ACTIVITY).navigation()
     }
 
 

@@ -4,6 +4,7 @@
     android:id="@+id/mRvArticle"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/white"
     android:overScrollMode="never"
     tools:itemCount="1"
     tools:listitem="@layout/layout_item_new_article_item_article" />

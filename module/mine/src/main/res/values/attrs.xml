@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MineItemView">
+        <attr name="miv_title" format="string" />
+        <attr name="miv_content" format="string" />
+    </declare-styleable>
+</resources>

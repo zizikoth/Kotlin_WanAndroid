@@ -7,28 +7,163 @@
 
     </data>
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".ui.fragment.MineFragment">
+        tools:context=".ui.fragment.mine.MineFragment">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <com.airbnb.lottie.LottieAnimationView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="@dimen/dp350"
+            android:layout_gravity="bottom"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="lottie_about.json"
+            app:lottie_loop="true" />
 
-            <ImageView
-                android:layout_width="@dimen/dp80"
-                android:layout_height="@dimen/dp80"
-                android:layout_marginTop="@dimen/dp20"
-                android:src="@drawable/ic_lol"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp15"
+                android:layout_marginTop="@dimen/dp15"
+                android:elevation="@dimen/dp3"
+                android:translationZ="@dimen/dp10"
+                app:cardCornerRadius="@dimen/dp8">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <ImageView
+                        android:id="@+id/mIvIcon"
+                        android:layout_width="@dimen/dp80"
+                        android:layout_height="@dimen/dp80"
+                        android:layout_marginTop="@dimen/dp20"
+                        android:src="@drawable/ic_mine"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.module.mine.widget.MineItemView
+                        android:id="@+id/mItemCollect"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp20"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@id/mItemCoin"
+                        app:layout_constraintTop_toBottomOf="@id/mIvIcon"
+                        app:miv_content="0"
+                        app:miv_title="收藏" />
+
+                    <View
+                        android:layout_width="@dimen/dp0_5"
+                        android:layout_height="@dimen/dp20"
+                        android:background="@color/color_F5F5F5"
+                        app:layout_constraintBottom_toBottomOf="@id/mItemCollect"
+                        app:layout_constraintLeft_toRightOf="@id/mItemCollect"
+                        app:layout_constraintRight_toLeftOf="@id/mItemCoin"
+                        app:layout_constraintTop_toTopOf="@id/mItemCollect" />
+
+                    <com.module.mine.widget.MineItemView
+                        android:id="@+id/mItemCoin"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp20"
+                        app:layout_constraintLeft_toRightOf="@id/mItemCollect"
+                        app:layout_constraintRight_toLeftOf="@id/mItemRank"
+                        app:layout_constraintTop_toBottomOf="@id/mIvIcon"
+                        app:miv_content="0"
+                        app:miv_title="积分" />
+
+                    <View
+                        android:layout_width="@dimen/dp0_5"
+                        android:layout_height="@dimen/dp20"
+                        android:background="@color/color_F5F5F5"
+                        app:layout_constraintBottom_toBottomOf="@id/mItemCollect"
+                        app:layout_constraintLeft_toRightOf="@id/mItemCoin"
+                        app:layout_constraintRight_toLeftOf="@id/mItemRank"
+                        app:layout_constraintTop_toTopOf="@id/mItemCollect" />
+
+                    <com.module.mine.widget.MineItemView
+                        android:id="@+id/mItemRank"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp20"
+                        app:layout_constraintLeft_toRightOf="@id/mItemCoin"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/mIvIcon"
+                        app:miv_content="0"
+                        app:miv_title="排名" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp15"
+                android:layout_marginTop="@dimen/dp15"
+                android:elevation="@dimen/dp3"
+                android:translationZ="@dimen/dp10"
+                app:cardCornerRadius="@dimen/dp8"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/mItemCollect">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <com.base.base.widget.itemview.ItemView
+                        android:id="@+id/mItemTodo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:item_divider_shown="true"
+                        app:item_extra_drawable="@drawable/ic_arrows_gray_right"
+                        app:item_main_text="TODO"
+                        app:item_main_textBold="true" />
+
+                    <com.base.base.widget.itemview.ItemView
+                        android:id="@+id/mItemShare"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:item_divider_shown="true"
+                        app:item_extra_drawable="@drawable/ic_arrows_gray_right"
+                        app:item_main_text="我的分享"
+                        app:item_main_textBold="true" />
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                    <com.base.base.widget.itemview.ItemView
+                        android:id="@+id/mItemCache"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:item_divider_shown="true"
+                        app:item_extra_drawable="@drawable/ic_arrows_gray_right"
+                        app:item_main_text="清理缓存"
+                        app:item_main_textBold="true" />
+
+                    <com.base.base.widget.itemview.ItemView
+                        android:id="@+id/mItemAbout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:item_divider_shown="true"
+                        app:item_extra_drawable="@drawable/ic_arrows_gray_right"
+                        app:item_main_text="关于我们"
+                        app:item_main_textBold="true" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
 
 
-    </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+
+
 </layout>

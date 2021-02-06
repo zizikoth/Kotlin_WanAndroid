@@ -1,6 +1,5 @@
 import com.frame.version.Config
 import com.frame.version.Dep
-import com.frame.version.Module
 
 plugins {
     id 'com.android.application'
@@ -93,19 +92,13 @@ android {
     buildFeatures { dataBinding = true }
 }
 
-kapt {
-    arguments {
-        arg("AROUTER_MODULE_NAME", project.getName())
-    }
-}
-
 dependencies {
     implementation project(path: ':base:base')
-    if (!Module.isModuleMainRunAlone) implementation project(path: ':module:main')
-    if (!Module.isModuleHomeRunAlone) implementation project(path: ':module:home')
-    if (!Module.isModuleProjectRunAlone) implementation project(path: ':module:project')
-    if (!Module.isModuleSystemRunAlone) implementation project(path: ':module:system')
-    kapt Dep.ARouterCompiler
+    implementation project(path: ':module:main')
+    implementation project(path: ':module:home')
+    implementation project(path: ':module:project')
+    implementation project(path: ':module:system')
+    implementation project(path: ':module:mine')
     testImplementation Dep.TestJunit
     androidTestImplementation Dep.TestAndroidJunit
     androidTestImplementation Dep.TestAndroidEspresso

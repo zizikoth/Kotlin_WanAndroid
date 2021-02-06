@@ -6,6 +6,7 @@ import androidx.lifecycle.rxLifeScope
 import com.base.base.api.ApiCode
 import com.base.base.api.ExceptionHandler
 import com.base.base.entity.uistatus.UiStatus
+import com.base.base.manager.RouterManager
 import com.base.base.utils.toast
 
 /**
@@ -45,6 +46,9 @@ abstract class BaseViewModel : ViewModel() {
                 toast(error.message)
                 statusEvent.postValue(UiStatus(isFirstLoad, error.code))
                 onError?.invoke(error.code)
+                if (error.code == ApiCode.UnLogin) {
+                    RouterManager.startLogin()
+                }
             },
             onStart = { if (showLoading) loadingEvent.postValue(true) },
             onFinally = { loadingEvent.postValue(false) }

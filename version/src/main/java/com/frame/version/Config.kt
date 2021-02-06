@@ -16,6 +16,7 @@ object Module {
     const val isModuleHomeRunAlone = false
     const val isModuleProjectRunAlone = false
     const val isModuleSystemRunAlone = false
+    const val isModuleMineRunAlone = false
 }
 
 private object Versions {

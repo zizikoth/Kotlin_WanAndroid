@@ -1,11 +1,11 @@
 package com.module.main.ui.activity
 
-import androidx.lifecycle.lifecycleScope
-import com.frame.core.core.CoreSplashActivity
+import android.animation.Animator
+import com.base.base.ui.BaseActivity
+import com.frame.core.simple.SimpleAnimatorListener
 import com.frame.core.utils.extra.startActivity
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import com.module.main.R
+import com.module.main.databinding.ActivitySplashBinding
 
 /**
  * title:启动页
@@ -17,13 +17,17 @@ import kotlinx.coroutines.launch
  *
  * Talk is cheap, Show me the code.
  */
-class SplashActivity : CoreSplashActivity() {
+class SplashActivity : BaseActivity<ActivitySplashBinding>() {
+
+    override fun bindLayoutRes(): Int = R.layout.activity_splash
 
     override fun initialize() {
-        lifecycleScope.launch(Dispatchers.Main) {
-            delay(1500)
-            startActivity<MainActivity>()
-            finish()
-        }
+        mBinding.mLottieView.addAnimatorListener(object : SimpleAnimatorListener() {
+            override fun onAnimationEnd(animation: Animator?) {
+                startActivity<MainActivity>()
+                finish()
+            }
+        })
     }
+
 }

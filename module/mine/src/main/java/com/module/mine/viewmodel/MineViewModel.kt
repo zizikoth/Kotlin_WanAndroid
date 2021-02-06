@@ -1,6 +1,9 @@
 package com.module.mine.viewmodel
 
+import androidx.lifecycle.MutableLiveData
+import com.base.base.entity.remote.CoinInfo
 import com.base.base.ui.mvvm.BaseViewModel
+import com.module.mine.data.MineRepository
 
 /**
  * title:
@@ -14,4 +17,12 @@ import com.base.base.ui.mvvm.BaseViewModel
  */
 class MineViewModel : BaseViewModel() {
 
+    val coinLiveData by lazy { MutableLiveData<CoinInfo>() }
+
+    fun getCoin() {
+        requestNoStatus(
+            request = { MineRepository.getCoin() },
+            onSuccess = { coinLiveData.postValue(it) }
+        )
+    }
 }

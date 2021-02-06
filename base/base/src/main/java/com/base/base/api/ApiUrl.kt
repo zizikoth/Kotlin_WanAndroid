@@ -88,4 +88,33 @@ object ApiUrl {
          */
         const val NaviTree = "navi/json"
     }
+
+    object Login {
+        /**
+         * 登录
+         */
+        const val Login = "user/login"
+
+        /**
+         * 注册
+         */
+        const val Register = "user/register"
+
+        /**
+         * 登出
+         */
+        const val LoginOut = "user/loginout/json"
+    }
+
+    object Mine {
+        /**
+         * 个人积分
+         */
+        const val Coin = "lg/coin/userinfo/json"
+
+        /**
+         * 积分列表
+         */
+        const val CoinList = "lg/coin/list/%d/json"
+    }
 }

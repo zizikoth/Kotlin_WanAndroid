@@ -3,9 +3,8 @@
     package="com.module.main">
 
     <application>
-        <activity
-            android:name="com.module.main.ui.activity.MainActivity"
-            android:screenOrientation="portrait" />
+        <activity android:name="com.module.main.ui.activity.MainActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name="com.module.main.ui.activity.SplashActivity"
             android:screenOrientation="portrait"
