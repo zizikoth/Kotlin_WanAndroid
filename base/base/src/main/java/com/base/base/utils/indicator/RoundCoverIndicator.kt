@@ -1,8 +1,8 @@
-package com.business.common.indicator
+package com.base.base.utils.indicator
 
 import android.content.Context
 import android.graphics.Color
-import com.business.common.R
+import com.base.base.R
 import com.frame.core.utils.extra.color
 import com.frame.core.utils.extra.dp2px
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.CommonNavigator

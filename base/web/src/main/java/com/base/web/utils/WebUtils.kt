@@ -2,8 +2,8 @@ package com.base.web.utils
 
 import android.content.Intent
 import com.base.web.service.WebService
-import com.blankj.utilcode.util.LogUtils
 import com.frame.core.core.CoreApp
+import com.frame.core.utils.extra.doTryCatch
 import com.queue.library.GlobalQueue
 
 /**
@@ -23,7 +23,7 @@ object WebUtils {
      */
     fun preInit() {
         GlobalQueue.getMainQueue().postRunnableInIdleRunning {
-            CoreApp.app.startService(Intent(CoreApp.app, WebService::class.java))
+            doTryCatch { CoreApp.app.startService(Intent(CoreApp.app, WebService::class.java)) }
         }
     }
 

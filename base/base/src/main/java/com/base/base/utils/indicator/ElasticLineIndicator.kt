@@ -1,10 +1,10 @@
-package com.business.common.indicator
+package com.base.base.utils.indicator
 
 import android.content.Context
 import android.util.TypedValue
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
-import com.business.common.R
+import com.base.base.R
 import com.frame.core.utils.extra.color
 import com.frame.core.utils.extra.dp2px
 import com.frame.core.utils.extra.sp2px

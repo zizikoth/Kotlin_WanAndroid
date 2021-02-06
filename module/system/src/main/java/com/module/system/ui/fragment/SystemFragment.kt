@@ -3,9 +3,9 @@ package com.module.system.ui.fragment
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.base.base.manager.RouterManager
 import com.base.base.ui.BaseFragment
-import com.business.common.indicator.IndicatorType
-import com.business.common.indicator.init
-import com.business.common.indicator.setTitles
+import com.base.base.utils.indicator.IndicatorType
+import com.base.base.utils.indicator.init
+import com.base.base.utils.indicator.setTitles
 import com.frame.core.utils.extra.enableOverScrollMode
 import com.frame.core.utils.extra.paddingStatusBar
 import com.module.system.R

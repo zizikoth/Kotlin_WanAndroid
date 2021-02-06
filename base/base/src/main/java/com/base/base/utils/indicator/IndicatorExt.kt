@@ -1,6 +1,5 @@
-package com.business.common.indicator
+package com.base.base.utils.indicator
 
-import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
 import net.lucode.hackware.magicindicator.MagicIndicator
 

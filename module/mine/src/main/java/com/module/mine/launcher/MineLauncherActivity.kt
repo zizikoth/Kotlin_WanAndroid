@@ -2,7 +2,7 @@ package com.module.mine.launcher
 
 import androidx.fragment.app.Fragment
 import com.base.base.ui.BaseLauncherActivity
-import com.module.mine.ui.fragment.MineFragment
+import com.module.mine.ui.fragment.mine.MineFragment
 
 /**
  * title:Mine模块启动页面

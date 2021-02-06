@@ -6,4 +6,7 @@
     <color name="tab_normal">#46485F</color>
     <color name="tab_select">#F58F98</color>
     <color name="color_shape">#F58F98</color>
+
+    <color name="color_sign_in">#F58F98</color>
+    <color name="color_sign_up">#49A2FF</color>
 </resources>

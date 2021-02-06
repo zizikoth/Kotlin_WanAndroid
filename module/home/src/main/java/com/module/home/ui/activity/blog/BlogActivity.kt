@@ -3,9 +3,9 @@ package com.module.home.ui.activity.blog
 import android.content.Context
 import com.base.base.entity.remote.ArticleTree
 import com.base.base.ui.BaseVmActivity
-import com.business.common.indicator.IndicatorType
-import com.business.common.indicator.init
-import com.business.common.indicator.setTitles
+import com.base.base.utils.indicator.IndicatorType
+import com.base.base.utils.indicator.init
+import com.base.base.utils.indicator.setTitles
 import com.frame.core.utils.extra.enableOverScrollMode
 import com.frame.core.utils.extra.observe
 import com.frame.core.utils.extra.startActivity
