@@ -20,7 +20,7 @@ class NewArticleViewModel : BaseViewModel() {
 
     fun getNewArticle(page: Int) {
         request(
-            request = { HomeRepository.getNewArticles(page) },
+            request = { HomeRepository.getNewArticlesAsync(it, page).await() },
             onSuccess = { articleLiveData.postValue(it) }
         )
 

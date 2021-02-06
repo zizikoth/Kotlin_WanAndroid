@@ -2,6 +2,9 @@ package com.module.home.data
 
 import com.base.base.api.ApiUrl
 import com.base.base.entity.remote.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Deferred
+import rxhttp.async
 import rxhttp.wrapper.param.RxHttp
 import rxhttp.wrapper.param.toApiResponse
 
@@ -21,40 +24,40 @@ object HomeRepository {
      * 获取首页Banner
      * @return ArrayList<HomeBanner>
      */
-    suspend fun getBanner(): ArrayList<HomeBanner> {
+    suspend fun getBannerAsync(scope: CoroutineScope): Deferred<ArrayList<HomeBanner>> {
         return RxHttp.get(ApiUrl.Home.Banner)
             .toApiResponse<ArrayList<HomeBanner>>()
-            .await()
+            .async(scope)
     }
 
     /**
      * 获取博客名称
      * @return ArrayList<ArticleTree>
      */
-    suspend fun getBlogTree(): ArrayList<ArticleTree> {
+    suspend fun getBlogTreeAsync(scope: CoroutineScope): Deferred<ArrayList<ArticleTree>> {
         return RxHttp.get(ApiUrl.Home.BlogTree)
             .toApiResponse<ArrayList<ArticleTree>>()
-            .await()
+            .async(scope)
     }
 
     /**
      * 获取首页置顶文章
      * @return ArrayList<Article>
      */
-    suspend fun getTopArticles(): ArrayList<Article> {
+    suspend fun getTopArticlesAsync(scope: CoroutineScope): Deferred<ArrayList<Article>> {
         return RxHttp.get(ApiUrl.Home.TopArticles)
             .toApiResponse<ArrayList<Article>>()
-            .await()
+            .async(scope)
     }
 
     /**
      * 获取最新文章
      * @return ArticleList
      */
-    suspend fun getNewArticles(page: Int): ArticleList {
+    suspend fun getNewArticlesAsync(scope: CoroutineScope, page: Int): Deferred<ArticleList> {
         return RxHttp.get(ApiUrl.Home.NewArticles, page)
             .toApiResponse<ArticleList>()
-            .await()
+            .async(scope)
     }
 
     /**
@@ -62,10 +65,10 @@ object HomeRepository {
      * @param page Int 页码 从0开始
      * @return ArrayList<Article>
      */
-    suspend fun getArticles(page: Int): ArticleList {
+    suspend fun getArticlesAsync(scope: CoroutineScope, page: Int): Deferred<ArticleList> {
         return RxHttp.get(ApiUrl.Home.Articles, page)
             .toApiResponse<ArticleList>()
-            .await()
+            .async(scope)
     }
 
     /**

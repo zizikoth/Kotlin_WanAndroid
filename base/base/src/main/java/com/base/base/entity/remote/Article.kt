@@ -12,6 +12,7 @@ package com.base.base.entity.remote
  */
 data class ArticleList(
     val over: Boolean?,
+    val total: Int,
     val datas: ArrayList<Article>
 ) {
     fun isEmpty() = datas.isNullOrEmpty()
@@ -37,6 +38,7 @@ data class Article(
     val title: String = "",
     val userId: Int = 0,
     val zan: Int = 0,
+    val originId: Int = -1,
     // 自定义属性
     // 类型
     var itemType: Int = HOME_TYPE_NORMAL_ARTICLE,

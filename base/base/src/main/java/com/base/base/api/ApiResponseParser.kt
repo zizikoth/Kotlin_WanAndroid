@@ -1,5 +1,6 @@
 package com.base.base.api
 
+import com.base.base.manager.UserManager
 import okhttp3.Response
 import rxhttp.wrapper.annotation.Parser
 import rxhttp.wrapper.entity.ParameterizedTypeImpl
@@ -27,6 +28,8 @@ open class ApiResponseParser<T> : AbstractParser<T> {
         val type: Type = ParameterizedTypeImpl[ApiResponse::class.java, mType]
         val data: ApiResponse<T> = response.convert(type)
         if (!data.isSuccess()) {
+            // 无论是那个借口如果需要登陆 那么清除cookie
+            if (data.isNeedLogin()) UserManager.clearLogin()
             throw ApiException(data.errorCode, data.errorMsg)
         }
         return data.data

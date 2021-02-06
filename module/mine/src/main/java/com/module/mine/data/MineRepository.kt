@@ -1,9 +1,13 @@
 package com.module.mine.data
 
 import com.base.base.api.ApiUrl
+import com.base.base.entity.remote.ArticleList
 import com.base.base.entity.remote.CoinInfo
 import com.base.base.entity.remote.CoinList
 import com.base.base.entity.remote.User
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Deferred
+import rxhttp.async
 import rxhttp.tryAwait
 import rxhttp.wrapper.param.RxHttp
 import rxhttp.wrapper.param.toApiResponse
@@ -63,10 +67,10 @@ object MineRepository {
      * 获取个人积分信息
      * @return CoinInfo
      */
-    suspend fun getCoin(): CoinInfo {
+    suspend fun getCoinAsync(scope: CoroutineScope): Deferred<CoinInfo> {
         return RxHttp.get(ApiUrl.Mine.Coin)
             .toApiResponse<CoinInfo>()
-            .await()
+            .async(scope)
     }
 
     /**
@@ -74,9 +78,20 @@ object MineRepository {
      * @param page Int 页码
      * @return CoinList
      */
-    suspend fun getCoinList(page:Int):CoinList{
-        return RxHttp.get(ApiUrl.Mine.CoinList,page)
+    suspend fun getCoinList(page: Int): CoinList {
+        return RxHttp.get(ApiUrl.Mine.CoinList, page)
             .toApiResponse<CoinList>()
             .await()
+    }
+
+    /**
+     * 获取收藏列表
+     * @param page Int 页码
+     * @return Deferred<ArticleList>
+     */
+    suspend fun getCollectionsAsync(scope: CoroutineScope, page: Int): Deferred<ArticleList> {
+        return RxHttp.get(ApiUrl.Mine.CollectionList, page)
+            .toApiResponse<ArticleList>()
+            .async(scope)
     }
 }

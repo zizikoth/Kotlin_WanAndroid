@@ -23,7 +23,7 @@ class BlogViewModel : BaseViewModel() {
 
     fun getBlogTree() {
         request(
-            request = { HomeRepository.getBlogTree() },
+            request = { HomeRepository.getBlogTreeAsync(it).await() },
             onSuccess = { blogLiveData.postValue(it) }
         )
     }

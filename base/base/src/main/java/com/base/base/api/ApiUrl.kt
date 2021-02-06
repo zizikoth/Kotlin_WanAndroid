@@ -116,5 +116,10 @@ object ApiUrl {
          * 积分列表
          */
         const val CoinList = "lg/coin/list/%d/json"
+
+        /**
+         * 收藏列表
+         */
+        const val CollectionList = "lg/collect/list/%d/json"
     }
 }

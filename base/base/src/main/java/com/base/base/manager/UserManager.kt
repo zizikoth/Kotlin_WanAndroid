@@ -2,7 +2,11 @@ package com.base.base.manager
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
+import com.base.base.config.AppConfig
 import com.base.base.entity.remote.User
+import okhttp3.HttpUrl.Companion.toHttpUrl
+import rxhttp.HttpSender
+import rxhttp.wrapper.cookie.ICookieJar
 
 /**
  * title:
@@ -15,20 +19,29 @@ import com.base.base.entity.remote.User
  * Talk is cheap, Show me the code.
  */
 object UserManager {
-    var user: User? = null
 
     private val loginLiveData by lazy { MutableLiveData<User?>() }
 
     /**
-     * 检查是否登陆
+     * 检查是否有缓存的Cookie
      */
-    fun isLogin() = user != null
+    fun isLogin(): Boolean {
+        val cookieJar = (HttpSender.getOkHttpClient().cookieJar as ICookieJar)
+        val list = cookieJar.loadCookie(AppConfig.baseUrl.toHttpUrl())
+        return !list.isNullOrEmpty()
+    }
+
+    /**
+     * 清除所有请求Cookie
+     */
+    fun clearLogin() {
+        (HttpSender.getOkHttpClient().cookieJar as ICookieJar).removeAllCookie()
+    }
 
     /**
      * 通知页面登陆了
      */
     fun notifyLogin(user: User) {
-        this.user = user
         loginLiveData.postValue(user)
     }
 

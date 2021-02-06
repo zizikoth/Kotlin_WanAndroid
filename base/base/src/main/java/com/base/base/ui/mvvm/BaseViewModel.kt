@@ -8,6 +8,7 @@ import com.base.base.api.ExceptionHandler
 import com.base.base.entity.uistatus.UiStatus
 import com.base.base.manager.RouterManager
 import com.base.base.utils.toast
+import kotlinx.coroutines.CoroutineScope
 
 /**
  * title:
@@ -31,13 +32,13 @@ abstract class BaseViewModel : ViewModel() {
     val statusEvent: MutableLiveData<UiStatus> = MutableLiveData()
 
     fun <T> request(
-        request: (suspend () -> T),
+        request: (suspend (scope: CoroutineScope) -> T),
         onSuccess: ((data: T) -> Unit),
         onError: ((code: Int) -> Unit)? = null,
         showLoading: Boolean = false) {
         rxLifeScope.launch(
             block = {
-                onSuccess(request.invoke())
+                onSuccess(request.invoke(this))
                 isFirstLoad = false
                 statusEvent.postValue(UiStatus(isFirstLoad, ApiCode.Success))
             },
@@ -55,14 +56,14 @@ abstract class BaseViewModel : ViewModel() {
         )
     }
 
-    fun requestNoCheck(request: suspend () -> Unit) {
-        rxLifeScope.launch { request.invoke() }
+    fun requestNoCheck(request: suspend (scope: CoroutineScope) -> Unit) {
+        rxLifeScope.launch { request.invoke(this) }
     }
 
     fun <T> requestNoStatus(
-        request: suspend () -> T,
+        request: suspend (scope: CoroutineScope) -> T,
         onSuccess: ((data: T) -> Unit)) {
-        rxLifeScope.launch { onSuccess(request.invoke()) }
+        rxLifeScope.launch { onSuccess(request.invoke(this)) }
     }
 
 }

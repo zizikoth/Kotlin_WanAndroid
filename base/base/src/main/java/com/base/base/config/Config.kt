@@ -18,9 +18,9 @@ object AppConfig {
     @DefaultDomain
     @JvmField
     var baseUrl: String = when (runMode) {
-        RunMode.Debug -> "https://wanandroid.com/"
-        RunMode.Preview -> "https://wanandroid.com/"
-        RunMode.Release -> "https://wanandroid.com/"
+        RunMode.Debug -> "https://www.wanandroid.com/"
+        RunMode.Preview -> "https://www.wanandroid.com/"
+        RunMode.Release -> "https://www.wanandroid.com/"
     }
 }
 

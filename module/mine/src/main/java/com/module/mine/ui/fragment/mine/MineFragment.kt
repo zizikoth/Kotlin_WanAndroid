@@ -1,7 +1,9 @@
 package com.module.mine.ui.fragment.mine
 
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.base.base.entity.remote.ArticleList
 import com.base.base.entity.remote.CoinInfo
+import com.base.base.entity.zip.Zip2
 import com.base.base.manager.RouterManager
 import com.base.base.manager.UserManager
 import com.base.base.ui.BaseVmFragment
@@ -69,27 +71,27 @@ class MineFragment : BaseVmFragment<MineViewModel, FragmentMineBinding>() {
         }
         // 登陆后响应
         UserManager.responseLogin(this) {
-            // 收藏
-            mBinding.mItemCollect.content = it.collectIds.size.toString()
             // 积分+ 排名
-            mViewModel.getCoin()
+            mViewModel.getUserInfo()
         }
-        observe(mViewModel.coinLiveData, this::onCoin)
+        observe(mViewModel.infoLiveData, this::onUserInfo)
     }
 
     override fun start() {
-
+        if (UserManager.isLogin()) mViewModel.getUserInfo()
     }
 
     /**
      * 获取到个人积分信息
-     * @param data CoinInfo
+     * @param data Zip2<CoinInfo,ArticleList>
      */
-    private fun onCoin(data: CoinInfo) {
+    private fun onUserInfo(data: Zip2<CoinInfo, ArticleList>) {
         // 个人积分
-        mBinding.mItemCoin.content = data.coinCount.toString()
+        mBinding.mItemCoin.content = data.first.coinCount.toString()
         // 个人排名
-        mBinding.mItemRank.content = data.rank.toString()
+        mBinding.mItemRank.content = data.first.rank.toString()
+        // 个人收藏
+        mBinding.mItemCollect.content = data.second.total.toString()
     }
 
     /**
