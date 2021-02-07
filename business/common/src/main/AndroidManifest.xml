@@ -5,8 +5,7 @@
     <application>
         <activity
             android:name=".ui.activity.web.WebActivity"
-            android:configChanges="keyboard|screenSize|orientation|layoutDirection"
-            android:process=":web" />
+            android:configChanges="keyboard|screenSize|orientation|layoutDirection" />
     </application>
 
 </manifest>

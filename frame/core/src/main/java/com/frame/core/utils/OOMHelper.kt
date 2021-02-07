@@ -26,25 +26,25 @@ object OOMHelper {
         thread.start()
         val lowMemoryMonitorHandler = Handler(thread.looper)
         lowMemoryMonitorHandler.postDelayed(object : Runnable {
-			override fun run() {
-				val totalMemory = Runtime.getRuntime().totalMemory()
-				val freeMemory = Runtime.getRuntime().freeMemory()
-				val usedMemory = totalMemory - freeMemory
-				val maxMemory = Runtime.getRuntime().maxMemory()
-				//如果可用内存超过最大内存的80% 那么就把Glide的图片内存缓存清除
-				val shouldCleanMemory = usedMemory.toDouble().compareTo(maxMemory * 0.8) == 1
-				val checkResult = StringBuilder()
-					.append("MaxMemory = ${ConvertUtils.byte2FitMemorySize(maxMemory)} ")
-					.append("TotalMemory = ${ConvertUtils.byte2FitMemorySize(totalMemory)} ")
-					.append("UsedMemory = ${ConvertUtils.byte2FitMemorySize(usedMemory)} ")
-					.append("FreeMemory = ${ConvertUtils.byte2FitMemorySize(freeMemory)} ")
-					.append("shouldCleanMemory = $shouldCleanMemory")
-				LogUtils.iTag("Memory", checkResult)
-				if (shouldCleanMemory) {
-					clearGlideMemoryCache()
-				}
-				lowMemoryMonitorHandler.postDelayed(this, delayMillis)
-			}
-		}, delayMillis)
+            override fun run() {
+                val totalMemory = Runtime.getRuntime().totalMemory()
+                val freeMemory = Runtime.getRuntime().freeMemory()
+                val usedMemory = totalMemory - freeMemory
+                val maxMemory = Runtime.getRuntime().maxMemory()
+                //如果可用内存超过最大内存的80% 那么就把Glide的图片内存缓存清除
+                val shouldCleanMemory = usedMemory.toDouble().compareTo(maxMemory * 0.8) == 1
+                val checkResult = StringBuilder()
+                    .append("MaxMemory = ${ConvertUtils.byte2FitMemorySize(maxMemory)} ")
+                    .append("TotalMemory = ${ConvertUtils.byte2FitMemorySize(totalMemory)} ")
+                    .append("UsedMemory = ${ConvertUtils.byte2FitMemorySize(usedMemory)} ")
+                    .append("FreeMemory = ${ConvertUtils.byte2FitMemorySize(freeMemory)} ")
+                    .append("shouldCleanMemory = $shouldCleanMemory")
+                LogUtils.iTag("Memory", checkResult)
+                if (shouldCleanMemory) {
+                    clearGlideMemoryCache()
+                }
+                lowMemoryMonitorHandler.postDelayed(this, delayMillis)
+            }
+        }, delayMillis)
     }
 }

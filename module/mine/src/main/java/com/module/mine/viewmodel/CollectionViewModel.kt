@@ -17,14 +17,22 @@ import com.module.mine.data.MineRepository
  */
 class CollectionViewModel : BaseViewModel() {
 
-    val collectionLiveData = MutableLiveData<ArticleList>()
+    val collectionsLiveData = MutableLiveData<ArticleList>()
+    val unCollectionLiveData = MutableLiveData<Int>()
 
     fun getCollectionList(page: Int) {
         request(
             request = { MineRepository.getCollectionsAsync(it, page).await() },
-            onSuccess = { collectionLiveData.postValue(it) }
+            onSuccess = { collectionsLiveData.postValue(it) }
         )
     }
 
+    fun unCollect(id: Int, originId: Int) {
+        request(
+            request = { MineRepository.unCollectInList(id, originId) },
+            onSuccess = { unCollectionLiveData.postValue(id) },
+            showLoading = true
+        )
+    }
 
 }

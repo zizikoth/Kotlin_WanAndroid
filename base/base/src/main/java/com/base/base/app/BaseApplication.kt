@@ -13,7 +13,7 @@ import com.frame.core.core.CoreApp
  *
  * Talk is cheap, Show me the code.
  */
-class BaseApplication: CoreApp() {
+class BaseApplication : CoreApp() {
 
     override fun onCreate() {
         super.onCreate()

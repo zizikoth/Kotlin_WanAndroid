@@ -106,20 +106,38 @@ object ApiUrl {
         const val LoginOut = "user/loginout/json"
     }
 
-    object Mine {
+    object Coin {
         /**
          * 个人积分
          */
-        const val Coin = "lg/coin/userinfo/json"
+        const val CoinInfo = "lg/coin/userinfo/json"
 
         /**
          * 积分列表
          */
         const val CoinList = "lg/coin/list/%d/json"
 
+    }
+
+    object Collect {
         /**
          * 收藏列表
          */
         const val CollectionList = "lg/collect/list/%d/json"
+
+        /**
+         * 收藏
+         */
+        const val collect = "lg/collect/%d/json"
+
+        /**
+         * 取消收藏 - 收藏列表
+         */
+        const val UnCollectInList = "lg/uncollect/%d/json"
+
+        /**
+         * 取消收藏 - 文章页面
+         */
+        const val UnCollectInArticle = "lg/uncollect_originId/%d/json"
     }
 }

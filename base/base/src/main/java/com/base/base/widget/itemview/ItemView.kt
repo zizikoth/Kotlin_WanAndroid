@@ -25,9 +25,9 @@ import com.base.base.R
  * @date 2019-06-10 14:26
  */
 class ItemView @JvmOverloads constructor(
-	context: Context,
-	attrs: AttributeSet? = null,
-	defAttr: Int = 0
+    context: Context,
+    attrs: AttributeSet? = null,
+    defAttr: Int = 0
 ) : FrameLayout(context, attrs, defAttr) {
 
     private val minDp45 = dimen(R.dimen.dp45)
@@ -75,9 +75,9 @@ class ItemView @JvmOverloads constructor(
 
         mItemMainDrawable = attr.getDrawable(R.styleable.ItemView_item_main_drawable)
         mItemMainDrawablePadding = attr.getDimension(
-			R.styleable.ItemView_item_main_drawablePadding,
-			mItemMainDrawablePadding
-		)
+            R.styleable.ItemView_item_main_drawablePadding,
+            mItemMainDrawablePadding
+        )
 
         mItemMainText = attr.getString(R.styleable.ItemView_item_main_text) ?: mItemMainText
         mItemMainTextSize =
@@ -97,9 +97,9 @@ class ItemView @JvmOverloads constructor(
 
         mItemExtraDrawable = attr.getDrawable(R.styleable.ItemView_item_extra_drawable)
         mItemExtraDrawablePadding = attr.getDimension(
-			R.styleable.ItemView_item_extra_drawablePadding,
-			mItemExtraDrawablePadding
-		)
+            R.styleable.ItemView_item_extra_drawablePadding,
+            mItemExtraDrawablePadding
+        )
 
         mItemEnableRipple =
             attr.getBoolean(R.styleable.ItemView_item_ripple_enable, mItemEnableRipple)
@@ -148,9 +148,9 @@ class ItemView @JvmOverloads constructor(
         // 分割线 左右间隔和高度
         mLine.setBackgroundColor(mItemDividerColor)
         val layoutParams = LayoutParams(
-			LinearLayout.LayoutParams.MATCH_PARENT,
-			mItemDividerHeight.toInt()
-		)
+            LinearLayout.LayoutParams.MATCH_PARENT,
+            mItemDividerHeight.toInt()
+        )
         layoutParams.marginStart = mItemDividerMargin.toInt()
         layoutParams.marginEnd = mItemDividerMargin.toInt()
         layoutParams.gravity = Gravity.BOTTOM

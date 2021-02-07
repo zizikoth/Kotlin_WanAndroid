@@ -19,31 +19,25 @@ fun BaseQuickAdapter<*, *>.showEmpty(context: Context, isEmpty: Boolean, tip: St
     if (!this.hasEmptyView() && isEmpty) this.setEmptyView(EmptyView(context).setTip(tip))
 }
 
-fun <T> BaseQuickAdapter<T, *>.onItemClickListener(onItemClick: (data: T) -> Unit) {
+fun <T> BaseQuickAdapter<T, *>.onItemClick(onItemClick: (data: T) -> Unit) {
     this.setOnItemClickListener { _, _, position ->
         if (ClickHelper.isNotFastClick) onItemClick.invoke(this.getItem(position))
     }
 }
 
-fun <T> BaseQuickAdapter<T, *>.onItemTypeClickListener(onItemClick: (data: T, itemType: Int) -> Unit) {
-    this.setOnItemClickListener { _, _, position ->
-        if (ClickHelper.isNotFastClick) onItemClick.invoke(this.getItem(position), this.getItemViewType(position))
-    }
-}
-
-fun <T> BaseQuickAdapter<T, *>.onMultiItemClickListener(onItemClick: (multiType: Int, data: T) -> Unit) {
+fun <T> BaseQuickAdapter<T, *>.onMultiItemClick(onItemClick: (multiType: Int, data: T) -> Unit) {
     this.setOnItemClickListener { _, _, position ->
         if (ClickHelper.isNotFastClick) onItemClick.invoke(this.getItemViewType(position), this.getItem(position))
     }
 }
 
-fun <T> BaseQuickAdapter<T, *>.onItemChildClickListener(onItemChildClick: (viewId: Int, data: T) -> Unit) {
+fun <T> BaseQuickAdapter<T, *>.onItemChildClick(onItemChildClick: (viewId: Int, data: T) -> Unit) {
     this.setOnItemChildClickListener { _, view, position ->
         if (ClickHelper.isNotFastClick) onItemChildClick.invoke(view.id, this.getItem(position))
     }
 }
 
-fun <T> BaseQuickAdapter<T, *>.onMultiItemChildClickListener(onItemChildClick: (multiType: Int, viewId: Int, data: T) -> Unit) {
+fun <T> BaseQuickAdapter<T, *>.onMultiItemChildClick(onItemChildClick: (multiType: Int, viewId: Int, data: T) -> Unit) {
     this.setOnItemChildClickListener { _, view, position ->
         if (ClickHelper.isNotFastClick) onItemChildClick.invoke(this.getItemViewType(position), view.id, this.getItem(position))
     }

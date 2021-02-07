@@ -1,12 +1,7 @@
 package com.frame.core.utils.extra
 
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import androidx.annotation.IdRes
-import androidx.annotation.LayoutRes
 import androidx.core.content.ContextCompat
-import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.blankj.utilcode.util.ConvertUtils

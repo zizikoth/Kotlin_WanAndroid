@@ -19,25 +19,25 @@ import java.util.*
  *  @param format 时间的格式，默认是按照yyyy-MM-dd HH:mm:ss来转换
  */
 fun String.toMills(format: String = "yyyy-MM-dd HH:mm:ss"): Long =
-	TimeUtils.string2Millis(this, format)
+    TimeUtils.string2Millis(this, format)
 
 /**
  * Long类型时间戳转为字符串的日期格式
  * @param format 时间的格式，默认是按照yyyy-MM-dd HH:mm:ss来转换
  */
 fun Long.toTime(format: String = "yyyy-MM-dd HH:mm:ss"): String =
-	SimpleDateFormat(format, Locale.getDefault()).format(Date(this))
+    SimpleDateFormat(format, Locale.getDefault()).format(Date(this))
 
 
 /**
  * 转为中文描述
  */
 fun String.toTimeChinese(): String {
-	return try {
-		this.toMills().toTime("yyyy年MM月dd日")
-	} catch (e: Exception) {
-		this
-	}
+    return try {
+        this.toMills().toTime("yyyy年MM月dd日")
+    } catch (e: Exception) {
+        this
+    }
 }
 
 /**
@@ -62,24 +62,24 @@ fun String.toTimeDay(): String = this.substring(0, this.indexOf(" "))
  */
 @SuppressLint("SimpleDateFormat")
 fun Long.toTimeDescribe(): String {
-	val now = System.currentTimeMillis()
-	val span = now - this
-	return when {
-		span < TimeConstants.MIN -> "刚刚"
-		span < TimeConstants.HOUR -> String.format(
-			Locale.getDefault(),
-			"%d分钟前",
-			span / TimeConstants.MIN
-		)
-		span < TimeConstants.DAY -> String.format(
-			Locale.getDefault(),
-			"%d小时前",
-			span / TimeConstants.HOUR
-		)
-		span < 2 * TimeConstants.DAY -> String.format("昨天 %tR", this)
-		span < 3 * TimeConstants.DAY -> String.format("前天 %tR", this)
-		else -> SimpleDateFormat("MM - dd").format(Date(this))
-	}
+    val now = System.currentTimeMillis()
+    val span = now - this
+    return when {
+        span < TimeConstants.MIN -> "刚刚"
+        span < TimeConstants.HOUR -> String.format(
+            Locale.getDefault(),
+            "%d分钟前",
+            span / TimeConstants.MIN
+        )
+        span < TimeConstants.DAY -> String.format(
+            Locale.getDefault(),
+            "%d小时前",
+            span / TimeConstants.HOUR
+        )
+        span < 2 * TimeConstants.DAY -> String.format("昨天 %tR", this)
+        span < 3 * TimeConstants.DAY -> String.format("前天 %tR", this)
+        else -> SimpleDateFormat("MM - dd").format(Date(this))
+    }
 }
 
 /**
@@ -87,10 +87,10 @@ fun Long.toTimeDescribe(): String {
  */
 @SuppressLint("SimpleDateFormat")
 fun String.toTimeDescribe(format: String = "yyyy-MM-dd HH:mm:ss"): String {
-	return try {
-		this.toMills(format).toTimeDescribe()
-	} catch (e: Exception) {
-		this
-	}
+    return try {
+        this.toMills(format).toTimeDescribe()
+    } catch (e: Exception) {
+        this
+    }
 }
 

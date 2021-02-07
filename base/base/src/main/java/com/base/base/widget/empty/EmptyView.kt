@@ -25,7 +25,7 @@ class EmptyView @JvmOverloads constructor(
     private lateinit var binding: LayoutStatusDataEmptyBinding
 
     init {
-        binding = DataBindingUtil.inflate(LayoutInflater.from(context),R.layout.layout_status_data_empty,this,true)
+        binding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.layout_status_data_empty, this, true)
     }
 
     fun setTip(tip: String): EmptyView {

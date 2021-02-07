@@ -1,38 +1,39 @@
-import com.frame.version.*
+import com.frame.version.Config
+import com.frame.version.Dep
 
 plugins {
-	id 'com.android.library'
+    id 'com.android.library'
 }
 
 android {
-	compileSdkVersion Config.compileSdkVersion
-	defaultConfig {
-		minSdkVersion Config.minSdkVersion
-		targetSdkVersion Config.targetSdkVersion
-		versionCode Config.versionCode
-		versionName Config.versionName
-	}
+    compileSdkVersion Config.compileSdkVersion
+    defaultConfig {
+        minSdkVersion Config.minSdkVersion
+        targetSdkVersion Config.targetSdkVersion
+        versionCode Config.versionCode
+        versionName Config.versionName
+    }
 
-	buildTypes {
-		debug {
-			consumerProguardFiles file('.').listFiles(new FilenameFilter() {
-				@Override
-				boolean accept(File file, String s) {
-					return s.endsWith('.pro')
-				}
-			})
-		}
-		release {
-			consumerProguardFiles file('.').listFiles(new FilenameFilter() {
-				@Override
-				boolean accept(File file, String s) {
-					return s.endsWith('.pro')
-				}
-			})
-		}
-	}
+    buildTypes {
+        debug {
+            consumerProguardFiles file('.').listFiles(new FilenameFilter() {
+                @Override
+                boolean accept(File file, String s) {
+                    return s.endsWith('.pro')
+                }
+            })
+        }
+        release {
+            consumerProguardFiles file('.').listFiles(new FilenameFilter() {
+                @Override
+                boolean accept(File file, String s) {
+                    return s.endsWith('.pro')
+                }
+            })
+        }
+    }
 }
 
 dependencies {
-	implementation Dep.Proguard
+    implementation Dep.Proguard
 }

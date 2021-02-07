@@ -3,7 +3,7 @@ package com.module.home.ui.fragment.search
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.base.base.entity.remote.ArticleList
 import com.base.base.ui.BaseVmFragment
-import com.base.base.utils.onItemClickListener
+import com.base.base.utils.onItemChildClick
 import com.base.base.utils.showEmpty
 import com.business.common.ui.activity.web.WebActivity
 import com.business.common.ui.adapter.ArticleAdapter
@@ -43,8 +43,10 @@ class SearchResultFragment : BaseVmFragment<SearchViewModel, FragmentSearchResul
     }
 
     override fun initListener() {
-        // 条目点击
-        mAdapter.onItemClickListener { WebActivity.start(mContext, it.title, it.link) }
+        // 跳转文章详情
+        mAdapter.onItemChildClick { viewId, data ->
+            if (viewId == R.id.mItemArticle) WebActivity.start(mContext, data.id, data.title, data.link)
+        }
 
         // 刷新加载
         mBinding.mRefreshLayout.onRefreshAndLoadMore({

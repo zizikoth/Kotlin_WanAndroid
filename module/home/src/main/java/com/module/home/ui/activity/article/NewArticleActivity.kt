@@ -3,7 +3,7 @@ package com.module.home.ui.activity.article
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.base.base.entity.remote.ArticleList
 import com.base.base.ui.BaseVmActivity
-import com.base.base.utils.onItemClickListener
+import com.base.base.utils.onItemChildClick
 import com.base.base.utils.showEmpty
 import com.business.common.databinding.LayoutTitleRefreshListBinding
 import com.business.common.ui.activity.web.WebActivity
@@ -44,7 +44,11 @@ class NewArticleActivity : BaseVmActivity<NewArticleViewModel, LayoutTitleRefres
     }
 
     override fun initListener() {
-        mAdapter.onItemClickListener { WebActivity.start(mContext, it.title, it.link) }
+        // 列表
+        mAdapter.onItemChildClick { viewId, data ->
+            if (viewId == R.id.mItemArticle) WebActivity.start(mContext, data.id, data.title, data.link)
+        }
+
         mBinding.mRefreshLayout.onRefreshAndLoadMore({
             page = 0
             mViewModel.getNewArticle(page)

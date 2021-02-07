@@ -18,26 +18,26 @@ import android.widget.TextView
  * 安全的设置控件文字
  */
 var TextView.value: String
-	get() = this.text?.toString()?.trim() ?: ""
-	set(value) {
-		this.text = value
-	}
+    get() = this.text?.toString()?.trim() ?: ""
+    set(value) {
+        this.text = value
+    }
 
 /**
  * 清除控件文字
  */
 fun TextView.clear() {
-	this.value = ""
+    this.value = ""
 }
 
 /**
  * 设置EditText是否可输入
  */
 fun EditText.editable(enable: Boolean) {
-	this.isClickable = enable
-	this.isEnabled = enable
-	this.isFocusable = enable
-	this.isFocusableInTouchMode = enable
-	if (enable) requestFocus()
+    this.isClickable = enable
+    this.isEnabled = enable
+    this.isFocusable = enable
+    this.isFocusableInTouchMode = enable
+    if (enable) requestFocus()
 }
 

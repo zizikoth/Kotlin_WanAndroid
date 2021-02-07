@@ -9,93 +9,117 @@
     android:elevation="@dimen/dp2"
     app:cardCornerRadius="0dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.daimajia.swipe.SwipeLayout
+        android:id="@+id/mSwipeLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingLeft="@dimen/dp15"
-        android:paddingTop="@dimen/dp10"
-        android:paddingRight="@dimen/dp15"
-        android:paddingBottom="@dimen/dp10">
+        android:layout_height="wrap_content"
+        app:drag_edge="right"
+        app:show_mode="lay_down">
+
+        <FrameLayout
+            android:id="@+id/mItemDelete"
+            android:layout_width="@dimen/dp100"
+            android:layout_height="match_parent"
+            android:background="@color/color_shape">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_delete" />
+        </FrameLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/mItemArticle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:paddingLeft="@dimen/dp15"
+            android:paddingTop="@dimen/dp10"
+            android:paddingRight="@dimen/dp15"
+            android:paddingBottom="@dimen/dp10">
 
 
-        <ImageView
-            android:id="@+id/mIvPic"
-            android:layout_width="@dimen/dp60"
-            android:layout_height="@dimen/dp90"
-            android:src="@drawable/image_holder"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <ImageView
+                android:id="@+id/mIvPic"
+                android:layout_width="@dimen/dp60"
+                android:layout_height="@dimen/dp90"
+                android:src="@drawable/image_holder"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/mIvIcon"
-            android:layout_width="@dimen/dp25"
-            android:layout_height="@dimen/dp25"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="@id/mIvPic"
-            tools:src="@drawable/ic_ahri" />
+            <ImageView
+                android:id="@+id/mIvIcon"
+                android:layout_width="@dimen/dp25"
+                android:layout_height="@dimen/dp25"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="@id/mIvPic"
+                tools:src="@drawable/ic_ahri" />
 
-        <TextView
-            android:id="@+id/mTvName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dp10"
-            android:text="作者：faith-hb"
-            app:layout_constraintBottom_toBottomOf="@id/mIvIcon"
-            app:layout_constraintLeft_toRightOf="@id/mIvIcon"
-            app:layout_constraintTop_toTopOf="@id/mIvIcon" />
+            <TextView
+                android:id="@+id/mTvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp10"
+                android:text="作者：faith-hb"
+                app:layout_constraintBottom_toBottomOf="@id/mIvIcon"
+                app:layout_constraintLeft_toRightOf="@id/mIvIcon"
+                app:layout_constraintTop_toTopOf="@id/mIvIcon" />
 
-        <TextView
-            android:id="@+id/mTvTitle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp10"
-            android:layout_marginEnd="@dimen/dp15"
-            android:ellipsize="end"
-            android:maxLines="2"
-            android:textColor="@color/textDark"
-            android:textSize="@dimen/sp14"
-            app:layout_constraintBottom_toTopOf="@id/mTvDesc"
-            app:layout_constraintLeft_toLeftOf="@id/mIvIcon"
-            app:layout_constraintRight_toLeftOf="@id/mIvPic"
-            app:layout_constraintTop_toBottomOf="@id/mIvIcon"
-            tools:text="自定义控件通用库 WidgetCase" />
+            <TextView
+                android:id="@+id/mTvTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp10"
+                android:layout_marginEnd="@dimen/dp15"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:textColor="@color/textDark"
+                android:textSize="@dimen/sp14"
+                app:layout_constraintBottom_toTopOf="@id/mTvDesc"
+                app:layout_constraintLeft_toLeftOf="@id/mIvIcon"
+                app:layout_constraintRight_toLeftOf="@id/mIvPic"
+                app:layout_constraintTop_toBottomOf="@id/mIvIcon"
+                tools:text="自定义控件通用库 WidgetCase" />
 
-        <TextView
-            android:id="@+id/mTvDesc"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp10"
-            android:ellipsize="end"
-            android:lines="2"
-            android:maxLines="2"
-            android:textColor="@color/textLight"
-            android:textSize="@dimen/sp13"
-            app:layout_constraintLeft_toLeftOf="@id/mTvTitle"
-            app:layout_constraintRight_toRightOf="@id/mTvTitle"
-            app:layout_constraintTop_toBottomOf="@id/mTvTitle"
-            tools:text="自定义控件通用库：拿来就用，API文档详细，持续集成，长期维护" />
+            <TextView
+                android:id="@+id/mTvDesc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp10"
+                android:ellipsize="end"
+                android:lines="2"
+                android:maxLines="2"
+                android:textColor="@color/textLight"
+                android:textSize="@dimen/sp13"
+                app:layout_constraintLeft_toLeftOf="@id/mTvTitle"
+                app:layout_constraintRight_toRightOf="@id/mTvTitle"
+                app:layout_constraintTop_toBottomOf="@id/mTvTitle"
+                tools:text="自定义控件通用库：拿来就用，API文档详细，持续集成，长期维护" />
 
 
-        <TextView
-            android:id="@+id/mTvChapter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp10"
-            android:textSize="@dimen/sp10"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/mTvDesc"
-            app:layout_goneMarginLeft="0dp"
-            tools:text="开源项目主Tab · 跨平台应用" />
+            <TextView
+                android:id="@+id/mTvChapter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp10"
+                android:textSize="@dimen/sp10"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/mTvDesc"
+                app:layout_goneMarginLeft="0dp"
+                tools:text="开源项目主Tab · 跨平台应用" />
 
-        <TextView
-            android:id="@+id/mTvTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/sp12"
-            app:layout_constraintBottom_toBottomOf="@id/mTvChapter"
-            app:layout_constraintRight_toRightOf="@id/mIvPic"
-            app:layout_constraintTop_toTopOf="@id/mTvChapter"
-            tools:text="15分钟前" />
+            <TextView
+                android:id="@+id/mTvTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/sp12"
+                app:layout_constraintBottom_toBottomOf="@id/mTvChapter"
+                app:layout_constraintRight_toRightOf="@id/mIvPic"
+                app:layout_constraintTop_toTopOf="@id/mTvChapter"
+                tools:text="15分钟前" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.daimajia.swipe.SwipeLayout>
 </androidx.cardview.widget.CardView>

@@ -19,35 +19,35 @@ import kotlin.coroutines.resume
  * Talk is cheap, Show me the code.
  */
 fun <T> LifecycleOwner.doInBackground(
-	doInBackground: () -> T,
-	onSuccess: (result: T) -> Unit,
-	onError: (e: Throwable) -> Unit
+    doInBackground: () -> T,
+    onSuccess: (result: T) -> Unit,
+    onError: (e: Throwable) -> Unit
 ) {
-	this.lifecycleScope.launch(Dispatchers.Main) {
-		try {
-			onSuccess(withContext(Dispatchers.IO) { doInBackground() })
-		} catch (e: Throwable) {
-			onError(e)
-		}
-	}
+    this.lifecycleScope.launch(Dispatchers.Main) {
+        try {
+            onSuccess(withContext(Dispatchers.IO) { doInBackground() })
+        } catch (e: Throwable) {
+            onError(e)
+        }
+    }
 }
 
 fun <T> LifecycleOwner.doInBackground(doInBackground: () -> T, onSuccess: (result: T) -> Unit) =
-	this.doInBackground(doInBackground, onSuccess, {})
+    this.doInBackground(doInBackground, onSuccess, {})
 
 fun <T> LifecycleOwner.doInBackground(doInBackground: () -> T) =
-	this.doInBackground(doInBackground, {}, {})
+    this.doInBackground(doInBackground, {}, {})
 
 interface CoroutineCallback<T> {
-	fun onSuccess(result: T)
+    fun onSuccess(result: T)
 }
 
 private suspend fun <T> awaitCallback(block: (CoroutineCallback<T>) -> Unit): T {
-	return suspendCancellableCoroutine {
-		block(object : CoroutineCallback<T> {
-			override fun onSuccess(result: T) {
-				it.resume(result)
-			}
-		})
-	}
+    return suspendCancellableCoroutine {
+        block(object : CoroutineCallback<T> {
+            override fun onSuccess(result: T) {
+                it.resume(result)
+            }
+        })
+    }
 }

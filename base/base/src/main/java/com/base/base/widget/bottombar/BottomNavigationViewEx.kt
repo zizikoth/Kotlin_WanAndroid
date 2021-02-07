@@ -26,10 +26,10 @@ class BottomNavigationViewEx : BottomNavigationViewInner {
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
 
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(
-		context,
-		attrs,
-		defStyleAttr
-	)
+        context,
+        attrs,
+        defStyleAttr
+    )
 
     override fun setIconVisibility(visibility: Boolean): BottomNavigationViewInner {
         return try {
@@ -167,10 +167,10 @@ class BottomNavigationViewEx : BottomNavigationViewInner {
     }
 
     override fun setIconSizeAt(
-		position: Int,
-		width: Float,
-		height: Float
-	): BottomNavigationViewInner {
+        position: Int,
+        width: Float,
+        height: Float
+    ): BottomNavigationViewInner {
         return try {
             super.setIconSizeAt(position, width, height)
         } catch (e: Exception) {
@@ -243,9 +243,9 @@ class BottomNavigationViewEx : BottomNavigationViewInner {
     }
 
     override fun setupWithViewPager(
-		viewPager: ViewPager,
-		smoothScroll: Boolean
-	): BottomNavigationViewInner {
+        viewPager: ViewPager,
+        smoothScroll: Boolean
+    ): BottomNavigationViewInner {
         return try {
             super.setupWithViewPager(viewPager, smoothScroll)
         } catch (e: Exception) {

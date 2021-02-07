@@ -4,9 +4,8 @@ import android.content.Context
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.base.base.entity.remote.ArticleList
 import com.base.base.ui.BaseVmActivity
-import com.base.base.utils.onItemClickListener
+import com.base.base.utils.onItemChildClick
 import com.base.base.utils.showEmpty
-import com.business.common.databinding.LayoutTitleRefreshListBinding
 import com.business.common.ui.activity.web.WebActivity
 import com.business.common.ui.adapter.ArticleAdapter
 import com.frame.core.utils.extra.finish
@@ -15,7 +14,6 @@ import com.frame.core.utils.extra.onRefreshAndLoadMore
 import com.frame.core.utils.extra.startActivity
 import com.module.home.R
 import com.module.home.databinding.ActivityBlogSearchBinding
-import com.module.home.databinding.ActivityBlogSearchBindingImpl
 import com.module.home.viewmodel.BlogViewModel
 
 /**
@@ -65,7 +63,9 @@ class BlogSearchActivity : BaseVmActivity<BlogViewModel, ActivityBlogSearchBindi
             mViewModel.getBlogArticles(page, cid, word, true)
         }
         // 跳转文章详情
-        mAdapter.onItemClickListener { WebActivity.start(mContext, it.title, it.link) }
+        mAdapter.onItemChildClick { viewId, data ->
+            if (viewId == R.id.mItemArticle) WebActivity.start(mContext, data.id, data.title, data.link)
+        }
         // 刷新加载
         mBinding.mRefreshLayout.onRefreshAndLoadMore({
             page = 0

@@ -1,5 +1,6 @@
 package com.module.mine.viewmodel
 
+import com.base.base.manager.BusViewModel
 import com.base.base.manager.UserManager
 import com.base.base.ui.mvvm.BaseViewModel
 import com.module.mine.data.MineRepository
@@ -19,7 +20,7 @@ class LoginViewModel : BaseViewModel() {
     fun login(userName: String, password: String) {
         request(
             request = { MineRepository.login(userName, password) },
-            onSuccess = { UserManager.notifyLogin(it) },
+            onSuccess = { BusViewModel.get().loginLiveData.postValue(it) },
             showLoading = true)
     }
 
@@ -32,9 +33,11 @@ class LoginViewModel : BaseViewModel() {
                 MineRepository.login(userName, password)
             },
             onSuccess = {
-                UserManager.notifyLogin(it)
+                UserManager.user = it
+                BusViewModel.get().loginLiveData.postValue(it)
             },
             showLoading = true
         )
     }
+
 }

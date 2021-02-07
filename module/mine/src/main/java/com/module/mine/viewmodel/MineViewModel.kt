@@ -1,9 +1,7 @@
 package com.module.mine.viewmodel
 
 import androidx.lifecycle.MutableLiveData
-import com.base.base.entity.remote.ArticleList
 import com.base.base.entity.remote.CoinInfo
-import com.base.base.entity.zip.Zip2
 import com.base.base.ui.mvvm.BaseViewModel
 import com.module.mine.data.MineRepository
 
@@ -19,16 +17,20 @@ import com.module.mine.data.MineRepository
  */
 class MineViewModel : BaseViewModel() {
 
-    val infoLiveData by lazy { MutableLiveData<Zip2<CoinInfo, ArticleList>>() }
+    val collectLiveData by lazy { MutableLiveData<Int>() }
+    val coinLiveData by lazy { MutableLiveData<CoinInfo>() }
 
-    fun getUserInfo() {
+    fun getUserCollect() {
         requestNoStatus(
-            request = {
-                val coin = MineRepository.getCoinAsync(it)
-                val collectionList = MineRepository.getCollectionsAsync(it, 0)
-                Zip2(coin.await(), collectionList.await())
-            },
-            onSuccess = { infoLiveData.postValue(it) }
+            request = { MineRepository.getCollectionsAsync(it, 0).await() },
+            onSuccess = { collectLiveData.postValue(it.total) }
+        )
+    }
+
+    fun getUserCoin() {
+        requestNoStatus(
+            request = { MineRepository.getCoinAsync(it).await() },
+            onSuccess = { coinLiveData.postValue(it) }
         )
     }
 }

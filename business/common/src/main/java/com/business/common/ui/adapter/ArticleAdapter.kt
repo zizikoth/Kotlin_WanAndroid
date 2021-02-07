@@ -6,13 +6,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.base.base.entity.remote.*
 import com.base.base.utils.IconHelper
-import com.base.base.utils.onItemClickListener
+import com.base.base.utils.onItemClick
 import com.base.base.widget.recyclerview.StartSnapHelper
 import com.business.common.R
 import com.chad.library.adapter.base.BaseProviderMultiAdapter
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.provider.BaseItemProvider
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
+import com.daimajia.swipe.SwipeLayout
 import com.frame.core.utils.extra.*
 
 /**
@@ -33,9 +34,11 @@ class ArticleAdapter : BaseProviderMultiAdapter<Article>() {
         addItemProvider(TitleProvider())
         addItemProvider(NewArticleProvider())
         addItemProvider(NormalArticleProvider())
+        addChildClickViewIds(R.id.mItemDelete, R.id.mItemGrid, R.id.mItemTitle, R.id.mItemArticle)
     }
 
-    var onNewArticleClick: (title: String, url: String) -> Unit = { _, _ -> }
+    var onNewArticleClick: (data: Article) -> Unit = {}
+    var enableSwipe = false
 
     override fun getItemType(data: List<Article>, position: Int): Int {
         return data[position].itemType
@@ -68,7 +71,7 @@ private class NewArticleProvider(
     override val layoutId: Int = R.layout.layout_item_new_article) : BaseItemProvider<Article>() {
 
     private val mAdapter = NewArticleAdapter().apply {
-        onItemClickListener { (super.getAdapter() as ArticleAdapter).onNewArticleClick.invoke(it.title, it.link) }
+        onItemClick { (super.getAdapter() as ArticleAdapter).onNewArticleClick.invoke(it) }
     }
 
     override fun convert(helper: BaseViewHolder, item: Article) {
@@ -86,8 +89,12 @@ private class NewArticleProvider(
 private class NormalArticleProvider(
     override val itemViewType: Int = HOME_TYPE_NORMAL_ARTICLE,
     override val layoutId: Int = R.layout.layout_item_article) : BaseItemProvider<Article>() {
+
     override fun convert(helper: BaseViewHolder, item: Article) {
         helper.run {
+
+            getView<SwipeLayout>(R.id.mSwipeLayout).isSwipeEnabled = (getAdapter() as ArticleAdapter).enableSwipe
+
             getView<ImageView>(R.id.mIvIcon).loadCircle(IconHelper.randomAvatar(item.userId))
 
             setText(R.id.mTvName, item.getCurrentAuthor())

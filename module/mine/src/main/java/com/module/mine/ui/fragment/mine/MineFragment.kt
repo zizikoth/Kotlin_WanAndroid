@@ -1,9 +1,7 @@
 package com.module.mine.ui.fragment.mine
 
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.base.base.entity.remote.ArticleList
-import com.base.base.entity.remote.CoinInfo
-import com.base.base.entity.zip.Zip2
+import com.base.base.manager.BusViewModel
 import com.base.base.manager.RouterManager
 import com.base.base.manager.UserManager
 import com.base.base.ui.BaseVmFragment
@@ -16,7 +14,9 @@ import com.frame.core.utils.extra.paddingStatusBar
 import com.frame.core.utils.extra.startActivity
 import com.module.mine.R
 import com.module.mine.databinding.FragmentMineBinding
+import com.module.mine.ui.activity.collection.CollectionActivity
 import com.module.mine.ui.activity.login.LoginActivity
+import com.module.mine.ui.activity.setting.SettingActivity
 import com.module.mine.viewmodel.MineViewModel
 
 /**
@@ -41,17 +41,21 @@ class MineFragment : BaseVmFragment<MineViewModel, FragmentMineBinding>() {
         showContent()
         mBinding.run {
             root.paddingStatusBar()
+            mTvAvatar.text = UserManager.user?.nickname
             // 缓存文件
             (FileUtils.getLength(mContext.externalCacheDir) + FileUtils.getLength(mContext.cacheDir)).run {
                 if (this > 0) mItemCache.setItemExtraText(ConvertUtils.byte2FitMemorySize(this))
             }
+
         }
     }
 
     override fun initListener() {
         mBinding.run {
+            // 设置
+            mIvSetting.onClick { startActivity<SettingActivity>() }
             // 我的收藏
-            mItemCollect.onClick { checkLogin { } }
+            mItemCollect.onClick { checkLogin { startActivity<CollectionActivity>() } }
             // 我的积分
             mItemCoin.onClick { checkLogin { } }
             // 我的排名
@@ -70,35 +74,36 @@ class MineFragment : BaseVmFragment<MineViewModel, FragmentMineBinding>() {
             mItemAbout.onClick { checkLogin { } }
         }
         // 登陆后响应
-        UserManager.responseLogin(this) {
-            // 积分+ 排名
-            mViewModel.getUserInfo()
+        BusViewModel.get().loginLiveData.observeInFragment(this) {
+            mViewModel.getUserCollect()
+            mViewModel.getUserCoin()
         }
-        observe(mViewModel.infoLiveData, this::onUserInfo)
+        // 收藏后响应
+        BusViewModel.get().collectionLiveData.observeInFragment(this) { mViewModel.getUserCollect() }
+        // 回调用户信息 收藏
+        observe(mViewModel.collectLiveData) { mBinding.mItemCollect.content = it.toString() }
+        // 回调用户信息 积分 排名
+        observe(mViewModel.coinLiveData) {
+            // 个人积分
+            mBinding.mItemCoin.content = it.coinCount.toString()
+            // 个人排名
+            mBinding.mItemRank.content = it.rank.toString()
+        }
     }
 
     override fun start() {
-        if (UserManager.isLogin()) mViewModel.getUserInfo()
+        if (UserManager.hasCookie()) {
+            mViewModel.getUserCoin()
+            mViewModel.getUserCollect()
+        }
     }
 
-    /**
-     * 获取到个人积分信息
-     * @param data Zip2<CoinInfo,ArticleList>
-     */
-    private fun onUserInfo(data: Zip2<CoinInfo, ArticleList>) {
-        // 个人积分
-        mBinding.mItemCoin.content = data.first.coinCount.toString()
-        // 个人排名
-        mBinding.mItemRank.content = data.first.rank.toString()
-        // 个人收藏
-        mBinding.mItemCollect.content = data.second.total.toString()
-    }
 
     /**
      * 检查是否登陆
      * @param action Function0<Unit>
      */
-    private fun checkLogin(action: () -> Unit) = if (UserManager.isLogin()) action.invoke() else startActivity<LoginActivity>()
+    private fun checkLogin(action: () -> Unit) = if (UserManager.hasCookie()) action.invoke() else startActivity<LoginActivity>()
 
 
 }

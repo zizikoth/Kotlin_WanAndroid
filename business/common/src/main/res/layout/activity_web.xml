@@ -7,7 +7,7 @@
 
     </data>
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -17,12 +17,25 @@
             android:id="@+id/mTitleView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:title_marquee_enable="true" />
+            app:title_marquee_enable="true"
+            app:title_right_drawable="@drawable/ic_collect" />
 
         <FrameLayout
             android:id="@+id/mFlContainer"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dp45" />
 
-    </LinearLayout>
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/mLottieView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            app:lottie_autoPlay="false"
+            app:lottie_fileName="lottie_like.json"
+            app:lottie_loop="false" />
+
+
+    </FrameLayout>
 </layout>

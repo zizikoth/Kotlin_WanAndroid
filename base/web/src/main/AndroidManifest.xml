@@ -3,9 +3,7 @@
     package="com.base.web">
 
     <application>
-        <service
-            android:name=".service.WebService"
-            android:process=":web" />
+        <service android:name=".service.WebService" />
     </application>
 
 </manifest>

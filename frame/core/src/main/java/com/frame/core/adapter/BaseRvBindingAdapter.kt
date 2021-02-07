@@ -1,11 +1,9 @@
 package com.frame.core.adapter
 
-import android.view.View
 import androidx.annotation.LayoutRes
 import androidx.databinding.ViewDataBinding
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
-import com.frame.core.utils.ClickHelper
 
 /**
  * title:

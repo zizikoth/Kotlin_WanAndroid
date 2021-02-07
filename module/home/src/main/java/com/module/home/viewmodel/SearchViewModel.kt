@@ -41,7 +41,7 @@ class SearchViewModel : BaseViewModel() {
     }
 
     fun clearSearch() {
-        requestNoCheck { HomeLocalRepository.clearSearchWord() }
+        requestNoCheck { HomeLocalRepository.removeSearchWord() }
     }
 
     fun getArticleByWord(word: String, page: Int) {

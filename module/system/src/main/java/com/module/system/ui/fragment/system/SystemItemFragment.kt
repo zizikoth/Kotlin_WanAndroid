@@ -3,7 +3,7 @@ package com.module.system.ui.fragment.system
 import com.base.base.entity.remote.SystemTreeItem
 import com.base.base.entity.remote.TYPE_SYSTEM_ITEM
 import com.base.base.ui.BaseVmFragment
-import com.base.base.utils.onMultiItemClickListener
+import com.base.base.utils.onMultiItemClick
 import com.frame.core.utils.extra.observe
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.module.system.R
@@ -40,7 +40,7 @@ class SystemItemFragment : BaseVmFragment<SystemViewModel, FragmentSystemItemBin
     }
 
     override fun initListener() {
-        mAdapter.onMultiItemClickListener { multiType, data ->
+        mAdapter.onMultiItemClick { multiType, data ->
             if (multiType == TYPE_SYSTEM_ITEM) SystemArticleActivity.start(mContext, data.name, data.id)
         }
 

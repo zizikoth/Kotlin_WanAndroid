@@ -68,7 +68,7 @@ object MineRepository {
      * @return CoinInfo
      */
     suspend fun getCoinAsync(scope: CoroutineScope): Deferred<CoinInfo> {
-        return RxHttp.get(ApiUrl.Mine.Coin)
+        return RxHttp.get(ApiUrl.Coin.CoinInfo)
             .toApiResponse<CoinInfo>()
             .async(scope)
     }
@@ -79,7 +79,7 @@ object MineRepository {
      * @return CoinList
      */
     suspend fun getCoinList(page: Int): CoinList {
-        return RxHttp.get(ApiUrl.Mine.CoinList, page)
+        return RxHttp.get(ApiUrl.Coin.CoinList, page)
             .toApiResponse<CoinList>()
             .await()
     }
@@ -90,8 +90,21 @@ object MineRepository {
      * @return Deferred<ArticleList>
      */
     suspend fun getCollectionsAsync(scope: CoroutineScope, page: Int): Deferred<ArticleList> {
-        return RxHttp.get(ApiUrl.Mine.CollectionList, page)
+        return RxHttp.get(ApiUrl.Collect.CollectionList, page)
             .toApiResponse<ArticleList>()
             .async(scope)
+    }
+
+    /**
+     * 取消收藏
+     * @param id Int 文章id
+     * @param originId Int 接口返回
+     * @return Any
+     */
+    suspend fun unCollectInList(id: Int, originId: Int): Any? {
+        return RxHttp.postForm(ApiUrl.Collect.UnCollectInList, id)
+            .add("originId", originId)
+            .toApiResponse<Any>()
+            .tryAwait()
     }
 }

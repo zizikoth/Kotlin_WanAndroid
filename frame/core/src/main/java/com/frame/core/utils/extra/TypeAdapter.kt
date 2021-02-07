@@ -47,7 +47,7 @@ class DoubleTypeAdapter : TypeAdapter<Double>() {
     }
 }
 
-class FloatTypeAdapter: TypeAdapter<Float>() {
+class FloatTypeAdapter : TypeAdapter<Float>() {
     @Throws(IOException::class)
     override fun read(reader: JsonReader): Float {
         if (reader.peek() == JsonToken.NULL) {

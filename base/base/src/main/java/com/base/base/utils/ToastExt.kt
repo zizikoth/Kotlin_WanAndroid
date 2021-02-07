@@ -1,6 +1,5 @@
 package com.base.base.utils
 
-import android.view.Gravity
 import android.widget.TextView
 import com.base.base.R
 import com.blankj.utilcode.util.ToastUtils

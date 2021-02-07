@@ -1,8 +1,8 @@
 package com.module.mine.ui.activity.login
 
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.base.base.manager.BusViewModel
 import com.base.base.manager.RouterManager
-import com.base.base.manager.UserManager
 import com.base.base.ui.BaseVmActivity
 import com.base.base.utils.indicator.IndicatorType
 import com.base.base.utils.indicator.init
@@ -52,9 +52,7 @@ class LoginActivity : BaseVmActivity<LoginViewModel, ActivityLoginBinding>() {
 
     override fun initListener() {
         // 登陆成功
-        UserManager.responseLogin(this) {
-            finish()
-        }
+        BusViewModel.get().loginLiveData.observeInActivity(this) { finish() }
     }
 
     override fun start() {}

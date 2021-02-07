@@ -20,6 +20,10 @@ fun <T> doTryCatch(doTry: () -> T, doException: (Exception) -> T, doFinally: () 
     }
 }
 
+fun doTryCatch(doTry: () -> Unit, doException: (Exception) -> Unit) {
+    doTryCatch({ doTry.invoke() }, { doException.invoke(it) }, {})
+}
+
 fun doTryCatch(doTry: () -> Unit) {
     doTryCatch({ doTry.invoke() }, {}, {})
 }

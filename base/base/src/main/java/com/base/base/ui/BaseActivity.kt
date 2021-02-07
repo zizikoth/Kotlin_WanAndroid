@@ -1,8 +1,8 @@
 package com.base.base.ui
 
 import androidx.databinding.ViewDataBinding
-import com.kongzue.dialogx.dialogs.WaitDialog
 import com.frame.core.core.CoreActivity
+import com.kongzue.dialogx.dialogs.WaitDialog
 
 /**
  * title:

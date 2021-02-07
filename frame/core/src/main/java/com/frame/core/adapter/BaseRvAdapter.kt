@@ -2,13 +2,11 @@ package com.frame.core.adapter
 
 import android.os.Parcelable
 import android.util.SparseArray
-import android.view.View
 import androidx.annotation.LayoutRes
 import androidx.core.util.set
 import androidx.recyclerview.widget.RecyclerView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
-import com.frame.core.utils.ClickHelper
 
 /**
  * title:

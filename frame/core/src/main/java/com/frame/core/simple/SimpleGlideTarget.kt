@@ -17,12 +17,12 @@ import com.bumptech.glide.request.transition.Transition
  * Talk is cheap, Show me the code.
  */
 open class SimpleGlideTarget(
-	width: Int = Target.SIZE_ORIGINAL,
-	height: Int = Target.SIZE_ORIGINAL
+    width: Int = Target.SIZE_ORIGINAL,
+    height: Int = Target.SIZE_ORIGINAL
 ) : CustomTarget<Bitmap>(width, height) {
 
-	override fun onLoadCleared(placeholder: Drawable?) {}
+    override fun onLoadCleared(placeholder: Drawable?) {}
 
-	override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {}
+    override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {}
 
 }

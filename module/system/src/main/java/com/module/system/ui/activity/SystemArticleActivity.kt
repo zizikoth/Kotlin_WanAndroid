@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.base.base.entity.remote.ArticleList
 import com.base.base.ui.BaseVmActivity
-import com.base.base.utils.onItemClickListener
+import com.base.base.utils.onItemChildClick
 import com.base.base.utils.showEmpty
 import com.blankj.utilcode.util.LogUtils
 import com.business.common.ui.activity.web.WebActivity
@@ -64,7 +64,10 @@ class SystemArticleActivity : BaseVmActivity<SystemViewModel, ActivitySystemArti
         }, {
             mViewModel.getSystemArticle(page, cid)
         })
-        mAdapter.onItemClickListener { WebActivity.start(mContext, it.title, it.link) }
+        // 跳转文章详情
+        mAdapter.onItemChildClick { viewId, data ->
+            if (viewId == R.id.mItemArticle) WebActivity.start(mContext, data.id, data.title, data.link)
+        }
 
         observe(mViewModel.articleLiveData, this::onSystemArticles)
     }

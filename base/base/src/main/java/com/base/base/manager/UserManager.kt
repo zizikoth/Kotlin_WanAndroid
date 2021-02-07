@@ -1,7 +1,5 @@
 package com.base.base.manager
 
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.MutableLiveData
 import com.base.base.config.AppConfig
 import com.base.base.entity.remote.User
 import okhttp3.HttpUrl.Companion.toHttpUrl
@@ -20,12 +18,54 @@ import rxhttp.wrapper.cookie.ICookieJar
  */
 object UserManager {
 
-    private val loginLiveData by lazy { MutableLiveData<User?>() }
+    var user: User? = null
+        get() = DataManager.getUser()
+        set(value) {
+            field = value
+            if (field != null) {
+                DataManager.setUser(field!!)
+            } else {
+                DataManager.removeUser()
+            }
+        }
+
+    /**
+     * 退出登陆
+     */
+    fun loginOut(){
+        user = null
+        removeCookie()
+    }
+
+    /**
+     * 判断是否以收藏
+     * @param id Int 文章id
+     * @return Boolean
+     */
+    fun hasCollected(id: Int) = user?.collectIds?.any { it == id } ?: false
+
+    /**
+     * 添加收藏id
+     * @param id Int
+     */
+    fun addCollected(id: Int) {
+        if (user?.collectIds?.contains(id) == false) {
+            user?.collectIds?.add(id)
+        }
+    }
+
+    /**
+     * 移除收藏
+     * @param id Int
+     */
+    fun removeCollected(id: Int) {
+        user?.collectIds?.remove(id)
+    }
 
     /**
      * 检查是否有缓存的Cookie
      */
-    fun isLogin(): Boolean {
+    fun hasCookie(): Boolean {
         val cookieJar = (HttpSender.getOkHttpClient().cookieJar as ICookieJar)
         val list = cookieJar.loadCookie(AppConfig.baseUrl.toHttpUrl())
         return !list.isNullOrEmpty()
@@ -34,22 +74,8 @@ object UserManager {
     /**
      * 清除所有请求Cookie
      */
-    fun clearLogin() {
+    private fun removeCookie() {
         (HttpSender.getOkHttpClient().cookieJar as ICookieJar).removeAllCookie()
-    }
-
-    /**
-     * 通知页面登陆了
-     */
-    fun notifyLogin(user: User) {
-        loginLiveData.postValue(user)
-    }
-
-    /**
-     * 页面响应登陆
-     */
-    fun responseLogin(owner: LifecycleOwner, action: (User) -> Unit) {
-        loginLiveData.observe(owner, { user -> user?.let { action.invoke(it) } })
     }
 
 }

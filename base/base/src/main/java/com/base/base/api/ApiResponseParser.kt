@@ -29,7 +29,9 @@ open class ApiResponseParser<T> : AbstractParser<T> {
         val data: ApiResponse<T> = response.convert(type)
         if (!data.isSuccess()) {
             // 无论是那个借口如果需要登陆 那么清除cookie
-            if (data.isNeedLogin()) UserManager.clearLogin()
+            if (data.isNeedLogin()) {
+                UserManager.loginOut()
+            }
             throw ApiException(data.errorCode, data.errorMsg)
         }
         return data.data

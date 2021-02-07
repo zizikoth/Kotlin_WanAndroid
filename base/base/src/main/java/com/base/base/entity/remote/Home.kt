@@ -10,7 +10,7 @@ package com.base.base.entity.remote
  *
  * Talk is cheap, Show me the code.
  */
-data class HomeBanner (
+data class HomeBanner(
     var desc: String = "",
     var id: Int = 0,
     var imagePath: String = "",

@@ -19,7 +19,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/dp7_5"
             android:layout_marginBottom="@dimen/dp7_5"
-            android:background="@drawable/round_indicator_bg"/>
+            android:background="@drawable/round_indicator_bg" />
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/mViewPager"

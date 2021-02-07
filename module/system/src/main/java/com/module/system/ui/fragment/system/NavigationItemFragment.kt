@@ -3,7 +3,7 @@ package com.module.system.ui.fragment.system
 import com.base.base.entity.remote.SystemTreeItem
 import com.base.base.entity.remote.TYPE_SYSTEM_ITEM
 import com.base.base.ui.BaseVmFragment
-import com.base.base.utils.onMultiItemClickListener
+import com.base.base.utils.onMultiItemClick
 import com.business.common.ui.activity.web.WebActivity
 import com.frame.core.utils.extra.observe
 import com.google.android.flexbox.FlexboxLayoutManager
@@ -39,8 +39,8 @@ class NavigationItemFragment : BaseVmFragment<SystemViewModel, FragmentSystemIte
     }
 
     override fun initListener() {
-        mAdapter.onMultiItemClickListener { multiType, data ->
-            if (multiType == TYPE_SYSTEM_ITEM) WebActivity.start(mContext, data.title, data.link)
+        mAdapter.onMultiItemClick { multiType, data ->
+            if (multiType == TYPE_SYSTEM_ITEM) WebActivity.start(mContext, data.id, data.title, data.link)
         }
         observe(mViewModel.systemLiveData, this::onNaviTree)
     }

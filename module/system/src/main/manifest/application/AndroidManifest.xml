@@ -10,8 +10,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/iTheme">
-        <activity android:name=".ui.activity.SystemArticleActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activity.SystemArticleActivity"
+            android:screenOrientation="portrait" />
         <activity android:name=".launcher.SystemLauncherActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
