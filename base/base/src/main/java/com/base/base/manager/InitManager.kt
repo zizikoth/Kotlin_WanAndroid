@@ -1,6 +1,7 @@
 package com.base.base.manager
 
 import android.app.Application
+import android.graphics.Color
 import androidx.core.content.ContextCompat
 import com.alibaba.android.arouter.launcher.ARouter
 import com.base.base.BuildConfig
@@ -14,11 +15,10 @@ import com.blankj.utilcode.util.LogUtils
 import com.blankj.utilcode.util.ProcessUtils
 import com.blankj.utilcode.util.Utils
 import com.didichuxing.doraemonkit.DoraemonKit
-import com.frame.core.core.CoreApp
 import com.frame.core.utils.GsonHelper
 import com.frame.core.utils.OOMHelper
 import com.frame.core.utils.extra.dimen
-import com.kongzue.dialogx.DialogX
+import com.kongzue.dialog.util.DialogSettings
 import com.load.status.core.LoadStatus
 import com.scwang.smart.refresh.footer.BallPulseFooter
 import com.scwang.smart.refresh.header.ClassicsHeader
@@ -89,8 +89,11 @@ object InitManager {
         // WebView
         WebUtils.preInit()
         // Dialog
-        DialogX.init(CoreApp.app)
-        DialogX.DEBUGMODE = AppConfig.isOpenLog
+        DialogSettings.style = DialogSettings.STYLE.STYLE_MIUI
+        DialogSettings.backgroundColor = Color.WHITE
+        DialogSettings.DEBUGMODE = BuildConfig.DEBUG
+        DialogSettings.init()
+
         // LoadStatus
         LoadStatus.beginBuilder()
             .addCallback(LoadCallback())

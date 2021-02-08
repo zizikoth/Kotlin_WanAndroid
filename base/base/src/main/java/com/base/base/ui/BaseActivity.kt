@@ -2,7 +2,7 @@ package com.base.base.ui
 
 import androidx.databinding.ViewDataBinding
 import com.frame.core.core.CoreActivity
-import com.kongzue.dialogx.dialogs.WaitDialog
+import com.kongzue.dialog.v3.WaitDialog
 
 /**
  * title:
@@ -17,7 +17,7 @@ import com.kongzue.dialogx.dialogs.WaitDialog
 abstract class BaseActivity<BD : ViewDataBinding> : CoreActivity<BD>() {
 
     fun showLoad() {
-        WaitDialog.show("加载中")
+        WaitDialog.show(mContext, "加载中")
     }
 
     fun hideLoad() {

@@ -3,17 +3,22 @@
     package="com.module.mine">
 
     <application>
-        <activity android:name=".ui.activity.setting.SettingActivity"></activity>
+        <activity
+            android:name=".ui.activity.coin.RankActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.coin.CoinActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.collection.CollectionActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
+        <activity
+            android:name=".ui.activity.setting.SettingActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.login.LoginActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

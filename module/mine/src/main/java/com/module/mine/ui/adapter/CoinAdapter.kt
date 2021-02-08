@@ -5,15 +5,14 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.module.mine.R
 
-/**
- * title:
- * describe:
- *
- * @author memo
- * @date 2021-02-07 2:03 PM
- * @email zhou_android@163.com
- *
- * Talk is cheap, Show me the code.
- */
-//class CoinAdapter:BaseQuickAdapter<CoinInfo,BaseViewHolder>(R.layout.layout_item_coin) {
-//}
+
+class CoinAdapter : BaseQuickAdapter<CoinInfo, BaseViewHolder>(R.layout.layout_item_coin) {
+
+    override fun convert(holder: BaseViewHolder, item: CoinInfo) {
+        holder.run {
+            setText(R.id.mTvName, item.userName)
+            setText(R.id.mTvCoin, if (item.coinCount > 0) "+${item.coinCount}" else "-${item.coinCount}")
+            setText(R.id.mTvReason, item.desc)
+        }
+    }
+}

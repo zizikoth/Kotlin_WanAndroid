@@ -1,7 +1,7 @@
 package com.frame.version
 
 object Config {
-    const val applicationId = "com.memo.core"
+    const val applicationId = "com.memo.core.wan"
     const val compileSdkVersion = 30
     const val buildToolsVersion = "30.0.2"
     const val minSdkVersion = 21
@@ -16,7 +16,7 @@ object Module {
     const val isModuleHomeRunAlone = false
     const val isModuleProjectRunAlone = false
     const val isModuleSystemRunAlone = false
-    const val isModuleMineRunAlone = false
+    const val isModuleMineRunAlone = true
 }
 
 private object Versions {
@@ -50,8 +50,10 @@ private object Versions {
     const val RxHttpCoroutine = "2.0.1"
     const val OkHttp = "4.9.0"
     const val LoadStatus = "1.0.3"
-    const val DialogX = "0.0.29"
+    const val Dialog = "3.2.4"
     const val MagicIndicator = "1.7.0"
+    const val Lottie = "3.5.0"
+    const val SwipeLayout = "1.2.0"
 
     const val DoKit = "3.3.5"
     const val LeakCanary = "2.5"
@@ -96,8 +98,10 @@ object Dep {
     const val RxHttpCoroutine = "com.ljx.rxlife:rxlife-coroutine:${Versions.RxHttpCoroutine}"
     const val OkHttp = "com.squareup.okhttp3:okhttp:${Versions.OkHttp}"
     const val LoadStatus = "com.github.zizikoth:Status:${Versions.LoadStatus}"
-    const val DialogX = "com.kongzue.dialogx:DialogX:${Versions.DialogX}"
+    const val Dialog = "com.kongzue.dialog_v3:dialog::${Versions.Dialog}"
     const val MagicIndicator = "com.github.hackware1993:MagicIndicator:${Versions.MagicIndicator}"
+    const val Lottie = "com.airbnb.android:lottie:${Versions.Lottie}"
+    const val SwipeLayout = "com.daimajia.swipelayout:library:${Versions.SwipeLayout}@aar"
 
     // debugApi
     const val DoKitDebug = "com.didichuxing.doraemonkit:dokitx:${Versions.DoKit}"

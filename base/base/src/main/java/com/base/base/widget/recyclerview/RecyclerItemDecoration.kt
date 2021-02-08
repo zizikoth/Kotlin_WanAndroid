@@ -3,6 +3,7 @@ package com.base.base.widget.recyclerview
 
 import android.content.Context
 import android.graphics.Canvas
+import android.graphics.Color
 import android.graphics.Rect
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
@@ -15,6 +16,7 @@ import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.base.base.R
 
 /**
  * title:RecyclerView分割线
@@ -508,6 +510,12 @@ class RecyclerItemDecoration constructor(private val mBuilder: Builder) :
 
         private fun getSizeValue(unit: Int, size: Float): Int {
             return applyDimension(unit, size, mContext.resources.displayMetrics).toInt()
+        }
+
+        fun defaultBuild():RecyclerItemDecoration{
+            setColorRes(R.color.color_F5F5F5)
+            setHeightDp(0.5f)
+            return build()
         }
 
         fun build(): RecyclerItemDecoration {

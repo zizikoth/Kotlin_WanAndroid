@@ -1,10 +1,7 @@
 package com.module.mine.data
 
 import com.base.base.api.ApiUrl
-import com.base.base.entity.remote.ArticleList
-import com.base.base.entity.remote.CoinInfo
-import com.base.base.entity.remote.CoinList
-import com.base.base.entity.remote.User
+import com.base.base.entity.remote.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Deferred
 import rxhttp.async
@@ -73,16 +70,6 @@ object MineRepository {
             .async(scope)
     }
 
-    /**
-     * 获取积分列表
-     * @param page Int 页码
-     * @return CoinList
-     */
-    suspend fun getCoinList(page: Int): CoinList {
-        return RxHttp.get(ApiUrl.Coin.CoinList, page)
-            .toApiResponse<CoinList>()
-            .await()
-    }
 
     /**
      * 获取收藏列表
@@ -96,6 +83,22 @@ object MineRepository {
     }
 
     /**
+     * 收藏站外文章
+     * @param title String 标题
+     * @param author String 作者
+     * @param link String 链接
+     * @return Any?
+     */
+    suspend fun collectArticle(title: String, author: String, link: String): Any? {
+        return RxHttp.postForm(ApiUrl.Collect.CollectArticle)
+            .add("title", title)
+            .add("author", author)
+            .add("link", link)
+            .toApiResponse<Any>()
+            .tryAwait()
+    }
+
+    /**
      * 取消收藏
      * @param id Int 文章id
      * @param originId Int 接口返回
@@ -106,5 +109,27 @@ object MineRepository {
             .add("originId", originId)
             .toApiResponse<Any>()
             .tryAwait()
+    }
+
+    /**
+     * 获取积分获取记录
+     * @param page Int 页码
+     * @return CoinList
+     */
+    suspend fun getCoinHistory(page: Int): CoinList {
+        return RxHttp.get(ApiUrl.Coin.CoinHistory, page)
+            .toApiResponse<CoinList>()
+            .await()
+    }
+
+    /**
+     * 获取积分排名
+     * @param page Int
+     * @return RankList
+     */
+    suspend fun getRank(page: Int): RankList {
+        return RxHttp.get(ApiUrl.Coin.CoinRank, page)
+            .toApiResponse<RankList>()
+            .await()
     }
 }

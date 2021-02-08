@@ -23,7 +23,7 @@ object CollectRepository {
      * @return Any?
      */
     suspend fun collect(id: Int): Any? {
-        return RxHttp.postForm(ApiUrl.Collect.collect, id)
+        return RxHttp.postForm(ApiUrl.Collect.Collect, id)
             .toApiResponse<Any>()
             .tryAwait()
     }

@@ -62,7 +62,7 @@ dependencies {
     api Dep.RxHttpCoroutine
     api Dep.OkHttp
     api Dep.LoadStatus
-    api Dep.DialogX
+    api Dep.Dialog
     api Dep.MagicIndicator
     api Dep.Lottie
     api Dep.SwipeLayout

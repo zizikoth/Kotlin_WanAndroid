@@ -8,13 +8,14 @@ import com.base.base.ui.BaseVmFragment
 import com.blankj.utilcode.util.CleanUtils
 import com.blankj.utilcode.util.ConvertUtils
 import com.blankj.utilcode.util.FileUtils
-import com.blankj.utilcode.util.LogUtils
 import com.frame.core.utils.extra.observe
 import com.frame.core.utils.extra.onClick
 import com.frame.core.utils.extra.paddingStatusBar
 import com.frame.core.utils.extra.startActivity
 import com.module.mine.R
 import com.module.mine.databinding.FragmentMineBinding
+import com.module.mine.ui.activity.coin.CoinActivity
+import com.module.mine.ui.activity.coin.RankActivity
 import com.module.mine.ui.activity.collection.CollectionActivity
 import com.module.mine.ui.activity.login.LoginActivity
 import com.module.mine.ui.activity.setting.SettingActivity
@@ -58,9 +59,9 @@ class MineFragment : BaseVmFragment<MineViewModel, FragmentMineBinding>() {
             // 我的收藏
             mItemCollect.onClick { checkLogin { startActivity<CollectionActivity>() } }
             // 我的积分
-            mItemCoin.onClick { checkLogin { } }
+            mItemCoin.onClick { checkLogin { startActivity<CoinActivity>() } }
             // 我的排名
-            mItemRank.onClick { checkLogin {} }
+            mItemRank.onClick { checkLogin { startActivity<RankActivity>() } }
             // TODO列表
             mItemTodo.onClick { checkLogin { } }
             // 我的分享
@@ -91,7 +92,7 @@ class MineFragment : BaseVmFragment<MineViewModel, FragmentMineBinding>() {
             // 个人积分
             mBinding.mItemCoin.content = it.coinCount.toString()
             // 个人排名
-            mBinding.mItemRank.content = it.rank.toString()
+            mBinding.mItemRank.content = it.rank
         }
     }
 

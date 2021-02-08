@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp45"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <FrameLayout
+        android:layout_width="@dimen/dp60"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/mIvRank"
+            android:layout_width="@dimen/dp30"
+            android:layout_height="@dimen/dp30"
+            android:layout_gravity="center"
+            tools:src="@drawable/ic_first" />
+
+        <TextView
+            android:id="@+id/mTvRank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            tools:text="4" />
+
+    </FrameLayout>
+
+
+    <TextView
+        android:id="@+id/mTvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="张三" />
+
+    <TextView
+        android:id="@+id/mTvCoin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/dp15"
+        android:gravity="end"
+        tools:text="999" />
+
+</LinearLayout>

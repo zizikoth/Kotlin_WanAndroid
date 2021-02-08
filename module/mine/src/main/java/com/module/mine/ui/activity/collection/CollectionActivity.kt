@@ -13,6 +13,7 @@ import com.frame.core.utils.extra.finish
 import com.frame.core.utils.extra.observe
 import com.frame.core.utils.extra.onRefreshAndLoadMore
 import com.module.mine.R
+import com.module.mine.dialog.DialogHelper
 import com.module.mine.viewmodel.CollectionViewModel
 
 /**
@@ -37,6 +38,7 @@ class CollectionActivity : BaseVmActivity<CollectionViewModel, LayoutTitleRefres
     override fun initView() {
         mBinding.run {
             mTitleView.setTitle("我的收藏")
+            mTitleView.setRightDrawable(R.drawable.ic_collect_add)
 
             mRvList.run {
                 layoutManager = LinearLayoutManager(mContext)
@@ -53,6 +55,12 @@ class CollectionActivity : BaseVmActivity<CollectionViewModel, LayoutTitleRefres
                 R.id.mItemArticle -> WebActivity.start(mContext, data.id, data.originId, data.title, data.link)
             }
         }
+        // 添加站外收藏
+        mBinding.mTitleView.setOnRightClickListener {
+            DialogHelper.showCollection(mContext) { dialog, title, author, link ->
+                mViewModel.collect(dialog, title, author, link)
+            }
+        }
         // 刷新加载
         mBinding.mRefreshLayout.onRefreshAndLoadMore({
             page = 0
@@ -64,8 +72,9 @@ class CollectionActivity : BaseVmActivity<CollectionViewModel, LayoutTitleRefres
         // 响应收藏数据变化
         BusViewModel.get().collectionLiveData.observeInActivity(this) { mBinding.mRefreshLayout.autoRefresh() }
 
-        observe(mViewModel.collectionsLiveData, this::onCollectionList)
-        observe(mViewModel.unCollectionLiveData, this::onUnCollection)
+        observe(mViewModel.collectionListLiveData, this::onCollectionList)
+        observe(mViewModel.unCollectLiveData, this::onUnCollection)
+        observe(mViewModel.collectArticleLiveData, this::onCollectArticle)
     }
 
     override fun start() {
@@ -97,6 +106,14 @@ class CollectionActivity : BaseVmActivity<CollectionViewModel, LayoutTitleRefres
         if (mAdapter.data.isEmpty()) mBinding.mRefreshLayout.autoRefresh()
         // 通知收藏数据变化
         BusViewModel.get().collectionLiveData.postValue("")
+    }
+
+    /**
+     * 收藏站外文章
+     * @param data Any?
+     */
+    private fun onCollectArticle(data: Any?) {
+        mBinding.mRefreshLayout.autoRefresh()
     }
 
 }

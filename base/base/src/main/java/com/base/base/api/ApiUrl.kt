@@ -113,9 +113,15 @@ object ApiUrl {
         const val CoinInfo = "lg/coin/userinfo/json"
 
         /**
-         * 积分列表
+         * 积分获取列表
          */
-        const val CoinList = "lg/coin/list/%d/json"
+        const val CoinHistory = "lg/coin/list/%d/json"
+
+        /**
+         * 积分排行榜
+         * %d 从1开始
+         */
+        const val CoinRank = "coin/rank/%d/json"
 
     }
 
@@ -128,7 +134,12 @@ object ApiUrl {
         /**
          * 收藏
          */
-        const val collect = "lg/collect/%d/json"
+        const val Collect = "lg/collect/%d/json"
+
+        /**
+         * 收藏文章
+         */
+        const val CollectArticle = "lg/collect/add/json"
 
         /**
          * 取消收藏 - 收藏列表

@@ -1,5 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="@dimen/dp15">
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/mTvName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:lines="1"
+        android:textColor="@color/textDark"
+        android:textSize="@dimen/sp14"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/mTvCoin"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三" />
+
+    <TextView
+        android:id="@+id/mTvCoin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:lines="1"
+        android:textSize="@dimen/sp12"
+        app:layout_constraintBottom_toBottomOf="@id/mTvName"
+        app:layout_constraintLeft_toRightOf="@id/mTvName"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/mTvName"
+        tools:text="+111111111111" />
+
+    <TextView
+        android:id="@+id/mTvReason"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp10"
+        android:ellipsize="end"
+        android:lines="1"
+        android:textSize="@dimen/sp12"
+        app:layout_constraintTop_toBottomOf="@id/mTvName"
+        tools:text="2021-02-08 09:16:01 签到 , 积分：11 + 0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

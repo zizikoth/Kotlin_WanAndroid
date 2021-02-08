@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.base.base.widget.titleview.TitleView
+            android:id="@+id/mTitleView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:title_title_text="添加收藏" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/mEtTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp20"
+            android:layout_marginTop="@dimen/dp20"
+            android:layout_marginRight="@dimen/dp20"
+            android:background="@null"
+            android:gravity="top"
+            android:hint="请输入文章标题"
+            android:lines="3"
+            android:padding="@dimen/dp10"
+            android:textColor="@color/textDark"
+            android:textSize="@dimen/sp14"
+            app:layout_constraintTop_toBottomOf="@id/mTitleView" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/mEtLink"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp20"
+            android:layout_marginTop="@dimen/dp20"
+            android:layout_marginRight="@dimen/dp20"
+            android:background="@null"
+            android:gravity="top"
+            android:hint="请输入文章链接"
+            android:lines="1"
+            android:padding="@dimen/dp10"
+            android:textColor="@color/textDark"
+            android:textSize="@dimen/sp14"
+            app:layout_constraintTop_toBottomOf="@id/mEtTitle" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/mEtAuthor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:layout_marginLeft="@dimen/dp20"
+            android:layout_marginTop="@dimen/dp20"
+            android:layout_marginRight="@dimen/dp20"
+            android:background="@null"
+            android:gravity="top"
+            android:hint="请输入文章作者"
+            android:inputType="text"
+            android:maxLines="1"
+            android:padding="@dimen/dp10"
+            android:textColor="@color/textDark"
+            android:textSize="@dimen/sp14"
+            app:layout_constraintTop_toBottomOf="@id/mEtLink" />
+
+        <TextView
+            android:id="@+id/mTvCollect"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp45"
+            android:layout_margin="@dimen/dp20"
+            android:gravity="center"
+            android:text="收藏"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp16"
+            app:layout_constraintTop_toBottomOf="@id/mEtAuthor"
+            tools:background="@color/color_shape" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

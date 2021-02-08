@@ -38,7 +38,7 @@ class WebHelper : LifecycleObserver {
         agentWeb = AgentWeb.with(activity)
             .setAgentWebParent(container, FrameLayout.LayoutParams(-1, -1))
             .useDefaultIndicator()
-            .setWebViewClient(AdBlockWebClient())
+            .setWebViewClient(BlockWebClient())
             .setMainFrameErrorView(errorLayoutRes, -1)
             .createAgentWeb()
             .ready()
