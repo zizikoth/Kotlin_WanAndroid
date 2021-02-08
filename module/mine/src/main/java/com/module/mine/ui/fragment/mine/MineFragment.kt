@@ -5,6 +5,7 @@ import com.base.base.manager.BusViewModel
 import com.base.base.manager.RouterManager
 import com.base.base.manager.UserManager
 import com.base.base.ui.BaseVmFragment
+import com.base.base.utils.toast
 import com.blankj.utilcode.util.CleanUtils
 import com.blankj.utilcode.util.ConvertUtils
 import com.blankj.utilcode.util.FileUtils
@@ -71,6 +72,7 @@ class MineFragment : BaseVmFragment<MineViewModel, FragmentMineBinding>() {
                 CleanUtils.cleanInternalCache()
                 CleanUtils.cleanExternalCache()
                 mItemCache.setItemExtraText("")
+                toast("缓存清理完毕")
             }
             // 关于我们
             mItemAbout.onClick { checkLogin { } }

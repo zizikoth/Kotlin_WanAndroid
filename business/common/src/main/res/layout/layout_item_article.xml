@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mClContent"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="@dimen/dp5"
-    android:elevation="@dimen/dp2"
-    app:cardCornerRadius="0dp">
+    android:orientation="vertical">
 
     <com.daimajia.swipe.SwipeLayout
         android:id="@+id/mSwipeLayout"
@@ -122,4 +121,9 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.daimajia.swipe.SwipeLayout>
-</androidx.cardview.widget.CardView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp5"
+        android:background="@color/color_F5F5F5" />
+</LinearLayout>

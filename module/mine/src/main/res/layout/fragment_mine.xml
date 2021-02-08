@@ -138,7 +138,16 @@
                         android:layout_height="wrap_content"
                         app:item_divider_shown="true"
                         app:item_extra_drawable="@drawable/ic_arrows_gray_right"
-                        app:item_main_text="TODO"
+                        app:item_main_text="未完清单"
+                        app:item_main_textBold="true" />
+
+                    <com.base.base.widget.itemview.ItemView
+                        android:id="@+id/mItemWeb"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:item_divider_shown="true"
+                        app:item_extra_drawable="@drawable/ic_arrows_gray_right"
+                        app:item_main_text="网址收藏"
                         app:item_main_textBold="true" />
 
                     <com.base.base.widget.itemview.ItemView
