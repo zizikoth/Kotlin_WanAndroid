@@ -6,7 +6,7 @@ import com.base.base.manager.BusViewModel
 import com.base.base.manager.RouterManager
 import com.base.base.manager.UserManager
 import com.base.base.ui.BaseVmActivity
-import com.base.web.utils.WebHelper
+import com.base.web.utils.web.WebHelper
 import com.blankj.utilcode.util.LogUtils
 import com.business.common.R
 import com.business.common.databinding.ActivityWebBinding
@@ -54,11 +54,10 @@ class WebActivity : BaseVmActivity<CollectViewModel, ActivityWebBinding>() {
         url = intent.getStringExtra("url").orEmpty()
         originId = intent.getIntExtra("originId", originId)
         isCollect = originId != Int.MIN_VALUE
-        if (!isCollect) {
-            isCollect = UserManager.hasCollected(id)
-        }
+        if (!isCollect) isCollect = UserManager.hasCollected(id)
 
         LogUtils.iTag("Web", "id = $id title = $title url = $url originId = $originId isCollect=$isCollect ")
+        LogUtils.iTag("Web", UserManager.getUser()?.collectIds)
     }
 
     override fun initView() {

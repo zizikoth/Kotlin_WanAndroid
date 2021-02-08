@@ -1,4 +1,4 @@
-package com.base.web.utils
+package com.base.web.utils.web
 
 import android.content.Intent
 import com.base.web.service.WebService

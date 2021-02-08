@@ -18,22 +18,34 @@ import rxhttp.wrapper.cookie.ICookieJar
  */
 object UserManager {
 
-    var user: User? = null
-        get() = DataManager.getUser()
-        set(value) {
-            field = value
-            if (field != null) {
-                DataManager.setUser(field!!)
-            } else {
-                DataManager.removeUser()
-            }
+    private var user: User? = null
+
+    /**
+     * 获取用户
+     * @return User?
+     */
+    fun getUser(): User? {
+        if (user == null) {
+            user = DataManager.getUser()
         }
+        return user
+    }
+
+    /**
+     * 设置用户
+     * @param user User
+     */
+    fun setUser(user: User) {
+        this.user = user
+        DataManager.setUser(user)
+    }
 
     /**
      * 退出登陆
      */
-    fun loginOut(){
+    fun loginOut() {
         user = null
+        DataManager.removeUser()
         removeCookie()
     }
 
@@ -42,15 +54,16 @@ object UserManager {
      * @param id Int 文章id
      * @return Boolean
      */
-    fun hasCollected(id: Int) = user?.collectIds?.any { it == id } ?: false
+    fun hasCollected(id: Int) = getUser()?.collectIds?.any { it == id } ?: false
 
     /**
      * 添加收藏id
      * @param id Int
      */
     fun addCollected(id: Int) {
-        if (user?.collectIds?.contains(id) == false) {
-            user?.collectIds?.add(id)
+        if (getUser()?.collectIds?.contains(id) == false) {
+            getUser()?.collectIds?.add(id)
+            getUser()?.let { setUser(it) }
         }
     }
 
@@ -59,7 +72,8 @@ object UserManager {
      * @param id Int
      */
     fun removeCollected(id: Int) {
-        user?.collectIds?.remove(id)
+        getUser()?.collectIds?.remove(id)
+        getUser()?.let { setUser(it) }
     }
 
     /**

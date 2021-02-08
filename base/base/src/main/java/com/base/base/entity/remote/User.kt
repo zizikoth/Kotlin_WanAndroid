@@ -12,6 +12,6 @@ package com.base.base.entity.remote
  */
 data class User(
     val id: Int,
-    val collectIds: ArrayList<Int> = arrayListOf(),
+    var collectIds: ArrayList<Int> = arrayListOf(),
     val nickname: String,
 )

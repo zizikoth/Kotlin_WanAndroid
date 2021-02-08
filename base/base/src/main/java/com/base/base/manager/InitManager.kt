@@ -9,7 +9,7 @@ import com.base.base.config.AppConfig
 import com.base.base.ui.status.LoadCallback
 import com.base.base.ui.status.NetErrorCallback
 import com.base.base.ui.status.ServerErrorCallback
-import com.base.web.utils.WebUtils
+import com.base.web.utils.web.WebUtils
 import com.blankj.utilcode.util.LogUtils
 import com.blankj.utilcode.util.ProcessUtils
 import com.blankj.utilcode.util.Utils

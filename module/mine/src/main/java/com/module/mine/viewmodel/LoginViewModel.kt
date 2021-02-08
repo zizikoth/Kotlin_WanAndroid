@@ -20,7 +20,10 @@ class LoginViewModel : BaseViewModel() {
     fun login(userName: String, password: String) {
         request(
             request = { MineRepository.login(userName, password) },
-            onSuccess = { BusViewModel.get().loginLiveData.postValue(it) },
+            onSuccess = {
+                UserManager.setUser(it)
+                BusViewModel.get().loginLiveData.postValue(it)
+            },
             showLoading = true)
     }
 
@@ -33,7 +36,7 @@ class LoginViewModel : BaseViewModel() {
                 MineRepository.login(userName, password)
             },
             onSuccess = {
-                UserManager.user = it
+                UserManager.setUser(it)
                 BusViewModel.get().loginLiveData.postValue(it)
             },
             showLoading = true

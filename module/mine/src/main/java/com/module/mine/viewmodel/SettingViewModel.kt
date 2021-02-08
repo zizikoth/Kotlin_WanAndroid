@@ -22,7 +22,8 @@ class SettingViewModel : BaseViewModel() {
             onSuccess = {
                 UserManager.loginOut()
                 action.invoke()
-            }
+            },
+            showLoading = true
         )
     }
 }

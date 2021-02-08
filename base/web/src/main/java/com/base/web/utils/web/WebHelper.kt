@@ -1,4 +1,4 @@
-package com.base.web.utils
+package com.base.web.utils.web
 
 import android.annotation.SuppressLint
 import android.os.Build
@@ -38,6 +38,7 @@ class WebHelper : LifecycleObserver {
         agentWeb = AgentWeb.with(activity)
             .setAgentWebParent(container, FrameLayout.LayoutParams(-1, -1))
             .useDefaultIndicator()
+            .setWebViewClient(AdBlockWebClient())
             .setMainFrameErrorView(errorLayoutRes, -1)
             .createAgentWeb()
             .ready()

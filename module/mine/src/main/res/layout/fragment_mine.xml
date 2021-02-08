@@ -43,6 +43,7 @@
                         android:id="@+id/mIvSetting"
                         android:layout_width="@dimen/dp45"
                         android:layout_height="@dimen/dp45"
+                        android:layout_marginTop="@dimen/dp5"
                         android:padding="@dimen/dp15"
                         android:src="@drawable/ic_setting"
                         app:layout_constraintRight_toRightOf="parent"
@@ -51,10 +52,11 @@
                     <TextView
                         android:id="@+id/mTvAvatar"
                         android:layout_width="@dimen/dp80"
-                        android:layout_height="@dimen/dp80"
-                        android:layout_marginTop="@dimen/dp15"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp20"
                         android:drawableTop="@drawable/ic_mine"
-                        android:drawablePadding="@dimen/dp15"
+                        android:drawablePadding="@dimen/dp5"
+                        android:gravity="center"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />

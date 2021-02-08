@@ -8,6 +8,7 @@ import com.base.base.ui.BaseVmFragment
 import com.blankj.utilcode.util.CleanUtils
 import com.blankj.utilcode.util.ConvertUtils
 import com.blankj.utilcode.util.FileUtils
+import com.blankj.utilcode.util.LogUtils
 import com.frame.core.utils.extra.observe
 import com.frame.core.utils.extra.onClick
 import com.frame.core.utils.extra.paddingStatusBar
@@ -41,7 +42,7 @@ class MineFragment : BaseVmFragment<MineViewModel, FragmentMineBinding>() {
         showContent()
         mBinding.run {
             root.paddingStatusBar()
-            mTvAvatar.text = UserManager.user?.nickname
+            mTvAvatar.text = UserManager.getUser()?.nickname
             // 缓存文件
             (FileUtils.getLength(mContext.externalCacheDir) + FileUtils.getLength(mContext.cacheDir)).run {
                 if (this > 0) mItemCache.setItemExtraText(ConvertUtils.byte2FitMemorySize(this))
@@ -75,11 +76,14 @@ class MineFragment : BaseVmFragment<MineViewModel, FragmentMineBinding>() {
         }
         // 登陆后响应
         BusViewModel.get().loginLiveData.observeInFragment(this) {
+            mBinding.mTvAvatar.text = it.nickname
             mViewModel.getUserCollect()
             mViewModel.getUserCoin()
         }
         // 收藏后响应
-        BusViewModel.get().collectionLiveData.observeInFragment(this) { mViewModel.getUserCollect() }
+        BusViewModel.get().collectionLiveData.observeInFragment(this) {
+            mViewModel.getUserCollect()
+        }
         // 回调用户信息 收藏
         observe(mViewModel.collectLiveData) { mBinding.mItemCollect.content = it.toString() }
         // 回调用户信息 积分 排名
