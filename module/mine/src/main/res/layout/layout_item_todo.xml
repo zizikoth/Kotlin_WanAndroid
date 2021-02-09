@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.daimajia.swipe.SwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mSwipeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:clickToClose="true"
+    app:drag_edge="right"
+    app:show_mode="pull_out">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/dp20"
+        android:paddingRight="@dimen/dp20">
+
+        <ImageView
+            android:id="@+id/mIvStatus"
+            android:layout_width="@dimen/dp60"
+            android:layout_height="@dimen/dp60"
+            android:gravity="center"
+            android:padding="@dimen/dp20"
+            android:src="@drawable/ic_complete"
+            android:textColor="@color/white"
+            tools:background="@color/color_status_background" />
+
+        <ImageView
+            android:id="@+id/mIvEdit"
+            android:layout_width="@dimen/dp60"
+            android:layout_height="@dimen/dp60"
+            android:layout_marginLeft="@dimen/dp20"
+            android:layout_marginRight="@dimen/dp20"
+            android:gravity="center"
+            android:padding="@dimen/dp20"
+            android:src="@drawable/ic_edit"
+            android:textColor="@color/white"
+            tools:background="@color/color_edit_background" />
+
+        <ImageView
+            android:id="@+id/mIvDelete"
+            android:layout_width="@dimen/dp60"
+            android:layout_height="@dimen/dp60"
+            android:gravity="center"
+            android:padding="@dimen/dp20"
+            android:src="@drawable/ic_delete"
+            android:textColor="@color/white"
+            tools:background="@color/color_delete_background" />
+
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/dp15"
+        android:paddingTop="@dimen/dp7_5"
+        android:paddingRight="@dimen/dp15"
+        android:paddingBottom="@dimen/dp7_5">
+
+        <LinearLayout
+            android:id="@+id/mLlContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/dp15"
+            android:paddingTop="@dimen/dp10"
+            android:paddingRight="@dimen/dp15"
+            android:paddingBottom="@dimen/dp10"
+            tools:background="@color/color_todo_work">
+
+
+            <TextView
+                android:id="@+id/mTvTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp35"
+                android:layout_marginRight="@dimen/dp35"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="2"
+                android:textColor="@color/textDark"
+                android:textSize="@dimen/sp16"
+                android:textStyle="bold"
+                tools:text="这里标题" />
+
+            <TextView
+                android:id="@+id/mTvContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp10"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:textColor="@color/textDark"
+                tools:text="这里是内容" />
+
+            <TextView
+                android:id="@+id/mTvTimePriority"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp10"
+                android:textColor="@color/textDark"
+                android:textSize="@dimen/sp12"
+                tools:text="2021-09-09" />
+
+        </LinearLayout>
+
+        <com.base.base.widget.label.LabelView
+            android:id="@+id/mLabelView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:label_background_color="@color/color_label"
+            app:label_text_color="@color/white"
+            app:label_text_size="@dimen/sp12"
+            tools:label_text="工作" />
+
+        <ImageView
+            android:id="@+id/mIvComplete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:layout_margin="@dimen/dp15"
+            android:src="@drawable/ic_status_complete" />
+    </FrameLayout>
+
+
+</com.daimajia.swipe.SwipeLayout>

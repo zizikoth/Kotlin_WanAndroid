@@ -19,6 +19,39 @@
             app:layout_constraintTop_toTopOf="parent"
             app:title_title_text="设置" />
 
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp15"
+            android:elevation="@dimen/dp3"
+            android:translationZ="@dimen/dp10"
+            app:cardCornerRadius="@dimen/dp8"
+            app:layout_constraintTop_toBottomOf="@id/mTitleView">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.base.base.widget.itemview.ItemView
+                    android:id="@+id/mItemCache"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:item_divider_shown="true"
+                    app:item_extra_drawable="@drawable/ic_arrows_gray_right"
+                    app:item_main_text="清理缓存"
+                    app:item_main_textBold="true" />
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mTitleView"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="lottie_flower.json" />
+
         <TextView
             android:id="@+id/mBtnLoginOut"
             android:layout_width="match_parent"
@@ -30,8 +63,9 @@
             android:text="退出登录"
             android:textColor="@color/white"
             android:textSize="@dimen/sp16"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:round_color="@{@color/color_main}"
+            app:round_radius="@{23}" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

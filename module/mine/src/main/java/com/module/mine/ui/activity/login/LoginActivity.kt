@@ -1,12 +1,13 @@
 package com.module.mine.ui.activity.login
 
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.base.base.manager.BusViewModel
+import com.base.base.manager.BusManager
 import com.base.base.manager.RouterManager
 import com.base.base.ui.BaseVmActivity
 import com.base.base.utils.indicator.IndicatorType
 import com.base.base.utils.indicator.init
 import com.base.base.utils.indicator.setTitles
+import com.blankj.utilcode.util.ActivityUtils
 import com.frame.core.utils.extra.enableOverScrollMode
 import com.module.mine.R
 import com.module.mine.databinding.ActivityLoginBinding
@@ -52,7 +53,7 @@ class LoginActivity : BaseVmActivity<LoginViewModel, ActivityLoginBinding>() {
 
     override fun initListener() {
         // 登陆成功
-        BusViewModel.get().loginLiveData.observeInActivity(this) { finish() }
+        BusManager.get().loginLiveData.observeInActivity(this) { finish() }
     }
 
     override fun start() {}

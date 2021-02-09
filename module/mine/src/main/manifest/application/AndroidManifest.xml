@@ -10,6 +10,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/iTheme">
+        <activity android:name=".ui.activity.square.UserSquareActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activity.square.SquareActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.todo.TodoEditActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
+        <activity
+            android:name=".ui.activity.todo.TodoActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
+        <activity
+            android:name=".ui.activity.collection.web.CollectWebActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
         <activity
             android:name=".ui.activity.coin.RankActivity"
             android:screenOrientation="portrait" />
@@ -17,7 +34,7 @@
             android:name=".ui.activity.coin.CoinActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.activity.collection.CollectionActivity"
+            android:name=".ui.activity.collection.article.CollectArticleActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
         <activity

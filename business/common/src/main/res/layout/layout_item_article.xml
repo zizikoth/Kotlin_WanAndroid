@@ -12,6 +12,7 @@
         android:id="@+id/mSwipeLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:clickToClose="true"
         app:drag_edge="right"
         app:show_mode="lay_down">
 
@@ -19,7 +20,7 @@
             android:id="@+id/mItemDelete"
             android:layout_width="@dimen/dp100"
             android:layout_height="match_parent"
-            android:background="@color/color_shape">
+            android:background="@color/color_delete_background">
 
             <ImageView
                 android:layout_width="wrap_content"

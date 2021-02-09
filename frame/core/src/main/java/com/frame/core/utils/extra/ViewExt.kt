@@ -7,8 +7,11 @@ import android.os.Build
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import androidx.annotation.RequiresApi
 import androidx.core.view.drawToBitmap
+import androidx.core.view.forEachIndexed
 import com.blankj.utilcode.util.BarUtils
 import com.frame.core.utils.ClickHelper
 import kotlin.math.min
@@ -257,3 +260,10 @@ fun View.circle(color: Int = Color.WHITE) {
     }
 }
 
+
+fun RadioGroup.getCheckPosition(): Int {
+    this.forEachIndexed { index, view ->
+        if (view is RadioButton && view.isChecked) return index
+    }
+    return -1
+}

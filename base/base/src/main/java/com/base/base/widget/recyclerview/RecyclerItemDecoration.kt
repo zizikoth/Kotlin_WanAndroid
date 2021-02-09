@@ -3,7 +3,6 @@ package com.base.base.widget.recyclerview
 
 import android.content.Context
 import android.graphics.Canvas
-import android.graphics.Color
 import android.graphics.Rect
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
@@ -512,7 +511,7 @@ class RecyclerItemDecoration constructor(private val mBuilder: Builder) :
             return applyDimension(unit, size, mContext.resources.displayMetrics).toInt()
         }
 
-        fun defaultBuild():RecyclerItemDecoration{
+        fun defaultBuild(): RecyclerItemDecoration {
             setColorRes(R.color.color_F5F5F5)
             setHeightDp(0.5f)
             return build()

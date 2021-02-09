@@ -11,18 +11,15 @@ package com.base.base.entity.remote
  * Talk is cheap, Show me the code.
  */
 data class CoinInfo(
+    val userId:Int = 0,
     val coinCount: Int = 0,
     val rank: String = "",
     val desc: String = "",
     val reason: String = "",
-    val userName: String = ""
-)
-
-data class CoinList(
-    val over: Boolean?,
-    val datas: ArrayList<CoinInfo>) {
-    fun isEmpty() = datas.isNullOrEmpty()
-    fun hasMore() = over == false
+    val nickname:String = "",
+    val username: String = ""
+){
+    fun getName() = if(nickname.isNotEmpty()) nickname else username
 }
 
 data class RankInfo(
@@ -30,10 +27,3 @@ data class RankInfo(
     val username: String = "",
     val rank: String = ""
 )
-
-data class RankList(
-    val over: Boolean?,
-    val datas: ArrayList<RankInfo>) {
-    fun isEmpty() = datas.isNullOrEmpty()
-    fun hasMore() = over == false
-}

@@ -126,7 +126,7 @@ class HomeFragment : BaseVmFragment<HomeViewModel, FragmentHomeBinding>() {
     /**
      * 文章列表回调
      */
-    private fun onArticle(data: ArticleList) {
+    private fun onArticle(data: PageList<Article>) {
         mBinding.mRefreshLayout.finish(data.hasMore())
         if (page == 0) {
             mAdapter.setList(data.datas)

@@ -20,7 +20,7 @@ import com.module.home.data.HomeRepository
 class HomeViewModel : BaseViewModel() {
 
     val bannerLiveData = MutableLiveData<ArrayList<HomeBanner>>()
-    val articleLiveData = MutableLiveData<ArticleList>()
+    val articleLiveData = MutableLiveData<PageList<Article>>()
     var start = 0L
 
     fun getHomeData() {

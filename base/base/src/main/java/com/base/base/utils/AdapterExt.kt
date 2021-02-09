@@ -25,9 +25,23 @@ fun <T> BaseQuickAdapter<T, *>.onItemClick(onItemClick: (data: T) -> Unit) {
     }
 }
 
+fun <T> BaseQuickAdapter<T, *>.onItemLongClick(onItemLongClick: (data: T) -> Unit) {
+    this.setOnItemLongClickListener { _, _, position ->
+        onItemLongClick.invoke(this.getItem(position))
+        true
+    }
+}
+
 fun <T> BaseQuickAdapter<T, *>.onMultiItemClick(onItemClick: (multiType: Int, data: T) -> Unit) {
     this.setOnItemClickListener { _, _, position ->
         if (ClickHelper.isNotFastClick) onItemClick.invoke(this.getItemViewType(position), this.getItem(position))
+    }
+}
+
+fun <T> BaseQuickAdapter<T, *>.onMultiItemLongClick(onMultiItemLongClick: (multiType: Int, data: T) -> Unit) {
+    this.setOnItemLongClickListener { _, _, position ->
+        onMultiItemLongClick.invoke(this.getItemViewType(position), this.getItem(position))
+        true
     }
 }
 
@@ -37,9 +51,23 @@ fun <T> BaseQuickAdapter<T, *>.onItemChildClick(onItemChildClick: (viewId: Int, 
     }
 }
 
+fun <T> BaseQuickAdapter<T, *>.onItemChildLongClick(onItemChildLongClick: (viewId: Int, data: T) -> Unit) {
+    this.setOnItemChildLongClickListener { _, view, position ->
+        onItemChildLongClick.invoke(view.id, this.getItem(position))
+        true
+    }
+}
+
 fun <T> BaseQuickAdapter<T, *>.onMultiItemChildClick(onItemChildClick: (multiType: Int, viewId: Int, data: T) -> Unit) {
     this.setOnItemChildClickListener { _, view, position ->
         if (ClickHelper.isNotFastClick) onItemChildClick.invoke(this.getItemViewType(position), view.id, this.getItem(position))
+    }
+}
+
+fun <T> BaseQuickAdapter<T, *>.onMultiItemChildLongClick(onItemChildLongClick: (multiType: Int, viewId: Int, data: T) -> Unit) {
+    this.setOnItemChildLongClickListener { _, view, position ->
+        onItemChildLongClick.invoke(this.getItemViewType(position), view.id, this.getItem(position))
+        true
     }
 }
 

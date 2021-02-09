@@ -1,8 +1,9 @@
-package com.module.mine.ui.activity.collection
+package com.module.mine.ui.activity.collection.article
 
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.base.base.entity.remote.ArticleList
-import com.base.base.manager.BusViewModel
+import com.base.base.entity.remote.Article
+import com.base.base.entity.remote.PageList
+import com.base.base.manager.BusManager
 import com.base.base.ui.BaseVmActivity
 import com.base.base.utils.onItemChildClick
 import com.base.base.utils.showEmpty
@@ -13,8 +14,8 @@ import com.frame.core.utils.extra.finish
 import com.frame.core.utils.extra.observe
 import com.frame.core.utils.extra.onRefreshAndLoadMore
 import com.module.mine.R
-import com.module.mine.dialog.DialogHelper
-import com.module.mine.viewmodel.CollectionViewModel
+import com.business.common.ui.dialog.DialogHelper
+import com.module.mine.viewmodel.CollectArticleViewModel
 
 /**
  * title:我的收藏
@@ -26,7 +27,7 @@ import com.module.mine.viewmodel.CollectionViewModel
  *
  * Talk is cheap, Show me the code.
  */
-class CollectionActivity : BaseVmActivity<CollectionViewModel, LayoutTitleRefreshListBinding>() {
+class CollectArticleActivity : BaseVmActivity<CollectArticleViewModel, LayoutTitleRefreshListBinding>() {
 
     private var page = 0
     private val mAdapter by lazy { ArticleAdapter().apply { enableSwipe = true } }
@@ -57,7 +58,7 @@ class CollectionActivity : BaseVmActivity<CollectionViewModel, LayoutTitleRefres
         }
         // 添加站外收藏
         mBinding.mTitleView.setOnRightClickListener {
-            DialogHelper.showCollection(mContext) { dialog, title, author, link ->
+            DialogHelper.showArticleCollect(mContext) { dialog, title, author, link ->
                 mViewModel.collect(dialog, title, author, link)
             }
         }
@@ -70,7 +71,12 @@ class CollectionActivity : BaseVmActivity<CollectionViewModel, LayoutTitleRefres
         })
 
         // 响应收藏数据变化
-        BusViewModel.get().collectionLiveData.observeInActivity(this) { mBinding.mRefreshLayout.autoRefresh() }
+        BusManager.get().collectionLiveData.observeInActivity(this) {
+            // 如果不是从列表页面取消收藏的
+            if (it != BusManager.COLLECTION_FROM_LIST) {
+                mBinding.mRefreshLayout.autoRefresh()
+            }
+        }
 
         observe(mViewModel.collectionListLiveData, this::onCollectionList)
         observe(mViewModel.unCollectLiveData, this::onUnCollection)
@@ -85,7 +91,7 @@ class CollectionActivity : BaseVmActivity<CollectionViewModel, LayoutTitleRefres
      * 获取收藏列表
      * @param data ArticleList
      */
-    private fun onCollectionList(data: ArticleList) {
+    private fun onCollectionList(data: PageList<Article>) {
         mBinding.mRefreshLayout.finish(data.hasMore())
         if (page == 0) {
             mAdapter.setList(data.datas)
@@ -105,7 +111,7 @@ class CollectionActivity : BaseVmActivity<CollectionViewModel, LayoutTitleRefres
         // 如果当前页面没有数据了 那么重新刷新列表 可能只加载一页全部删除 第二页的数据没有加载
         if (mAdapter.data.isEmpty()) mBinding.mRefreshLayout.autoRefresh()
         // 通知收藏数据变化
-        BusViewModel.get().collectionLiveData.postValue("")
+        BusManager.get().collectionLiveData.postValue(BusManager.COLLECTION_FROM_LIST)
     }
 
     /**

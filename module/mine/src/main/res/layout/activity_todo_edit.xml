@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.activity.todo.TodoEditActivity">
+
+        <com.base.base.widget.titleview.TitleView
+            android:id="@+id/mTitleView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title_title_text="清单列表" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp20"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_marginRight="@dimen/dp20"
+            android:drawableLeft="@drawable/system_title_tag"
+            android:drawablePadding="@dimen/dp10"
+            android:text="标题" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/mEtTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp20"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_marginRight="@dimen/dp20"
+            android:background="@null"
+            android:gravity="top"
+            android:hint="请输入清单标题"
+            android:lines="2"
+            android:maxLines="2"
+            android:padding="@dimen/dp10"
+            android:textColor="@color/textDark"
+            android:textColorHint="@color/textDark"
+            android:textSize="@dimen/sp14"
+            app:round_color="@{@color/color_F5F5F5}"
+            app:round_radius="@{8}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp20"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_marginRight="@dimen/dp20"
+            android:drawableLeft="@drawable/system_title_tag"
+            android:drawablePadding="@dimen/dp10"
+            android:text="内容"
+            android:textColor="@color/textDark" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/mEtContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp20"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_marginRight="@dimen/dp20"
+            android:background="@null"
+            android:gravity="top"
+            android:hint="请输入清单内容"
+            android:lines="4"
+            android:maxLines="4"
+            android:padding="@dimen/dp10"
+            android:textColor="@color/textDark"
+            android:textColorHint="@color/textDark"
+            android:textSize="@dimen/sp14"
+            app:round_color="@{@color/color_F5F5F5}"
+            app:round_radius="@{8}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp20"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_marginRight="@dimen/dp20"
+            android:drawableLeft="@drawable/system_title_tag"
+            android:drawablePadding="@dimen/dp10"
+            android:text="类型"
+            android:textColor="@color/textDark" />
+
+        <TextView
+            android:id="@+id/mTvType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp20"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_marginRight="@dimen/dp20"
+            android:drawableRight="@drawable/ic_arrows_gray_right"
+            android:padding="@dimen/dp10"
+            android:text="请选择清单类型"
+            android:textColor="@color/textDark"
+            android:textSize="@dimen/sp14"
+            app:round_color="@{@color/color_F5F5F5}"
+            app:round_radius="@{8}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp20"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_marginRight="@dimen/dp20"
+            android:drawableLeft="@drawable/system_title_tag"
+            android:drawablePadding="@dimen/dp10"
+            android:text="级别"
+            android:textColor="@color/textDark" />
+
+        <TextView
+            android:id="@+id/mTvPriority"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp20"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_marginRight="@dimen/dp20"
+            android:drawableRight="@drawable/ic_arrows_gray_right"
+            android:padding="@dimen/dp10"
+            android:text="请选择清单级别"
+            android:textColor="@color/textDark"
+            android:textSize="@dimen/sp14"
+            app:round_color="@{@color/color_F5F5F5}"
+            app:round_radius="@{8}" />
+
+        <TextView
+            android:id="@+id/mTipStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp20"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_marginRight="@dimen/dp20"
+            android:drawableLeft="@drawable/system_title_tag"
+            android:drawablePadding="@dimen/dp10"
+            android:text="状态"
+            android:textColor="@color/textDark" />
+
+        <TextView
+            android:id="@+id/mTvStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp20"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_marginRight="@dimen/dp20"
+            android:drawableRight="@drawable/ic_arrows_gray_right"
+            android:padding="@dimen/dp10"
+            android:text="请选择清单状态"
+            android:textColor="@color/textDark"
+            android:textSize="@dimen/sp14"
+            app:round_color="@{@color/color_F5F5F5}"
+            app:round_radius="@{8}" />
+
+        <TextView
+            android:id="@+id/mTvSave"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp45"
+            android:layout_marginLeft="@dimen/dp20"
+            android:layout_marginTop="@dimen/dp40"
+            android:layout_marginRight="@dimen/dp20"
+            android:gravity="center"
+            android:text="保存"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp16"
+            app:round_color="@{@color/color_main}"
+            app:round_radius="@{8}"
+            tools:background="@color/color_main" />
+
+
+    </LinearLayout>
+</layout>

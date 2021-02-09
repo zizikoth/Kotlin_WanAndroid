@@ -4,17 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
-        <com.base.base.widget.titleview.TitleView
-            android:id="@+id/mTitleView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:title_title_text="添加收藏" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/mEtTitle"
@@ -30,7 +23,8 @@
             android:padding="@dimen/dp10"
             android:textColor="@color/textDark"
             android:textSize="@dimen/sp14"
-            app:layout_constraintTop_toBottomOf="@id/mTitleView" />
+            app:round_color="@{@color/color_F5F5F5}"
+            app:round_radius="@{8}" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/mEtLink"
@@ -46,7 +40,8 @@
             android:padding="@dimen/dp10"
             android:textColor="@color/textDark"
             android:textSize="@dimen/sp14"
-            app:layout_constraintTop_toBottomOf="@id/mEtTitle" />
+            app:round_color="@{@color/color_F5F5F5}"
+            app:round_radius="@{8}" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/mEtAuthor"
@@ -64,7 +59,8 @@
             android:padding="@dimen/dp10"
             android:textColor="@color/textDark"
             android:textSize="@dimen/sp14"
-            app:layout_constraintTop_toBottomOf="@id/mEtLink" />
+            app:round_color="@{@color/color_F5F5F5}"
+            app:round_radius="@{8}" />
 
         <TextView
             android:id="@+id/mTvCollect"
@@ -75,8 +71,9 @@
             android:text="收藏"
             android:textColor="@color/white"
             android:textSize="@dimen/sp16"
-            app:layout_constraintTop_toBottomOf="@id/mEtAuthor"
-            tools:background="@color/color_shape" />
+            app:round_color="@{@color/color_main}"
+            app:round_radius="@{8}"
+            tools:background="@color/color_main" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </layout>

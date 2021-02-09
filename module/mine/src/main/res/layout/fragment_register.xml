@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
     <LinearLayout
@@ -24,7 +25,7 @@
                 android:layout_height="@dimen/dp50"
                 android:background="@null"
                 android:gravity="center"
-                android:hint="Your Account"
+                android:hint="请输入账号"
                 android:inputType="text"
                 android:lines="1"
                 android:textColor="@color/color_666666"
@@ -44,7 +45,7 @@
                 android:layout_height="@dimen/dp50"
                 android:background="@null"
                 android:gravity="center"
-                android:hint="Your Password"
+                android:hint="请输入密码"
                 android:inputType="textPassword"
                 android:lines="1"
                 android:textColor="@color/color_666666"
@@ -64,7 +65,7 @@
                 android:layout_height="@dimen/dp50"
                 android:background="@null"
                 android:gravity="center"
-                android:hint="Verify Password"
+                android:hint="请验证密码"
                 android:inputType="textPassword"
                 android:lines="1"
                 android:textColor="@color/color_666666"
@@ -77,15 +78,16 @@
         <TextView
             android:id="@+id/mTvSignUp"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp50"
+            android:layout_height="@dimen/dp45"
             android:layout_marginTop="@dimen/dp25"
             android:layout_marginBottom="@dimen/dp45"
             android:background="@color/color_sign_up"
             android:gravity="center"
-            android:text="SIGN UP"
+            android:text="注册"
             android:textColor="@color/white"
-            android:textSize="@dimen/sp18"
-            android:textStyle="bold" />
+            android:textSize="@dimen/sp16"
+            app:round_color="@{@color/color_sign_up}"
+            app:round_radius="@{23}" />
 
     </LinearLayout>
 </layout>

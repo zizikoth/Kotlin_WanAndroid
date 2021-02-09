@@ -1,7 +1,8 @@
 package com.module.home.ui.activity.article
 
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.base.base.entity.remote.ArticleList
+import com.base.base.entity.remote.Article
+import com.base.base.entity.remote.PageList
 import com.base.base.ui.BaseVmActivity
 import com.base.base.utils.onItemChildClick
 import com.base.base.utils.showEmpty
@@ -63,7 +64,7 @@ class NewArticleActivity : BaseVmActivity<NewArticleViewModel, LayoutTitleRefres
         mViewModel.getNewArticle(page)
     }
 
-    private fun onArticles(data: ArticleList) {
+    private fun onArticles(data: PageList<Article>) {
         mBinding.mRefreshLayout.finish(data.hasMore())
         if (page == 0) {
             mAdapter.setList(data.datas)

@@ -1,7 +1,7 @@
 package com.module.mine.ui.fragment.mine
 
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.base.base.manager.BusViewModel
+import com.base.base.manager.BusManager
 import com.base.base.manager.RouterManager
 import com.base.base.manager.UserManager
 import com.base.base.ui.BaseVmFragment
@@ -17,9 +17,12 @@ import com.module.mine.R
 import com.module.mine.databinding.FragmentMineBinding
 import com.module.mine.ui.activity.coin.CoinActivity
 import com.module.mine.ui.activity.coin.RankActivity
-import com.module.mine.ui.activity.collection.CollectionActivity
+import com.module.mine.ui.activity.collection.article.CollectArticleActivity
+import com.module.mine.ui.activity.collection.web.CollectWebActivity
 import com.module.mine.ui.activity.login.LoginActivity
 import com.module.mine.ui.activity.setting.SettingActivity
+import com.module.mine.ui.activity.square.SquareActivity
+import com.module.mine.ui.activity.todo.TodoActivity
 import com.module.mine.viewmodel.MineViewModel
 
 /**
@@ -45,11 +48,6 @@ class MineFragment : BaseVmFragment<MineViewModel, FragmentMineBinding>() {
         mBinding.run {
             root.paddingStatusBar()
             mTvAvatar.text = UserManager.getUser()?.nickname
-            // 缓存文件
-            (FileUtils.getLength(mContext.externalCacheDir) + FileUtils.getLength(mContext.cacheDir)).run {
-                if (this > 0) mItemCache.setItemExtraText(ConvertUtils.byte2FitMemorySize(this))
-            }
-
         }
     }
 
@@ -58,33 +56,30 @@ class MineFragment : BaseVmFragment<MineViewModel, FragmentMineBinding>() {
             // 设置
             mIvSetting.onClick { startActivity<SettingActivity>() }
             // 我的收藏
-            mItemCollect.onClick { checkLogin { startActivity<CollectionActivity>() } }
+            mItemCollect.onClick { checkLogin { startActivity<CollectArticleActivity>() } }
             // 我的积分
             mItemCoin.onClick { checkLogin { startActivity<CoinActivity>() } }
             // 我的排名
             mItemRank.onClick { checkLogin { startActivity<RankActivity>() } }
-            // TODO列表
-            mItemTodo.onClick { checkLogin { } }
+            // 网址收藏
+            mItemWeb.onClick { checkLogin { startActivity<CollectWebActivity>() } }
+            // 未完清单
+            mItemTodo.onClick { checkLogin { startActivity<TodoActivity>() } }
             // 我的分享
             mItemShare.onClick { }
-            // 清理缓存
-            mItemCache.onClick {
-                CleanUtils.cleanInternalCache()
-                CleanUtils.cleanExternalCache()
-                mItemCache.setItemExtraText("")
-                toast("缓存清理完毕")
-            }
+            // 分享广场
+            mItemSquare.onClick { startActivity<SquareActivity>() }
             // 关于我们
-            mItemAbout.onClick { checkLogin { } }
+            mItemAbout.onClick {  }
         }
         // 登陆后响应
-        BusViewModel.get().loginLiveData.observeInFragment(this) {
+        BusManager.get().loginLiveData.observeInFragment(this) {
             mBinding.mTvAvatar.text = it.nickname
             mViewModel.getUserCollect()
             mViewModel.getUserCoin()
         }
         // 收藏后响应
-        BusViewModel.get().collectionLiveData.observeInFragment(this) {
+        BusManager.get().collectionLiveData.observeInFragment(this) {
             mViewModel.getUserCollect()
         }
         // 回调用户信息 收藏

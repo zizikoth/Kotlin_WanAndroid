@@ -25,7 +25,6 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
     /*** 初始化 ***/
     override fun initialize() {
         mBinding.run {
-            mTvSignUp.round(color(R.color.color_sign_up), 25.dp2px)
 
             // 注册
             mTvSignUp.onClick {

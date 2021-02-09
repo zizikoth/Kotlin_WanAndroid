@@ -5,10 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import com.blankj.utilcode.util.LogUtils
 
 /**
@@ -23,7 +23,7 @@ import com.blankj.utilcode.util.LogUtils
  */
 abstract class CoreFragment<BD : ViewDataBinding> : Fragment() {
 
-    protected val mContext: FragmentActivity by lazy { requireActivity() }
+    protected val mContext: AppCompatActivity by lazy { requireActivity() as AppCompatActivity }
 
     protected lateinit var mBinding: BD
 

@@ -35,6 +35,7 @@ class ArticleAdapter : BaseProviderMultiAdapter<Article>() {
         addItemProvider(NewArticleProvider())
         addItemProvider(NormalArticleProvider())
         addChildClickViewIds(R.id.mItemDelete, R.id.mItemGrid, R.id.mItemTitle, R.id.mItemArticle)
+        addChildLongClickViewIds(R.id.mItemArticle)
     }
 
     var onNewArticleClick: (data: Article) -> Unit = {}
@@ -61,7 +62,7 @@ private class TitleProvider(
         helper.run {
             setText(R.id.mTvTitle, item.title)
             setVisible(R.id.mTvMore, item.hasMore)
-            getView<TextView>(R.id.mTvMore).round(color(R.color.color_shape), 12.5f.dp2px)
+            getView<TextView>(R.id.mTvMore).round(color(R.color.color_main), 12.5f.dp2px)
         }
     }
 }

@@ -23,6 +23,8 @@ object DataManager {
 
     private const val USER = "User"
     private const val SEARCH_WORD = "SearchWord"
+    private const val WEB_FIRST_TIP = "WebFirstTip"
+    private const val SQUARE_FIRST_TIP = "SquareFirstTip"
 
     // ------------------------------- 用户 -------------------------------//
     fun getUser(): User? {
@@ -57,5 +59,21 @@ object DataManager {
         SP.put(SEARCH_WORD, "")
     }
 
+    // ------------------------------- 网页收藏第一次提示 -------------------------------//
+    fun getWebFirstTip(): Boolean {
+        return SP.getBoolean(WEB_FIRST_TIP, true)
+    }
 
+    fun setWebFirstTip() {
+        SP.put(WEB_FIRST_TIP, false)
+    }
+
+    // ------------------------------- 广场列表第一次提示 -------------------------------//
+    fun getSquareFirstTip(): Boolean {
+        return SP.getBoolean(SQUARE_FIRST_TIP, true)
+    }
+
+    fun setSquareFirstTip() {
+        SP.put(SQUARE_FIRST_TIP, false)
+    }
 }

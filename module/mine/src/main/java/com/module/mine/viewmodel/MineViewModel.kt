@@ -3,7 +3,8 @@ package com.module.mine.viewmodel
 import androidx.lifecycle.MutableLiveData
 import com.base.base.entity.remote.CoinInfo
 import com.base.base.ui.mvvm.BaseViewModel
-import com.module.mine.data.MineRepository
+import com.module.mine.data.CoinRepository
+import com.module.mine.data.CollectRepository
 
 /**
  * title:
@@ -22,14 +23,14 @@ class MineViewModel : BaseViewModel() {
 
     fun getUserCollect() {
         requestNoStatus(
-            request = { MineRepository.getCollectionsAsync(it, 0).await() },
+            request = { CollectRepository.collectListAsync(it, 0).await() },
             onSuccess = { collectLiveData.postValue(it.total) }
         )
     }
 
     fun getUserCoin() {
         requestNoStatus(
-            request = { MineRepository.getCoinAsync(it).await() },
+            request = { CoinRepository.getCoinAsync(it).await() },
             onSuccess = { coinLiveData.postValue(it) }
         )
     }

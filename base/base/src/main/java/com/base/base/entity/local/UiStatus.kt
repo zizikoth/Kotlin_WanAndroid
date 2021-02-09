@@ -1,4 +1,4 @@
-package com.base.base.entity.uistatus
+package com.base.base.entity.local
 
 /**
  * 展示页面状态

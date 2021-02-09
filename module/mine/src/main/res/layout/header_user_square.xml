@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.base.base.utils.IconHelper" />
+
+        <variable
+            name="info"
+            type="com.base.base.entity.remote.CoinInfo" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/mIvAvatar"
+            android:layout_width="@dimen/dp80"
+            android:layout_height="@dimen/dp80"
+            android:layout_marginTop="@dimen/dp15"
+            app:circle="@{true}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:url="@{IconHelper.randomAvatar(info.userId)}"
+            tools:src="@drawable/ic_lol" />
+
+        <TextView
+            android:id="@+id/mTvName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp15"
+            android:gravity="center"
+            android:text="@{info.name}"
+            android:textColor="@color/textDark"
+            android:textSize="@dimen/sp16"
+            app:layout_constraintTop_toBottomOf="@id/mIvAvatar"
+            tools:text="张三" />
+
+        <TextView
+            android:id="@+id/mTvCoin"
+            android:layout_width="@dimen/dp150"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:gravity="center"
+            android:text='@{"积分："+info.coinCount}'
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/mTvRank"
+            app:layout_constraintTop_toBottomOf="@id/mTvName"
+            tools:text="积分：10000000" />
+
+        <TextView
+            android:id="@+id/mTvRank"
+            android:layout_width="@dimen/dp150"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:gravity="center"
+            android:text='@{"排名："+info.rank}'
+            app:layout_constraintLeft_toRightOf="@id/mTvCoin"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mTvName"
+            tools:text="排名：100" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp5"
+            android:layout_marginTop="@dimen/dp20"
+            android:background="@color/color_F5F5F5"
+            app:layout_constraintTop_toBottomOf="@id/mTvRank" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

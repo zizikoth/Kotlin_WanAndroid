@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.base.base.entity.local.TodoStatus" />
+
+        <import type="com.base.base.entity.local.TodoType" />
+
+        <import type="com.base.base.entity.local.TodoPriority" />
+
+        <import type="com.base.base.entity.local.TodoOrderBy" />
+
+        <variable
+            name="filter"
+            type="com.base.base.entity.local.TodoFilter" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/dp30">
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/system_title_tag"
+                    android:drawablePadding="@dimen/dp10"
+                    android:text="完成状态"
+                    android:textColor="@color/textDark"
+                    android:textSize="@dimen/sp16"
+                    android:textStyle="bold" />
+
+                <RadioGroup
+                    android:id="@+id/mGroupStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:layout_width="100dp"
+                        android:layout_height="@dimen/dp30"
+                        android:checked="@{filter.state == TodoStatus.ALL}"
+                        android:text="全部"
+                        android:textSize="@dimen/sp14"
+                        app:buttonTint="@color/color_main" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:layout_width="100dp"
+                        android:layout_height="@dimen/dp30"
+                        android:checked="@{filter.state == TodoStatus.UN_COMPLETE}"
+                        android:text="未完成"
+                        android:textSize="@dimen/sp14"
+                        app:buttonTint="@color/color_main" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:layout_width="100dp"
+                        android:layout_height="@dimen/dp30"
+                        android:checked="@{filter.state == TodoStatus.COMPLETE}"
+                        android:text="已完成"
+                        android:textSize="@dimen/sp14"
+                        app:buttonTint="@color/color_main" />
+
+                </RadioGroup>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:layout_marginBottom="@dimen/dp10"
+                    android:drawableLeft="@drawable/system_title_tag"
+                    android:drawablePadding="@dimen/dp10"
+                    android:text="清单类型"
+                    android:textColor="@color/textDark"
+                    android:textSize="@dimen/sp16"
+                    android:textStyle="bold" />
+
+                <RadioGroup
+                    android:id="@+id/mGroupType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:layout_width="100dp"
+                        android:layout_height="@dimen/dp30"
+                        android:checked="@{filter.type == TodoType.ALL}"
+                        android:text="全部"
+                        android:textSize="@dimen/sp14"
+                        app:buttonTint="@color/color_main" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:layout_width="100dp"
+                        android:layout_height="@dimen/dp30"
+                        android:checked="@{filter.type == TodoType.WORK}"
+                        android:text="工作"
+                        android:textSize="@dimen/sp14"
+                        app:buttonTint="@color/color_main" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:layout_width="100dp"
+                        android:layout_height="@dimen/dp30"
+                        android:checked="@{filter.type == TodoType.LIFE}"
+                        android:text="生活"
+                        android:textSize="@dimen/sp14"
+                        app:buttonTint="@color/color_main" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:layout_width="100dp"
+                        android:layout_height="@dimen/dp30"
+                        android:layout_marginLeft="-300dp"
+                        android:layout_marginTop="@dimen/dp30"
+                        android:checked="@{filter.type == TodoType.MINE}"
+                        android:text="个人"
+                        android:textSize="@dimen/sp14"
+                        app:buttonTint="@color/color_main" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:layout_width="100dp"
+                        android:layout_height="@dimen/dp30"
+                        android:layout_marginTop="@dimen/dp30"
+                        android:checked="@{filter.type == TodoType.OTHER}"
+                        android:text="其他"
+                        android:textSize="@dimen/sp14"
+                        app:buttonTint="@color/color_main" />
+
+                </RadioGroup>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:layout_marginBottom="@dimen/dp10"
+                    android:drawableLeft="@drawable/system_title_tag"
+                    android:drawablePadding="@dimen/dp10"
+                    android:text="优先级别"
+                    android:textColor="@color/textDark"
+                    android:textSize="@dimen/sp16"
+                    android:textStyle="bold" />
+
+                <RadioGroup
+                    android:id="@+id/mGroupPriority"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:layout_width="100dp"
+                        android:layout_height="@dimen/dp30"
+                        android:checked="@{filter.priority == TodoPriority.ALL}"
+                        android:text="全部"
+                        android:textSize="@dimen/sp14"
+                        app:buttonTint="@color/color_main" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:layout_width="100dp"
+                        android:layout_height="@dimen/dp30"
+                        android:checked="@{filter.priority == TodoPriority.IMMEDIATE}"
+                        android:text="立即马上"
+                        android:textSize="@dimen/sp14"
+                        app:buttonTint="@color/color_main" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:layout_width="100dp"
+                        android:layout_height="@dimen/dp30"
+                        android:checked="@{filter.priority == TodoPriority.HIGH}"
+                        android:text="比较重要"
+                        android:textSize="@dimen/sp14"
+                        app:buttonTint="@color/color_main" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:layout_width="100dp"
+                        android:layout_height="@dimen/dp30"
+                        android:layout_marginLeft="-300dp"
+                        android:layout_marginTop="@dimen/dp30"
+                        android:checked="@{filter.priority == TodoPriority.NORMAL}"
+                        android:text="一般般吧"
+                        android:textSize="@dimen/sp14"
+                        app:buttonTint="@color/color_main" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:layout_width="100dp"
+                        android:layout_height="@dimen/dp30"
+                        android:layout_marginTop="@dimen/dp30"
+                        android:checked="@{filter.priority == TodoPriority.LOW}"
+                        android:text="无所谓的"
+                        android:textSize="@dimen/sp14"
+                        app:buttonTint="@color/color_main" />
+
+                </RadioGroup>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:layout_marginBottom="@dimen/dp10"
+                    android:drawableLeft="@drawable/system_title_tag"
+                    android:drawablePadding="@dimen/dp10"
+                    android:text="时间排序"
+                    android:textColor="@color/textDark"
+                    android:textSize="@dimen/sp16"
+                    android:textStyle="bold" />
+
+                <RadioGroup
+                    android:id="@+id/mGroupOrder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:layout_width="150dp"
+                        android:layout_height="@dimen/dp30"
+                        android:checked="@{filter.orderBy == TodoOrderBy.CREATE_DATE_UP}"
+                        android:text="创建时间升序"
+                        android:textSize="@dimen/sp14"
+                        app:buttonTint="@color/color_main" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:layout_width="150dp"
+                        android:layout_height="@dimen/dp30"
+                        android:checked="@{filter.orderBy == TodoOrderBy.CREATE_DATE_DOWN}"
+                        android:text="创建时间降序"
+                        android:textSize="@dimen/sp14"
+                        app:buttonTint="@color/color_main" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:layout_width="150dp"
+                        android:layout_height="@dimen/dp30"
+                        android:layout_marginLeft="-300dp"
+                        android:layout_marginTop="@dimen/dp30"
+                        android:checked="@{filter.orderBy == TodoOrderBy.COMPLETE_DATE_UP}"
+                        android:text="完成时间升序"
+                        android:textSize="@dimen/sp14"
+                        app:buttonTint="@color/color_main" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:layout_width="150dp"
+                        android:layout_height="@dimen/dp30"
+                        android:layout_marginTop="@dimen/dp30"
+                        android:checked="@{filter.orderBy == TodoOrderBy.COMPLETE_DATE_DOWN}"
+                        android:text="完成时间降序"
+                        android:textSize="@dimen/sp14"
+                        app:buttonTint="@color/color_main" />
+
+
+                </RadioGroup>
+
+                <TextView
+                    android:id="@+id/mTvPositive"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp45"
+                    android:layout_marginTop="@dimen/dp15"
+                    android:gravity="center"
+                    android:text="确定"
+                    app:round_color="@{@color/color_main}"
+                    app:round_radius="@{8}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sp16"
+                    tools:background="@color/color_main" />
+
+                <TextView
+                    android:id="@+id/mTvNegative"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp45"
+                    android:layout_marginTop="@dimen/dp15"
+                    android:gravity="center"
+                    android:text="取消"
+                    app:round_color="@{@color/color_BBBBBB}"
+                    app:round_radius="@{8}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sp16"
+                    tools:background="@color/color_BBBBBB" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>

@@ -38,6 +38,7 @@ fun EditText.editable(enable: Boolean) {
     this.isEnabled = enable
     this.isFocusable = enable
     this.isFocusableInTouchMode = enable
+    if (enable) this.setSelection(this.text.length)
     if (enable) requestFocus()
 }
 

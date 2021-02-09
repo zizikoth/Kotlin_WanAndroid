@@ -2,7 +2,8 @@ package com.module.system.ui.activity
 
 import android.content.Context
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.base.base.entity.remote.ArticleList
+import com.base.base.entity.remote.Article
+import com.base.base.entity.remote.PageList
 import com.base.base.ui.BaseVmActivity
 import com.base.base.utils.onItemChildClick
 import com.base.base.utils.showEmpty
@@ -76,7 +77,7 @@ class SystemArticleActivity : BaseVmActivity<SystemViewModel, ActivitySystemArti
         mViewModel.getSystemArticle(page, cid)
     }
 
-    private fun onSystemArticles(data: ArticleList) {
+    private fun onSystemArticles(data: PageList<Article>) {
         mBinding.mRefreshLayout.finish(data.hasMore())
         LogUtils.iTag("data", data.datas)
         if (page == 0) {

@@ -150,5 +150,70 @@ object ApiUrl {
          * 取消收藏 - 文章页面
          */
         const val UnCollectInArticle = "lg/uncollect_originId/%d/json"
+
+        /**
+         * 收藏网址列表
+         */
+        const val CollectWebList = "lg/collect/usertools/json"
+
+        /**
+         * 收藏网址添加
+         */
+        const val CollectWebAdd = "lg/collect/addtool/json"
+
+        /**
+         * 收藏网址修改
+         */
+        const val CollectWebUpdate = "lg/collect/updatetool/json"
+
+        /**
+         * 收藏网址删除
+         */
+        const val CollectWebDelete = "lg/collect/deletetool/json"
+    }
+
+    object Todo {
+        /**
+         * 清单列表
+         */
+        const val TodoList = "lg/todo/v2/list/%d/json"
+
+        /**
+         * 新增清单
+         */
+        const val TodoAdd = "lg/todo/add/json"
+
+        /**
+         * 删除清单
+         */
+        const val TodoDelete = "lg/todo/delete/%d/json"
+
+        /**
+         * 更新清单
+         */
+        const val TodoUpdate = "lg/todo/update/%d/json"
+
+        /**
+         * 更新清单状态
+         */
+        const val TodoUpdateStatus = "lg/todo/done/%d/json"
+    }
+
+    object Square {
+        /**
+         * 广场列表
+         */
+        const val SquareList = "user_article/list/%d/json"
+
+        /**
+         * 用户广场分享列表
+         * %d 用户id
+         * %d 页码
+         */
+        const val SquareUserShareList = "user/%d/share_articles/%d/json"
+    }
+
+    object Share {
+
     }
 }

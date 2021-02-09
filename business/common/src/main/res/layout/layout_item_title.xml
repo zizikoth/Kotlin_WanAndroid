@@ -28,6 +28,6 @@
         android:paddingRight="@dimen/dp10"
         android:text="更多"
         android:textColor="@color/white"
-        tools:background="@color/color_shape" />
+        tools:background="@color/color_main" />
 
 </FrameLayout>

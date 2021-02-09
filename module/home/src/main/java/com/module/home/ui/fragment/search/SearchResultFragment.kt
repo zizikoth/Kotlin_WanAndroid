@@ -1,7 +1,8 @@
 package com.module.home.ui.fragment.search
 
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.base.base.entity.remote.ArticleList
+import com.base.base.entity.remote.Article
+import com.base.base.entity.remote.PageList
 import com.base.base.ui.BaseVmFragment
 import com.base.base.utils.onItemChildClick
 import com.base.base.utils.showEmpty
@@ -80,7 +81,7 @@ class SearchResultFragment : BaseVmFragment<SearchViewModel, FragmentSearchResul
     /**
      * 搜索文章回调
      */
-    private fun onArticle(data: ArticleList) {
+    private fun onArticle(data: PageList<Article>) {
         mBinding.mRefreshLayout.finish(data.hasMore())
         if (page == 0) {
             mAdapter.setList(data.datas)

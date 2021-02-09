@@ -159,15 +159,15 @@
                         app:item_main_text="我的分享"
                         app:item_main_textBold="true" />
 
-
                     <com.base.base.widget.itemview.ItemView
-                        android:id="@+id/mItemCache"
+                        android:id="@+id/mItemSquare"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:item_divider_shown="true"
                         app:item_extra_drawable="@drawable/ic_arrows_gray_right"
-                        app:item_main_text="清理缓存"
+                        app:item_main_text="分享广场"
                         app:item_main_textBold="true" />
+
 
                     <com.base.base.widget.itemview.ItemView
                         android:id="@+id/mItemAbout"

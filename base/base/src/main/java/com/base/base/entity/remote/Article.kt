@@ -10,13 +10,13 @@ package com.base.base.entity.remote
  *
  * Talk is cheap, Show me the code.
  */
-data class ArticleList(
+data class PageList<T>(
     val over: Boolean?,
     val total: Int,
-    val datas: ArrayList<Article>
+    val datas: ArrayList<T>
 ) {
     fun isEmpty() = datas.isNullOrEmpty()
-    fun hasMore() = over == false
+    fun hasMore() = false == over
 }
 
 const val HOME_TYPE_SYSTEM_GRID = 0

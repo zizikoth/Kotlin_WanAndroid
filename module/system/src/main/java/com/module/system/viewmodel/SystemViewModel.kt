@@ -1,7 +1,8 @@
 package com.module.system.viewmodel
 
 import androidx.lifecycle.MutableLiveData
-import com.base.base.entity.remote.ArticleList
+import com.base.base.entity.remote.Article
+import com.base.base.entity.remote.PageList
 import com.base.base.entity.remote.SystemTreeItem
 import com.base.base.entity.remote.TYPE_SYSTEM_TITLE
 import com.base.base.ui.mvvm.BaseViewModel
@@ -20,7 +21,7 @@ import com.module.system.data.SystemRepository
 class SystemViewModel : BaseViewModel() {
 
     val systemLiveData = MutableLiveData<ArrayList<SystemTreeItem>>()
-    val articleLiveData = MutableLiveData<ArticleList>()
+    val articleLiveData = MutableLiveData<PageList<Article>>()
 
     fun getSystemTree() {
         request(

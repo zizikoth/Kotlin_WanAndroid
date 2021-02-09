@@ -17,8 +17,7 @@
             android:id="@+id/mTitleView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:title_marquee_enable="true"
-            app:title_right_drawable="@drawable/ic_collect" />
+            app:title_marquee_enable="true" />
 
         <FrameLayout
             android:id="@+id/mFlContainer"

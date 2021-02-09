@@ -54,9 +54,9 @@ object HomeRepository {
      * 获取最新文章
      * @return ArticleList
      */
-    suspend fun getNewArticlesAsync(scope: CoroutineScope, page: Int): Deferred<ArticleList> {
+    suspend fun getNewArticlesAsync(scope: CoroutineScope, page: Int): Deferred<PageList<Article>> {
         return RxHttp.get(ApiUrl.Home.NewArticles, page)
-            .toApiResponse<ArticleList>()
+            .toApiResponse<PageList<Article>>()
             .async(scope)
     }
 
@@ -65,9 +65,9 @@ object HomeRepository {
      * @param page Int 页码 从0开始
      * @return ArrayList<Article>
      */
-    suspend fun getArticlesAsync(scope: CoroutineScope, page: Int): Deferred<ArticleList> {
+    suspend fun getArticlesAsync(scope: CoroutineScope, page: Int): Deferred<PageList<Article>> {
         return RxHttp.get(ApiUrl.Home.Articles, page)
-            .toApiResponse<ArticleList>()
+            .toApiResponse<PageList<Article>>()
             .async(scope)
     }
 
@@ -77,10 +77,10 @@ object HomeRepository {
      * @param page Int
      * @return ArticleList
      */
-    suspend fun getArticleByWord(word: String, page: Int): ArticleList {
+    suspend fun getArticleByWord(word: String, page: Int): PageList<Article> {
         return RxHttp.postForm(ApiUrl.Home.ArticlesByWord, page)
             .add("k", word)
-            .toApiResponse<ArticleList>()
+            .toApiResponse<PageList<Article>>()
             .await()
     }
 
@@ -101,10 +101,10 @@ object HomeRepository {
      * @param word String 关键字
      * @return ArticleList
      */
-    suspend fun getBlogArticles(page: Int, cid: Int, word: String): ArticleList {
+    suspend fun getBlogArticles(page: Int, cid: Int, word: String): PageList<Article> {
         return RxHttp.get(ApiUrl.Home.BlogArticles, cid, page)
             .add("k", word)
-            .toApiResponse<ArticleList>()
+            .toApiResponse<PageList<Article>>()
             .await()
     }
 

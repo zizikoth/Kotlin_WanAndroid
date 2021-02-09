@@ -1,8 +1,9 @@
 package com.module.project.data
 
 import com.base.base.api.ApiUrl
-import com.base.base.entity.remote.ArticleList
+import com.base.base.entity.remote.Article
 import com.base.base.entity.remote.ArticleTree
+import com.base.base.entity.remote.PageList
 import rxhttp.wrapper.param.RxHttp
 import rxhttp.wrapper.param.toApiResponse
 
@@ -34,9 +35,9 @@ object ProjectRepository {
      * @param cid Int 类型id
      * @return ArticleList
      */
-    suspend fun getProjectArticles(page: Int, cid: Int): ArticleList {
+    suspend fun getProjectArticles(page: Int, cid: Int): PageList<Article> {
         return RxHttp.get(ApiUrl.Project.ProjectArticles, page, cid)
-            .toApiResponse<ArticleList>()
+            .toApiResponse<PageList<Article>>()
             .await()
     }
 }

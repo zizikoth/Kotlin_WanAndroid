@@ -16,10 +16,12 @@ import com.frame.core.livedata.UnPeekLiveData
  *
  * Talk is cheap, Show me the code.
  */
-class BusViewModel : ViewModel() {
+class BusManager : ViewModel() {
 
     companion object {
-        fun get() = ViewModelProvider((CoreApp.app as CoreApp)).get(BusViewModel::class.java)
+        const val COLLECTION_FROM_LIST = 0
+        const val COLLECTION_FROM_ARTICLE = 1
+        fun get() = ViewModelProvider((CoreApp.app as CoreApp)).get(BusManager::class.java)
     }
 
     /**
@@ -30,6 +32,11 @@ class BusViewModel : ViewModel() {
     /**
      * 收藏通知
      */
-    val collectionLiveData: UnPeekLiveData<String> by lazy { UnPeekLiveData<String>() }
+    val collectionLiveData: UnPeekLiveData<Int> by lazy { UnPeekLiveData<Int>() }
+
+    /**
+     * 清单修改
+     */
+    val todoLiveData:UnPeekLiveData<Int> by lazy { UnPeekLiveData<Int>() }
 
 }

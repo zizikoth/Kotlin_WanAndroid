@@ -1,8 +1,9 @@
 package com.module.project.viewmodel
 
 import androidx.lifecycle.MutableLiveData
-import com.base.base.entity.remote.ArticleList
+import com.base.base.entity.remote.Article
 import com.base.base.entity.remote.ArticleTree
+import com.base.base.entity.remote.PageList
 import com.base.base.ui.mvvm.BaseViewModel
 import com.module.project.data.ProjectRepository
 
@@ -19,7 +20,7 @@ import com.module.project.data.ProjectRepository
 class ProjectViewModel : BaseViewModel() {
 
     val treeLiveData = MutableLiveData<ArrayList<ArticleTree>>()
-    val articleLiveData = MutableLiveData<ArticleList>()
+    val articleLiveData = MutableLiveData<PageList<Article>>()
 
     fun getProjectTree() {
         request(

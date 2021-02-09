@@ -2,7 +2,7 @@ package com.module.mine.viewmodel
 
 import com.base.base.manager.UserManager
 import com.base.base.ui.mvvm.BaseViewModel
-import com.module.mine.data.MineRepository
+import com.module.mine.data.UserRepository
 
 /**
  * title:
@@ -18,7 +18,7 @@ class SettingViewModel : BaseViewModel() {
 
     fun loginOut(action: () -> Unit) {
         request(
-            request = { MineRepository.loginOut() },
+            request = { UserRepository.loginOut() },
             onSuccess = {
                 UserManager.loginOut()
                 action.invoke()

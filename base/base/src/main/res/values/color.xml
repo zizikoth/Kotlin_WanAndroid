@@ -1,12 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="dialog_mask">#4D000000</color>
+    <color name="color_main">#F58F98</color>
     <color name="banner_indicator_normal">#46485F</color>
     <color name="banner_indicator_select">#F58F98</color>
     <color name="tab_normal">#46485F</color>
     <color name="tab_select">#F58F98</color>
-    <color name="color_shape">#F58F98</color>
+
+    <color name="color_delete_background">#ff4365</color>
+    <color name="color_edit_background">#49A2FF</color>
+    <color name="color_status_background">#fbcead</color>
 
     <color name="color_sign_in">#F58F98</color>
     <color name="color_sign_up">#49A2FF</color>
+
+    <color name="color_label">#83AF9B</color>
+
+    <color name="color_todo_work">#11ff4365</color>
+    <color name="color_todo_life">#11f5e02b</color>
+    <color name="color_todo_mine">#1194e2ff</color>
+    <color name="color_todo_other">#11b38776</color>
+
+    <color name="color_dialog_mask">#64000000</color>
+
 </resources>

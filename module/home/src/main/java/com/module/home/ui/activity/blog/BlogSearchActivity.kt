@@ -2,7 +2,8 @@ package com.module.home.ui.activity.blog
 
 import android.content.Context
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.base.base.entity.remote.ArticleList
+import com.base.base.entity.remote.Article
+import com.base.base.entity.remote.PageList
 import com.base.base.ui.BaseVmActivity
 import com.base.base.utils.onItemChildClick
 import com.base.base.utils.showEmpty
@@ -82,7 +83,7 @@ class BlogSearchActivity : BaseVmActivity<BlogViewModel, ActivityBlogSearchBindi
     /**
      * 获取博客文章列表
      */
-    private fun onBlogArticles(data: ArticleList) {
+    private fun onBlogArticles(data: PageList<Article>) {
         mBinding.mRefreshLayout.finish(data.hasMore())
         if (page == 0) {
             mAdapter.setList(data.datas)

@@ -1,7 +1,8 @@
 package com.module.mine.ui.activity.coin
 
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.base.base.entity.remote.CoinList
+import com.base.base.entity.remote.CoinInfo
+import com.base.base.entity.remote.PageList
 import com.base.base.ui.BaseVmActivity
 import com.base.base.utils.showEmpty
 import com.base.base.widget.recyclerview.RecyclerItemDecoration
@@ -61,9 +62,9 @@ class CoinActivity : BaseVmActivity<CoinViewModel, LayoutTitleRefreshListBinding
 
     /**
      * 获取积分历史记录
-     * @param data CoinList
+     * @param data PageList<CoinInfo>
      */
-    private fun onCoin(data: CoinList) {
+    private fun onCoin(data: PageList<CoinInfo>) {
         mBinding.mRefreshLayout.finish(data.hasMore())
         if (page == 0) {
             mAdapter.setList(data.datas)

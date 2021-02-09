@@ -15,7 +15,7 @@ import rxhttp.wrapper.param.toApiResponse
  *
  * Talk is cheap, Show me the code.
  */
-object CollectRepository {
+object CommonRepository {
 
     /**
      * 收藏

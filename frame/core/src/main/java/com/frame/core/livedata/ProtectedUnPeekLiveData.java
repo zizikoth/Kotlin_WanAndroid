@@ -22,9 +22,8 @@ import java.util.Map;
  */
 public class ProtectedUnPeekLiveData<T> extends LiveData<T> {
 
-    protected boolean isAllowNullValue;
-
     private final HashMap<Integer, Boolean> observers = new HashMap<>();
+    protected boolean isAllowNullValue;
 
     public void observeInActivity(@NonNull AppCompatActivity activity, @NonNull Observer<? super T> observer) {
         LifecycleOwner owner = activity;

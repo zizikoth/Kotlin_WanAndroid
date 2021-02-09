@@ -1,7 +1,8 @@
 package com.module.system.data
 
 import com.base.base.api.ApiUrl
-import com.base.base.entity.remote.ArticleList
+import com.base.base.entity.remote.Article
+import com.base.base.entity.remote.PageList
 import com.base.base.entity.remote.SystemTree
 import rxhttp.wrapper.param.RxHttp
 import rxhttp.wrapper.param.toApiResponse
@@ -33,10 +34,10 @@ object SystemRepository {
      * @param cid Int id
      * @return ArticleList
      */
-    suspend fun getSystemArticles(page: Int, cid: Int): ArticleList {
+    suspend fun getSystemArticles(page: Int, cid: Int): PageList<Article> {
         return RxHttp.get(ApiUrl.System.SystemArticles, page)
             .add("cid", cid)
-            .toApiResponse<ArticleList>()
+            .toApiResponse<PageList<Article>>()
             .await()
     }
 

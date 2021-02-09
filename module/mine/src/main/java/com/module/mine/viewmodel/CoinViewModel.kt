@@ -1,9 +1,10 @@
 package com.module.mine.viewmodel
 
 import androidx.lifecycle.MutableLiveData
-import com.base.base.entity.remote.CoinList
+import com.base.base.entity.remote.CoinInfo
+import com.base.base.entity.remote.PageList
 import com.base.base.ui.mvvm.BaseViewModel
-import com.module.mine.data.MineRepository
+import com.module.mine.data.CoinRepository
 
 /**
  * title:
@@ -17,11 +18,11 @@ import com.module.mine.data.MineRepository
  */
 class CoinViewModel : BaseViewModel() {
 
-    val coinLiveData = MutableLiveData<CoinList>()
+    val coinLiveData = MutableLiveData<PageList<CoinInfo>>()
 
     fun getCoinList(page: Int) {
         request(
-            request = { MineRepository.getCoinHistory(page) },
+            request = { CoinRepository.getCoinHistory(page) },
             onSuccess = { coinLiveData.postValue(it) }
         )
     }

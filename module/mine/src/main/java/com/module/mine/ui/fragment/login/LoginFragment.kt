@@ -26,7 +26,6 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
         mBinding.run {
             mEtAccount.setText("Mr.Memo")
             mEtPwd.setText("zhx931024")
-            mTvSignIn.round(color(R.color.color_shape), 25.dp2px)
             // 登陆
             mTvSignIn.onClick {
                 if (mEtAccount.value.isEmpty()) {

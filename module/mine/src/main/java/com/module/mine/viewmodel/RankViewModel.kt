@@ -1,9 +1,10 @@
 package com.module.mine.viewmodel
 
 import androidx.lifecycle.MutableLiveData
-import com.base.base.entity.remote.RankList
+import com.base.base.entity.remote.PageList
+import com.base.base.entity.remote.RankInfo
 import com.base.base.ui.mvvm.BaseViewModel
-import com.module.mine.data.MineRepository
+import com.module.mine.data.CoinRepository
 
 /**
  * title:
@@ -17,11 +18,11 @@ import com.module.mine.data.MineRepository
  */
 class RankViewModel : BaseViewModel() {
 
-    val rankLiveData = MutableLiveData<RankList>()
+    val rankLiveData = MutableLiveData<PageList<RankInfo>>()
 
     fun getRank(page: Int) {
         request(
-            request = { MineRepository.getRank(page) },
+            request = { CoinRepository.getRank(page) },
             onSuccess = { rankLiveData.postValue(it) }
         )
     }

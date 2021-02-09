@@ -1,7 +1,8 @@
 package com.module.project.ui.fragment.project
 
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.base.base.entity.remote.ArticleList
+import com.base.base.entity.remote.Article
+import com.base.base.entity.remote.PageList
 import com.base.base.ui.BaseVmFragment
 import com.base.base.utils.onItemChildClick
 import com.base.base.utils.showEmpty
@@ -73,7 +74,7 @@ class ProjectItemFragment : BaseVmFragment<ProjectViewModel, FragmentProjectItem
     /**
      * 项目文章列表
      */
-    private fun onProjectArticles(data: ArticleList) {
+    private fun onProjectArticles(data: PageList<Article>) {
         mBinding.mRefreshLayout.finish(data.hasMore())
         if (page == 0) {
             mAdapter.setList(data.datas)

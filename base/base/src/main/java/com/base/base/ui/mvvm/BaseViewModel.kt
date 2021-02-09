@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.rxLifeScope
 import com.base.base.api.ApiCode
 import com.base.base.api.ExceptionHandler
-import com.base.base.entity.uistatus.UiStatus
+import com.base.base.entity.local.UiStatus
 import com.base.base.manager.RouterManager
 import com.base.base.utils.toast
 import kotlinx.coroutines.CoroutineScope

@@ -1,7 +1,8 @@
 package com.module.mine.ui.activity.coin
 
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.base.base.entity.remote.RankList
+import com.base.base.entity.remote.PageList
+import com.base.base.entity.remote.RankInfo
 import com.base.base.ui.BaseVmActivity
 import com.base.base.utils.showEmpty
 import com.base.base.widget.recyclerview.RecyclerItemDecoration
@@ -59,7 +60,7 @@ class RankActivity : BaseVmActivity<RankViewModel, LayoutTitleRefreshListBinding
         mViewModel.getRank(page)
     }
 
-    private fun onRank(data: RankList) {
+    private fun onRank(data: PageList<RankInfo>) {
         mBinding.mRefreshLayout.finish(data.hasMore())
         if (page == 0) {
             mAdapter.setList(data.datas)

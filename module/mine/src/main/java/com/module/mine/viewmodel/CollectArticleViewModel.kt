@@ -1,10 +1,11 @@
 package com.module.mine.viewmodel
 
 import androidx.lifecycle.MutableLiveData
-import com.base.base.entity.remote.ArticleList
+import com.base.base.entity.remote.Article
+import com.base.base.entity.remote.PageList
 import com.base.base.ui.mvvm.BaseViewModel
 import com.kongzue.dialog.v3.FullScreenDialog
-import com.module.mine.data.MineRepository
+import com.module.mine.data.CollectRepository
 
 /**
  * title:
@@ -16,23 +17,23 @@ import com.module.mine.data.MineRepository
  *
  * Talk is cheap, Show me the code.
  */
-class CollectionViewModel : BaseViewModel() {
+class CollectArticleViewModel : BaseViewModel() {
 
-    val collectionListLiveData = MutableLiveData<ArticleList>()
+    val collectionListLiveData = MutableLiveData<PageList<Article>>()
     val unCollectLiveData = MutableLiveData<Int>()
     val collectArticleLiveData = MutableLiveData<Any?>()
 
 
     fun getCollectionList(page: Int) {
         request(
-            request = { MineRepository.getCollectionsAsync(it, page).await() },
+            request = { CollectRepository.collectListAsync(it, page).await() },
             onSuccess = { collectionListLiveData.postValue(it) }
         )
     }
 
     fun collect(dialog: FullScreenDialog, title: String, author: String, link: String) {
         request(
-            request = { MineRepository.collectArticle(title, author, link) },
+            request = { CollectRepository.collectArticle(title, author, link) },
             onSuccess = {
                 dialog.doDismiss()
                 collectArticleLiveData.postValue(null)
@@ -43,7 +44,7 @@ class CollectionViewModel : BaseViewModel() {
 
     fun unCollect(id: Int, originId: Int) {
         request(
-            request = { MineRepository.unCollectInList(id, originId) },
+            request = { CollectRepository.unCollectInList(id, originId) },
             onSuccess = { unCollectLiveData.postValue(id) },
             showLoading = true
         )

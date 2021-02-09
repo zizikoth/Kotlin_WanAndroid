@@ -37,14 +37,17 @@ object IconHelper {
         "https://pic1.zhimg.com/v2-0ca985a5215ee8e2d99e9b8e06670269_r.jpg",
         "https://pic1.zhimg.com/v2-4f2d381edba21945bb2be41c267f24cf_r.jpg",
         "https://pic2.zhimg.com/v2-2000225810225791d517eae32276026d_r.jpg",
+        "https://pic1.zhimg.com/v2-acc063a944128af3b5ad85510c4807af_r.jpg",
         "https://pic1.zhimg.com/v2-acc063a944128af3b5ad85510c4807af_r.jpg"
     )
 
+    @JvmStatic
     fun randomIcon(id: Int): Int {
         if (id == 9527) return R.drawable.ic_lol
         return icons[abs(id) % 10]
     }
 
+    @JvmStatic
     fun randomAvatar(id: Int): String {
         return imageUrls[abs(id) % 10]
     }

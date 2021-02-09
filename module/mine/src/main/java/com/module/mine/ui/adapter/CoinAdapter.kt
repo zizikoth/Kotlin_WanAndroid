@@ -10,7 +10,7 @@ class CoinAdapter : BaseQuickAdapter<CoinInfo, BaseViewHolder>(R.layout.layout_i
 
     override fun convert(holder: BaseViewHolder, item: CoinInfo) {
         holder.run {
-            setText(R.id.mTvName, item.userName)
+            setText(R.id.mTvName, item.getName())
             setText(R.id.mTvCoin, if (item.coinCount > 0) "+${item.coinCount}" else "-${item.coinCount}")
             setText(R.id.mTvReason, item.desc)
         }

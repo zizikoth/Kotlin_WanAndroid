@@ -2,7 +2,7 @@ package com.business.common.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import com.base.base.ui.mvvm.BaseViewModel
-import com.business.common.data.CollectRepository
+import com.business.common.data.CommonRepository
 
 /**
  * title:
@@ -20,21 +20,21 @@ class CollectViewModel : BaseViewModel() {
 
     fun collect(id: Int) {
         request(
-            request = { CollectRepository.collect(id) },
+            request = { CommonRepository.collect(id) },
             onSuccess = { collectLiveData.postValue(true) }
         )
     }
 
     fun unCollectInArticle(id: Int) {
         request(
-            request = { CollectRepository.unCollectInArticle(id) },
+            request = { CommonRepository.unCollectInArticle(id) },
             onSuccess = { collectLiveData.postValue(false) }
         )
     }
 
     fun unCollectInList(id: Int, originId: Int) {
         request(
-            request = { CollectRepository.unCollectInList(id, originId) },
+            request = { CommonRepository.unCollectInList(id, originId) },
             onSuccess = { collectLiveData.postValue(false) }
         )
     }
