@@ -108,7 +108,7 @@ object InitManager {
                 .setEnableAutoLoadMore(false)
                 .setEnableOverScrollBounce(true)
                 .setEnableOverScrollDrag(true)
-                .setEnableLoadMoreWhenContentNotFull(false)
+                .setEnableLoadMoreWhenContentNotFull(true)
         }
         SmartRefreshLayout.setDefaultRefreshHeaderCreator { context, _ ->
             ClassicsHeader(context)

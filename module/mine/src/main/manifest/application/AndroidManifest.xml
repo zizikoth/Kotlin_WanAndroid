@@ -10,8 +10,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/iTheme">
-        <activity android:name=".ui.activity.square.UserSquareActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activity.share.MyShareActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.square.UserSquareActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.square.SquareActivity"
             android:screenOrientation="portrait" />

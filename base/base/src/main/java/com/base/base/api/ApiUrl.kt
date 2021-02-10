@@ -214,6 +214,19 @@ object ApiUrl {
     }
 
     object Share {
+        /**
+         * 个人分享文章列表
+         */
+        const val ShareList = "user/lg/private_articles/%d/json"
 
+        /**
+         * 新增分享文章
+         */
+        const val ShareAdd = "lg/user_article/add/json"
+
+        /**
+         * 删除分享文章
+         */
+        const val ShareDelete = "lg/user_article/delete/%d/json"
     }
 }

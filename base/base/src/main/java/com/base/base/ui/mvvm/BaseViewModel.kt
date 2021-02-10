@@ -8,6 +8,7 @@ import com.base.base.api.ExceptionHandler
 import com.base.base.entity.local.UiStatus
 import com.base.base.manager.RouterManager
 import com.base.base.utils.toast
+import com.blankj.utilcode.util.LogUtils
 import kotlinx.coroutines.CoroutineScope
 
 /**

@@ -16,7 +16,9 @@ import com.frame.core.utils.ClickHelper
  * Talk is cheap, Show me the code.
  */
 fun BaseQuickAdapter<*, *>.showEmpty(context: Context, isEmpty: Boolean, tip: String = "暂无数据") {
-    if (!this.hasEmptyView() && isEmpty) this.setEmptyView(EmptyView(context).setTip(tip))
+    if (!this.hasEmptyView() && isEmpty) {
+        this.setEmptyView(EmptyView(context).setTip(tip))
+    }
 }
 
 fun <T> BaseQuickAdapter<T, *>.onItemClick(onItemClick: (data: T) -> Unit) {

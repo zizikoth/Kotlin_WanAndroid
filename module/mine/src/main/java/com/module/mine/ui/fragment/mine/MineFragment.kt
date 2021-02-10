@@ -5,10 +5,6 @@ import com.base.base.manager.BusManager
 import com.base.base.manager.RouterManager
 import com.base.base.manager.UserManager
 import com.base.base.ui.BaseVmFragment
-import com.base.base.utils.toast
-import com.blankj.utilcode.util.CleanUtils
-import com.blankj.utilcode.util.ConvertUtils
-import com.blankj.utilcode.util.FileUtils
 import com.frame.core.utils.extra.observe
 import com.frame.core.utils.extra.onClick
 import com.frame.core.utils.extra.paddingStatusBar
@@ -21,6 +17,7 @@ import com.module.mine.ui.activity.collection.article.CollectArticleActivity
 import com.module.mine.ui.activity.collection.web.CollectWebActivity
 import com.module.mine.ui.activity.login.LoginActivity
 import com.module.mine.ui.activity.setting.SettingActivity
+import com.module.mine.ui.activity.share.MyShareActivity
 import com.module.mine.ui.activity.square.SquareActivity
 import com.module.mine.ui.activity.todo.TodoActivity
 import com.module.mine.viewmodel.MineViewModel
@@ -66,11 +63,11 @@ class MineFragment : BaseVmFragment<MineViewModel, FragmentMineBinding>() {
             // 未完清单
             mItemTodo.onClick { checkLogin { startActivity<TodoActivity>() } }
             // 我的分享
-            mItemShare.onClick { }
+            mItemShare.onClick { checkLogin { startActivity<MyShareActivity>() } }
             // 分享广场
             mItemSquare.onClick { startActivity<SquareActivity>() }
             // 关于我们
-            mItemAbout.onClick {  }
+            mItemAbout.onClick { }
         }
         // 登陆后响应
         BusManager.get().loginLiveData.observeInFragment(this) {

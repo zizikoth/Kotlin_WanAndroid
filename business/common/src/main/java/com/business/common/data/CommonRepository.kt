@@ -1,7 +1,6 @@
 package com.business.common.data
 
 import com.base.base.api.ApiUrl
-import rxhttp.tryAwait
 import rxhttp.wrapper.param.RxHttp
 import rxhttp.wrapper.param.toApiResponse
 
@@ -20,23 +19,23 @@ object CommonRepository {
     /**
      * 收藏
      * @param id Int
-     * @return Any?
+     * @return Any
      */
-    suspend fun collect(id: Int): Any? {
+    suspend fun collect(id: Int): Any {
         return RxHttp.postForm(ApiUrl.Collect.Collect, id)
             .toApiResponse<Any>()
-            .tryAwait()
+            .await()
     }
 
     /**
      * 取消收藏 - 文章网页
      * @param id Int
-     * @return Any?
+     * @return Any
      */
-    suspend fun unCollectInArticle(id: Int): Any? {
+    suspend fun unCollectInArticle(id: Int): Any {
         return RxHttp.postForm(ApiUrl.Collect.UnCollectInArticle, id)
             .toApiResponse<Any>()
-            .tryAwait()
+            .await()
 
     }
 
@@ -46,11 +45,11 @@ object CommonRepository {
      * @param originId Int 接口返回
      * @return Any
      */
-    suspend fun unCollectInList(id: Int, originId: Int): Any? {
+    suspend fun unCollectInList(id: Int, originId: Int): Any {
         return RxHttp.postForm(ApiUrl.Collect.UnCollectInList, id)
             .add("originId", originId)
             .toApiResponse<Any>()
-            .tryAwait()
+            .await()
     }
 
 }

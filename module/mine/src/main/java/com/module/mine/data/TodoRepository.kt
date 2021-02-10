@@ -5,7 +5,6 @@ import com.base.base.entity.local.*
 import com.base.base.entity.remote.PageList
 import com.base.base.entity.remote.TodoInfo
 import com.blankj.utilcode.util.TimeUtils
-import rxhttp.tryAwait
 import rxhttp.wrapper.param.RxHttp
 import rxhttp.wrapper.param.toApiResponse
 
@@ -45,7 +44,7 @@ object TodoRepository {
 
     /**
      * 新增一个Todo
-     * @return Any?
+     * @return Any
      */
     suspend fun todoAdd(content: TodoContent): TodoInfo {
         return RxHttp.postForm(ApiUrl.Todo.TodoAdd)
@@ -90,11 +89,11 @@ object TodoRepository {
     /**
      * 删除todo
      * @param id Int
-     * @return Any?
+     * @return Any
      */
-    suspend fun todoDelete(id: Int): Any? {
+    suspend fun todoDelete(id: Int): Any {
         return RxHttp.postForm(ApiUrl.Todo.TodoDelete, id)
             .toApiResponse<Any>()
-            .tryAwait()
+            .await()
     }
 }

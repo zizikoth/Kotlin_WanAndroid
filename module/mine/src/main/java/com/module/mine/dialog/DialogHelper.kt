@@ -193,4 +193,32 @@ object DialogHelper {
                 true
             }
     }
+
+
+    /**
+     * 网页收藏
+     */
+    fun showShareArticle(activity: AppCompatActivity, action: (dialog: FullScreenDialog, title: String, link: String) -> Unit) {
+        FullScreenDialog.show(activity, R.layout.dialog_collect_web) { dialog, rootView ->
+            val mBinding = DataBindingUtil.bind<DialogCollectWebBinding>(rootView)
+            mBinding?.run {
+                mTvCollect.text = "分享"
+                mTvCollect.onClick {
+                    val title = mEtName.value
+                    val link = mEtLink.value
+                    when {
+                        title.isEmpty() -> toast("请填写分享网页名称")
+                        link.isEmpty() -> toast("请填写分享网页链接")
+                        else -> action.invoke(dialog, title, link)
+                    }
+                }
+            }
+        }.setTitle("添加分享").setTitleTextInfo(TextInfo().apply {
+            isBold = true
+            fontColor = color(R.color.textDark)
+        }).setCancelButton("取消") { dialog, _ ->
+            dialog.doDismiss()
+            true
+        }
+    }
 }

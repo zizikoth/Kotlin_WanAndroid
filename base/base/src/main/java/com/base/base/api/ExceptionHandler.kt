@@ -24,7 +24,6 @@ object ExceptionHandler {
     fun handleException(exception: Throwable): ApiException {
         //错误日志打印
         LogUtils.eTag("HTTP ERROR", exception.toString())
-        //在这里把错误日志存储到本地
         return when (exception) {
             // 服务器返回的错误
             is ApiException -> exception

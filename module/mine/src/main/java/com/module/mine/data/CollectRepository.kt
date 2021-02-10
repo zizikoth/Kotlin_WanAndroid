@@ -7,7 +7,6 @@ import com.base.base.entity.remote.WebInfo
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Deferred
 import rxhttp.async
-import rxhttp.tryAwait
 import rxhttp.wrapper.param.RxHttp
 import rxhttp.wrapper.param.toApiResponse
 
@@ -38,15 +37,15 @@ object CollectRepository {
      * @param title String 标题
      * @param author String 作者
      * @param link String 链接
-     * @return Any?
+     * @return Any
      */
-    suspend fun collectArticle(title: String, author: String, link: String): Any? {
+    suspend fun collectArticle(title: String, author: String, link: String): Any {
         return RxHttp.postForm(ApiUrl.Collect.CollectArticle)
             .add("title", title)
             .add("author", author)
             .add("link", link)
             .toApiResponse<Any>()
-            .tryAwait()
+            .await()
     }
 
     /**
@@ -55,22 +54,22 @@ object CollectRepository {
      * @param originId Int 接口返回
      * @return Any
      */
-    suspend fun unCollectInList(id: Int, originId: Int): Any? {
+    suspend fun unCollectInList(id: Int, originId: Int): Any {
         return RxHttp.postForm(ApiUrl.Collect.UnCollectInList, id)
             .add("originId", originId)
             .toApiResponse<Any>()
-            .tryAwait()
+            .await()
     }
 
     /**
      * 取消收藏 - 文章网页
      * @param id Int
-     * @return Any?
+     * @return Any
      */
-    suspend fun unCollectInArticle(id: Int): Any? {
+    suspend fun unCollectInArticle(id: Int): Any {
         return RxHttp.postForm(ApiUrl.Collect.UnCollectInArticle, id)
             .toApiResponse<Any>()
-            .tryAwait()
+            .await()
 
     }
 
@@ -118,12 +117,12 @@ object CollectRepository {
     /**
      * 网址收藏删除
      * @param id Int
-     * @return Any?
+     * @return Any
      */
-    suspend fun collectWebDelete(id: Int): Any? {
+    suspend fun collectWebDelete(id: Int): Any {
         return RxHttp.postForm(ApiUrl.Collect.CollectWebDelete)
             .add("id", id)
             .toApiResponse<Any>()
-            .tryAwait()
+            .await()
     }
 }

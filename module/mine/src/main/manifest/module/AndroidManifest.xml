@@ -4,6 +4,9 @@
 
     <application>
         <activity
+            android:name=".ui.activity.share.MyShareActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".ui.activity.square.UserSquareActivity"
             android:screenOrientation="portrait" />
         <activity

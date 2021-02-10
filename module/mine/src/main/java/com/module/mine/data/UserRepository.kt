@@ -2,7 +2,6 @@ package com.module.mine.data
 
 import com.base.base.api.ApiUrl
 import com.base.base.entity.remote.User
-import rxhttp.tryAwait
 import rxhttp.wrapper.param.RxHttp
 import rxhttp.wrapper.param.toApiResponse
 
@@ -36,25 +35,25 @@ object UserRepository {
      * 注册
      * @param userName String 用户名
      * @param password String 密码
-     * @return Any?
+     * @return Any
      */
-    suspend fun register(userName: String, password: String): Any? {
+    suspend fun register(userName: String, password: String): Any {
         return RxHttp.postForm(ApiUrl.Login.Register)
             .add("username", userName)
             .add("password", password)
             .add("repassword", password)
             .toApiResponse<Any>()
-            .tryAwait()
+            .await()
     }
 
     /**
      * 登出
-     * @return Any?
+     * @return Any
      */
-    suspend fun loginOut(): Any? {
+    suspend fun loginOut(): Any {
         return RxHttp.get(ApiUrl.Login.LoginOut)
             .toApiResponse<Any>()
-            .tryAwait()
+            .await()
     }
 
 }
