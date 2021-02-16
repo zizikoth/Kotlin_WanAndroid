@@ -6,3 +6,6 @@
 -packageobfuscationdictionary oO0〇8.txt
 
 
+# 保证Entity不被混淆
+-keep class com.base.base.api.ApiResponse{*;}
+-keep class com.base.base.entity.**{*;}

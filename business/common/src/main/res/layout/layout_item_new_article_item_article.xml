@@ -9,7 +9,7 @@
     app:cardCornerRadius="@dimen/dp8">
 
     <ImageView
-        android:id="@+id/mItemBg"
+        android:id="@+id/mNewBg"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
@@ -23,7 +23,7 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/mItemCover"
+            android:id="@+id/mNewCover"
             android:layout_width="@dimen/dp55"
             android:layout_height="@dimen/dp80"
             android:layout_marginStart="@dimen/dp15"
@@ -34,7 +34,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/mItemTitle"
+            android:id="@+id/mNewTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dp15"
@@ -45,13 +45,13 @@
             android:maxLines="2"
             android:textColor="@color/white"
             android:textSize="@dimen/sp14"
-            app:layout_constraintLeft_toRightOf="@id/mItemCover"
+            app:layout_constraintLeft_toRightOf="@id/mNewCover"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="自定义控件通用库 WidgetCase" />
 
         <TextView
-            android:id="@+id/mItemDesc"
+            android:id="@+id/mNewDesc"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp10"
@@ -62,8 +62,8 @@
             android:textColor="@color/white"
             android:textSize="@dimen/sp13"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="@id/mItemTitle"
-            app:layout_constraintRight_toRightOf="@id/mItemTitle"
+            app:layout_constraintLeft_toLeftOf="@id/mNewTitle"
+            app:layout_constraintRight_toRightOf="@id/mNewTitle"
             tools:text="自定义控件通用库：拿来就用，API文档详细，持续集成，长期维护" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

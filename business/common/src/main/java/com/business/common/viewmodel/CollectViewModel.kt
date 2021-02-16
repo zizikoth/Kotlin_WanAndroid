@@ -2,7 +2,7 @@ package com.business.common.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import com.base.base.ui.mvvm.BaseViewModel
-import com.business.common.data.CommonRepository
+import com.business.common.data.CollectRepository
 
 /**
  * title:
@@ -18,23 +18,23 @@ class CollectViewModel : BaseViewModel() {
 
     val collectLiveData by lazy { MutableLiveData<Boolean>() }
 
-    fun collect(id: Int) {
+    fun collectInsideArticle(id: Int) {
         request(
-            request = { CommonRepository.collect(id) },
+            request = { CollectRepository.collectInsideArticle(id) },
             onSuccess = { collectLiveData.postValue(true) }
         )
     }
 
     fun unCollectInArticle(id: Int) {
         request(
-            request = { CommonRepository.unCollectInArticle(id) },
+            request = { CollectRepository.unCollectInArticle(id) },
             onSuccess = { collectLiveData.postValue(false) }
         )
     }
 
     fun unCollectInList(id: Int, originId: Int) {
         request(
-            request = { CommonRepository.unCollectInList(id, originId) },
+            request = { CollectRepository.unCollectInList(id, originId) },
             onSuccess = { collectLiveData.postValue(false) }
         )
     }

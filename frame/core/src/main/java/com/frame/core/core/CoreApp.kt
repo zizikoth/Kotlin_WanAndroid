@@ -4,7 +4,6 @@ import android.app.Application
 import androidx.lifecycle.ViewModelStore
 import androidx.lifecycle.ViewModelStoreOwner
 import com.bytedance.boost_multidex.BoostMultiDexApplication
-import com.frame.core.utils.SystemLeakIgnore
 
 /**
  * title:CoreApp
@@ -28,7 +27,6 @@ open class CoreApp : BoostMultiDexApplication(), ViewModelStoreOwner {
         super.onCreate()
         app = this
         mAppViewStore = ViewModelStore()
-        SystemLeakIgnore.ignoreLeak()
     }
 
     override fun getViewModelStore(): ViewModelStore {

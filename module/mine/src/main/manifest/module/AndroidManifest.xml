@@ -3,6 +3,7 @@
     package="com.module.mine">
 
     <application>
+        <activity android:name=".ui.activity.about.AboutActivity"></activity>
         <activity
             android:name=".ui.activity.share.MyShareActivity"
             android:screenOrientation="portrait" />

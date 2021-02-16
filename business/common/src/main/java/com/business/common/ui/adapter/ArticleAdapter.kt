@@ -44,6 +44,7 @@ class ArticleAdapter : BaseProviderMultiAdapter<Article>() {
     override fun getItemType(data: List<Article>, position: Int): Int {
         return data[position].itemType
     }
+
 }
 
 private class GridProvider(
@@ -102,16 +103,26 @@ private class NormalArticleProvider(
 
             setText(R.id.mTvTitle, item.title.fromHtml())
 
+            val hasDesc = item.desc.isNotEmpty()
+            setGone(R.id.mTvDesc, !hasDesc)
             setText(R.id.mTvDesc, item.desc.fromHtml())
 
+            val hasChapter = item.superChapterName.isNotEmpty() && item.chapterName.isNotEmpty()
+            setGone(R.id.mTvChapter, !hasChapter)
             setText(R.id.mTvChapter,
                 if (item.superChapterName.isNotEmpty()) "${item.superChapterName} · ${item.chapterName}"
                 else item.chapterName)
 
-            setText(R.id.mTvTime, item.niceDate)
-
-            setGone(R.id.mIvPic, item.envelopePic.isEmpty())
+            val hasPic = item.envelopePic.isNotEmpty()
+            setGone(R.id.mIvPic, !hasPic)
             getView<ImageView>(R.id.mIvPic).loadRound(item.envelopePic, 5.dp2px)
+
+            // 有标签 有描述 或者 有标签 无图片
+            val showRightTime = (hasDesc || !hasPic) && hasChapter
+            setGone(R.id.mTvTime, !showRightTime)
+            setGone(R.id.mTvTimeDesc, showRightTime)
+            setText(R.id.mTvTime, item.niceDate)
+            setText(R.id.mTvTimeDesc, item.niceDate)
 
         }
     }
@@ -120,15 +131,15 @@ private class NormalArticleProvider(
 private class NewArticleAdapter() : BaseQuickAdapter<Article, BaseViewHolder>(R.layout.layout_item_new_article_item_article) {
     override fun convert(holder: BaseViewHolder, item: Article) {
         holder.run {
-            setGone(R.id.mItemBg, item.envelopePic.isEmpty())
-            setGone(R.id.mItemCover, item.envelopePic.isEmpty())
+            setGone(R.id.mNewBg, item.envelopePic.isEmpty())
+            setGone(R.id.mNewCover, item.envelopePic.isEmpty())
             if (item.envelopePic.isNotEmpty()) {
-                getView<ImageView>(R.id.mItemBg).loadRound(item.envelopePic, 8.dp2px)
-                getView<ImageView>(R.id.mItemCover).loadRound(item.envelopePic, 8.dp2px)
+                getView<ImageView>(R.id.mNewBg).loadRound(item.envelopePic, 8.dp2px)
+                getView<ImageView>(R.id.mNewCover).loadRound(item.envelopePic, 8.dp2px)
             }
-            setText(R.id.mItemTitle, item.title)
+            setText(R.id.mNewTitle, item.title)
 
-            setText(R.id.mItemDesc,
+            setText(R.id.mNewDesc,
                 when {
                     item.desc.isNotEmpty() -> item.desc.fromHtml()
                     item.superChapterName.isNotEmpty() -> "${item.superChapterName} · ${item.chapterName}"

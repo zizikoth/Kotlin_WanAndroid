@@ -44,10 +44,7 @@ class BlockWebClient() : WebViewClient() {
     // 拦截的网址
     private val blackHostList = arrayListOf(
         "www.taobao.com",
-        "www.jd.com",
-        "yun.tuisnake.com",
-        "yun.lvehaisen.com",
-        "yun.tuitiger.com"
+        "www.jd.com"
     )
 
     fun shouldIntent2App(block: Boolean): BlockWebClient {

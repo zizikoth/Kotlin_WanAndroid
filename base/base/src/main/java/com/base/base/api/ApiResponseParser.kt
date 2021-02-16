@@ -1,7 +1,6 @@
 package com.base.base.api
 
 import com.base.base.manager.UserManager
-import com.blankj.utilcode.util.LogUtils
 import okhttp3.Response
 import rxhttp.wrapper.annotation.Parser
 import rxhttp.wrapper.entity.ParameterizedTypeImpl

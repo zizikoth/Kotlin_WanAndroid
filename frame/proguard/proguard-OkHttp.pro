@@ -10,3 +10,7 @@
 
 # OkHttp platform used only on JVM and when Conscrypt dependency is available.
 -dontwarn okhttp3.internal.platform.ConscryptPlatform
+
+-keepclassmembers class okhttp3.internal.Util {
+    public static java.lang.String userAgent;
+}

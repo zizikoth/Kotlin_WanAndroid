@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import com.base.base.entity.remote.*
 import com.base.base.entity.zip.Zip2
 import com.base.base.ui.mvvm.BaseViewModel
+import com.blankj.utilcode.util.LogUtils
 import com.frame.core.utils.extra.toArrayList
 import com.module.home.data.HomeRepository
 

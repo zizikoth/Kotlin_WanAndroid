@@ -5,7 +5,7 @@ import com.base.base.entity.remote.Article
 import com.base.base.entity.remote.PageList
 import com.base.base.ui.mvvm.BaseViewModel
 import com.kongzue.dialog.v3.FullScreenDialog
-import com.module.mine.data.CollectRepository
+import com.business.common.data.CollectRepository
 
 /**
  * title:
@@ -33,7 +33,7 @@ class CollectArticleViewModel : BaseViewModel() {
 
     fun collect(dialog: FullScreenDialog, title: String, author: String, link: String) {
         request(
-            request = { CollectRepository.collectArticle(title, author, link) },
+            request = { CollectRepository.collectOutsideArticle(title, author, link) },
             onSuccess = {
                 dialog.doDismiss()
                 collectArticleLiveData.postValue(null)

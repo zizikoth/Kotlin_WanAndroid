@@ -54,8 +54,3 @@ data class Article(
         "匿名"
     }
 }
-
-data class ArticleTag(
-    val name: String = "",
-    val url: String = ""
-)

@@ -80,6 +80,7 @@
                 app:layout_constraintLeft_toLeftOf="@id/mIvIcon"
                 app:layout_constraintRight_toLeftOf="@id/mIvPic"
                 app:layout_constraintTop_toBottomOf="@id/mIvIcon"
+                app:layout_goneMarginRight="0dp"
                 tools:text="自定义控件通用库 WidgetCase" />
 
             <TextView
@@ -87,6 +88,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp10"
+                app:layout_goneMarginTop="0dp"
                 android:ellipsize="end"
                 android:lines="2"
                 android:maxLines="2"
@@ -118,6 +120,16 @@
                 app:layout_constraintRight_toRightOf="@id/mIvPic"
                 app:layout_constraintTop_toTopOf="@id/mTvChapter"
                 tools:text="15分钟前" />
+
+            <TextView
+                android:id="@+id/mTvTimeDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp10"
+                android:textSize="@dimen/sp12"
+                app:layout_constraintLeft_toLeftOf="@id/mTvChapter"
+                app:layout_constraintTop_toBottomOf="@id/mTvChapter"
+                tools:text="3天前" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

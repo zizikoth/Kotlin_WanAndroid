@@ -90,7 +90,7 @@ class WebActivity : BaseVmActivity<CollectViewModel, ActivityWebBinding>() {
                         }
                     } else {
                         // 收藏 首先使用originId 需要判断originId的可用性
-                        mViewModel.collect(if (originId != Int.MIN_VALUE && originId != -1) originId else articleId)
+                        mViewModel.collectInsideArticle(if (originId != Int.MIN_VALUE && originId != -1) originId else articleId)
                         mBinding.mLottieView.run {
                             visible()
                             playAnimation()

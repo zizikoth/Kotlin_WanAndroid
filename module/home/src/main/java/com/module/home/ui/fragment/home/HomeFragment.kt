@@ -6,7 +6,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.base.base.entity.remote.*
 import com.base.base.manager.RouterManager
 import com.base.base.ui.BaseVmFragment
-import com.base.base.utils.onMultiItemChildClick
+import com.base.base.utils.onMultiItemClick
 import com.base.base.utils.showEmpty
 import com.business.common.ui.activity.web.WebActivity
 import com.business.common.ui.adapter.ArticleAdapter
@@ -19,6 +19,7 @@ import com.module.home.ui.activity.blog.BlogActivity
 import com.module.home.ui.activity.search.SearchActivity
 import com.module.home.ui.adapter.BannerAdapter
 import com.module.home.viewmodel.HomeViewModel
+import java.util.*
 import kotlin.math.abs
 
 /**
@@ -96,13 +97,15 @@ class HomeFragment : BaseVmFragment<HomeViewModel, FragmentHomeBinding>() {
                 (mBanner.data[position] as HomeBanner).let { WebActivity.start(mContext, it.id, it.title, it.url) }
             }
             // 列表
-            mAdapter.onMultiItemChildClick { multiType, viewId, data ->
-                // 博客
-                if (multiType == HOME_TYPE_SYSTEM_GRID && viewId == R.id.mItemGrid) BlogActivity.start(mContext, data.id)
-                // 标题
-                else if (multiType == HOME_TYPE_TITLE && viewId == R.id.mItemTitle && data.hasMore) startActivity<NewArticleActivity>()
-                // 普通文章
-                else if (multiType == HOME_TYPE_NORMAL_ARTICLE && viewId == R.id.mItemArticle) WebActivity.start(mContext, data.id, data.title, data.link)
+            mAdapter.onMultiItemClick { multiType, data ->
+                when (multiType) {
+                    // 标题
+                    HOME_TYPE_TITLE -> if (data.hasMore) startActivity<NewArticleActivity>()
+                    // 普通文章
+                    HOME_TYPE_NORMAL_ARTICLE -> WebActivity.start(mContext, data.id, data.title, data.link)
+                    // 博客
+                    HOME_TYPE_SYSTEM_GRID -> BlogActivity.start(mContext, data.id)
+                }
             }
             // 最新文章
             mAdapter.onNewArticleClick = { WebActivity.start(mContext, it.id, it.title, it.link) }

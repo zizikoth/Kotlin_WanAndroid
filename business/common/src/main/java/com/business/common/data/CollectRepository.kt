@@ -1,4 +1,4 @@
-package com.module.mine.data
+package com.business.common.data
 
 import com.base.base.api.ApiUrl
 import com.base.base.entity.remote.Article
@@ -33,14 +33,26 @@ object CollectRepository {
     }
 
     /**
+     * 收藏
+     * @param id Int
+     * @return Any
+     */
+    suspend fun collectInsideArticle(id: Int): Any {
+        return RxHttp.postForm(ApiUrl.Collect.Collect, id)
+            .toApiResponse<Any>()
+            .await()
+    }
+
+
+    /**
      * 收藏站外文章
      * @param title String 标题
      * @param author String 作者
      * @param link String 链接
      * @return Any
      */
-    suspend fun collectArticle(title: String, author: String, link: String): Any {
-        return RxHttp.postForm(ApiUrl.Collect.CollectArticle)
+    suspend fun collectOutsideArticle(title: String, author: String, link: String): Any {
+        return RxHttp.postForm(ApiUrl.Collect.CollectOutsideArticle)
             .add("title", title)
             .add("author", author)
             .add("link", link)

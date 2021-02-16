@@ -13,7 +13,7 @@
         android:drawableTop="@mipmap/icon_status_server_error"
         android:drawablePadding="@dimen/dp15"
         android:gravity="center"
-        android:text="连接失败"
+        android:text="服务器异常"
         android:textColor="#666666"
         android:textSize="@dimen/sp18" />
 

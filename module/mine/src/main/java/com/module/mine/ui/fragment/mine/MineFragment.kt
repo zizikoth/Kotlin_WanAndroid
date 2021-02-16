@@ -52,6 +52,8 @@ class MineFragment : BaseVmFragment<MineViewModel, FragmentMineBinding>() {
         mBinding.run {
             // 设置
             mIvSetting.onClick { startActivity<SettingActivity>() }
+            // 头像
+            mTvAvatar.onClick { checkLogin { } }
             // 我的收藏
             mItemCollect.onClick { checkLogin { startActivity<CollectArticleActivity>() } }
             // 我的积分

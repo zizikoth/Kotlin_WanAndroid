@@ -139,7 +139,7 @@ object ApiUrl {
         /**
          * 收藏文章
          */
-        const val CollectArticle = "lg/collect/add/json"
+        const val CollectOutsideArticle = "lg/collect/add/json"
 
         /**
          * 取消收藏 - 收藏列表

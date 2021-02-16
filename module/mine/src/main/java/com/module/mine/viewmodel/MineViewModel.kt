@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import com.base.base.entity.remote.CoinInfo
 import com.base.base.ui.mvvm.BaseViewModel
 import com.module.mine.data.CoinRepository
-import com.module.mine.data.CollectRepository
+import com.business.common.data.CollectRepository
 
 /**
  * title:

@@ -27,7 +27,7 @@ import com.module.mine.viewmodel.LoginViewModel
 @Route(path = RouterManager.Mine.LOGIN_ACTIVITY)
 class LoginActivity : BaseVmActivity<LoginViewModel, ActivityLoginBinding>() {
 
-    private val titles = listOf("SIGN IN", "SIGN UP")
+    private val titles = listOf("登 录", "注 册")
 
     private val mAdapter by lazy { LoginFragmentAdapter(this) }
 

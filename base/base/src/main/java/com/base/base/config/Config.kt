@@ -22,6 +22,7 @@ object AppConfig {
         RunMode.Preview -> "https://www.wanandroid.com/"
         RunMode.Release -> "https://www.wanandroid.com/"
     }
+
 }
 
 object AppKeys {

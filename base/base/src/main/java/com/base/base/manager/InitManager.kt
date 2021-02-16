@@ -1,11 +1,6 @@
 package com.base.base.manager
 
 import android.app.Application
-import android.graphics.Color
-import androidx.core.content.ContextCompat
-import com.alibaba.android.arouter.launcher.ARouter
-import com.base.base.BuildConfig
-import com.base.base.R
 import com.base.base.config.AppConfig
 import com.base.base.ui.status.LoadCallback
 import com.base.base.ui.status.NetErrorCallback
@@ -29,6 +24,11 @@ import rxhttp.wrapper.cookie.CookieStore
 import rxhttp.wrapper.param.RxHttp
 import rxhttp.wrapper.ssl.HttpsUtils
 import java.io.File
+import android.graphics.Color
+import androidx.core.content.ContextCompat
+import com.alibaba.android.arouter.launcher.ARouter
+import com.base.base.BuildConfig
+import com.base.base.R
 import java.util.concurrent.TimeUnit
 
 
@@ -87,7 +87,7 @@ object InitManager {
         // oom
         OOMHelper.startMonitorLowMemory()
         // WebView
-        WebUtils.preInit()
+        //WebUtils.preInit()
         // Dialog
         DialogSettings.style = DialogSettings.STYLE.STYLE_MIUI
         DialogSettings.backgroundColor = Color.WHITE
