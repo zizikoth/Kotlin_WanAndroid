@@ -7,6 +7,8 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
 import kotlin.coroutines.resume
+import kotlin.coroutines.resumeWithException
+import kotlin.random.Random
 
 /**
  * title:使用协程进行子线程和追线程的切换
@@ -38,16 +40,29 @@ fun <T> LifecycleOwner.doInBackground(doInBackground: () -> T, onSuccess: (resul
 fun <T> LifecycleOwner.doInBackground(doInBackground: () -> T) =
     this.doInBackground(doInBackground, {}, {})
 
-interface CoroutineCallback<T> {
-    fun onSuccess(result: T)
+// ------------------------------- Callback => Coroutine 例子 -------------------------------//
+interface CoroutineCallback {
+    fun onSuccess(num: Int)
+    fun onFailure(e: Exception)
 }
 
-private suspend fun <T> awaitCallback(block: (CoroutineCallback<T>) -> Unit): T {
-    return suspendCancellableCoroutine {
-        block(object : CoroutineCallback<T> {
-            override fun onSuccess(result: T) {
-                it.resume(result)
+object CoroutineDemoUtils {
+    fun getDemoData(callback: CoroutineCallback) {
+        val num = Random.nextInt(0, 9)
+        if (num >= 5) callback.onSuccess(num)
+        else callback.onFailure(Exception("number > 5"))
+    }
+}
+
+suspend fun getCoroutineDemoData(): Int =
+    suspendCancellableCoroutine {
+        CoroutineDemoUtils.getDemoData(object : CoroutineCallback {
+            override fun onSuccess(num: Int) {
+                it.resume(num)
+            }
+
+            override fun onFailure(e: Exception) {
+                it.resumeWithException(e)
             }
         })
     }
-}

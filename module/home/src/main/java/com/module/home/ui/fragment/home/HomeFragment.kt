@@ -52,7 +52,7 @@ class HomeFragment : BaseVmFragment<HomeViewModel, FragmentHomeBinding>() {
             mBanner.setLifecycleRegistry(this@HomeFragment.lifecycle).setAdapter(BannerAdapter())
             mRvList.run {
                 layoutManager = GridLayoutManager(mContext, 4)
-                mAdapter.setGridSpanSizeLookup { _, viewType, position ->
+                mAdapter.setGridSpanSizeLookup { _, viewType, _ ->
                     when (viewType) {
                         HOME_TYPE_TITLE, HOME_TYPE_NORMAL_ARTICLE, HOME_TYPE_NEW_ARTICLE -> 4
                         HOME_TYPE_SYSTEM_GRID -> 1

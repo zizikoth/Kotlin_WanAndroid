@@ -35,6 +35,7 @@ object RouterManager {
      * 获取首页页面
      * @return Fragment
      */
+    @JvmStatic
     fun getHomeFragment(): Fragment {
         return ARouter.getInstance().build(Home.HOME_FRAGMENT).navigation() as Fragment
     }
@@ -43,6 +44,7 @@ object RouterManager {
      * 获取项目页面
      * @return Fragment
      */
+    @JvmStatic
     fun getProjectFragment(): Fragment {
         return ARouter.getInstance().build(Project.PROJECT_FRAGMENT).navigation() as Fragment
     }
@@ -51,6 +53,7 @@ object RouterManager {
      * 获取系统页面
      * @return Fragment
      */
+    @JvmStatic
     fun getSystemFragment(): Fragment {
         return ARouter.getInstance().build(System.SYSTEM_FRAGMENT).navigation() as Fragment
     }
@@ -59,6 +62,7 @@ object RouterManager {
      * 获取我的页面
      * @return Fragment
      */
+    @JvmStatic
     fun getMineFragment(): Fragment {
         return ARouter.getInstance().build(Mine.MINE_FRAGMENT).navigation() as Fragment
     }
@@ -66,6 +70,7 @@ object RouterManager {
     /**
      * 跳转到登陆界面
      */
+    @JvmStatic
     fun startLogin() {
         ARouter.getInstance().build(Mine.LOGIN_ACTIVITY).navigation()
     }

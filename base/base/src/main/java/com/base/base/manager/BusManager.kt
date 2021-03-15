@@ -37,6 +37,6 @@ class BusManager : ViewModel() {
     /**
      * 清单修改
      */
-    val todoLiveData:UnPeekLiveData<Int> by lazy { UnPeekLiveData<Int>() }
+    val todoLiveData: UnPeekLiveData<Int> by lazy { UnPeekLiveData<Int>() }
 
 }

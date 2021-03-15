@@ -20,7 +20,7 @@ import com.zhpan.bannerview.BaseViewHolder
 class BannerAdapter : BaseBannerAdapter<HomeBanner>() {
 
     override fun bindData(holder: BaseViewHolder<HomeBanner>, data: HomeBanner, position: Int, pageSize: Int) {
-        holder.findViewById<ImageView>(R.id.mIvBanner).load(data.imagePath)
+        holder.findViewById<ImageView>(R.id.mIvBanner).load(data.imagePath, R.color.color_BBBBBB)
     }
 
 
