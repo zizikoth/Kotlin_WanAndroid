@@ -18,7 +18,8 @@ import com.module.main.databinding.ActivityMainBinding
  *
  * Talk is cheap, Show me the code.
  */
-class MainActivity : BaseActivity<ActivityMainBinding>() {
+class
+MainActivity : BaseActivity<ActivityMainBinding>() {
 
     private val fragmentHelper by lazy { FragmentHelper(this, R.id.mContainer, supportFragmentManager) }
     private val tab1 by lazy { RouterManager.getHomeFragment() }

@@ -12,7 +12,7 @@ object AppConfig {
     const val isOpenLog: Boolean = true
 
     /*** 打包运行模式 ***/
-    var runMode: RunMode = RunMode.Debug
+    var runMode: RunMode = RunMode.Release
 
     /*** 网络请求主地址 ***/
     @DefaultDomain
