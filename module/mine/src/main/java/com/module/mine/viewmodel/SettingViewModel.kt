@@ -17,18 +17,8 @@ import com.module.mine.data.UserRepository
 class SettingViewModel : BaseViewModel() {
 
     fun loginOut(action: () -> Unit) {
-        if (UserManager.hasCookie()) {
-            request(
-                request = { UserRepository.loginOut() },
-                onSuccess = {
-                    UserManager.loginOut()
-                    action.invoke()
-                },
-                showLoading = true
-            )
-        } else {
-            UserManager.loginOut()
-            action.invoke()
-        }
+        requestNoCheck { UserRepository.loginOut() }
+        UserManager.loginOut()
+        action.invoke()
     }
 }

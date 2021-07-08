@@ -46,11 +46,16 @@ data class Article(
     var hasMore: Boolean = false,
     var newArticles: ArrayList<Article> = arrayListOf()
 ) {
-    fun getCurrentAuthor() = if (author.isNotEmpty()) {
-        "作者：${author}"
-    } else if (shareUser.isNotEmpty()) {
-        "分享者：${shareUser}"
-    } else {
-        "匿名"
+
+    fun getCurrentAuthor() = when {
+        author.isNotEmpty() -> {
+            "作者：${author}"
+        }
+        shareUser.isNotEmpty() -> {
+            "分享者：${shareUser}"
+        }
+        else -> {
+            "匿名"
+        }
     }
 }

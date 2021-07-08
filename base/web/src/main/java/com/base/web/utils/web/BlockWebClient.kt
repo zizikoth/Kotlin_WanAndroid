@@ -31,6 +31,9 @@ class BlockWebClient() : WebViewClient() {
     private val intentScheme = arrayListOf(
         "mailto://",            //邮件
         "tell://",              //电话
+        "baidu://",             //百度
+        "baiduboxlite://",      //百度
+        "baiduboxversion://",   //百度
         "bilibili://",          //BiliBili
         "weixin://",            //微信
         "alipays://",           //支付宝

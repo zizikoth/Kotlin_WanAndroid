@@ -8,7 +8,6 @@ import com.base.base.api.ExceptionHandler
 import com.base.base.entity.local.UiStatus
 import com.base.base.manager.RouterManager
 import com.base.base.utils.toast
-import com.blankj.utilcode.util.LogUtils
 import kotlinx.coroutines.CoroutineScope
 
 /**
@@ -58,13 +57,21 @@ abstract class BaseViewModel : ViewModel() {
     }
 
     fun requestNoCheck(request: suspend (scope: CoroutineScope) -> Unit) {
+        var list = arrayListOf<Int>()
+        list.orEmpty()
         rxLifeScope.launch { request.invoke(this) }
     }
 
     fun <T> requestNoStatus(
         request: suspend (scope: CoroutineScope) -> T,
-        onSuccess: ((data: T) -> Unit)) {
-        rxLifeScope.launch { onSuccess(request.invoke(this)) }
+        onSuccess: ((data: T) -> Unit),
+        showLoading: Boolean = false) {
+        rxLifeScope.launch(
+            block = { onSuccess(request.invoke(this)) },
+            onStart = { if (showLoading) loadingEvent.postValue(true) },
+            onFinally = { loadingEvent.postValue(false) }
+        );
+
     }
 
 }

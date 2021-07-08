@@ -18,6 +18,7 @@ import java.lang.reflect.Type
  *
  * Talk is cheap, Show me the code.
  */
+@Suppress("UNCHECKED_CAST")
 @Parser(name = "ApiResponse")
 open class ApiResponseParser<T> : AbstractParser<T> {
 
@@ -35,7 +36,7 @@ open class ApiResponseParser<T> : AbstractParser<T> {
             }
             throw ApiException(data.errorCode, data.errorMsg)
         } else if (data.data == null) {
-            data.data = (Any() as T)
+            data.data = Any() as T
         }
         return data.data!!
     }

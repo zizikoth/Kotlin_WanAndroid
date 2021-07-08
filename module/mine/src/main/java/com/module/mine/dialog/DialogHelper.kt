@@ -139,15 +139,13 @@ object DialogHelper {
                         action.invoke(filter)
                         dialog.doDismiss()
                     }
-                    mTvNegative.onClick { dialog.doDismiss() }
                 }
 
             }.setShowCancelButton(false)
-            .setTitle("筛选")
-            .setMenuTitleTextInfo(TextInfo().apply {
-                isBold = true
-                fontColor = color(R.color.textDark)
-            })
+            .setTitle("筛选").menuTitleTextInfo = TextInfo().apply {
+            isBold = true
+            fontColor = color(R.color.textDark)
+        }
     }
 
     /**

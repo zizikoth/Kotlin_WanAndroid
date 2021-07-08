@@ -272,19 +272,6 @@
                     android:textSize="@dimen/sp16"
                     tools:background="@color/color_main" />
 
-                <TextView
-                    android:id="@+id/mTvNegative"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp45"
-                    android:layout_marginTop="@dimen/dp15"
-                    android:gravity="center"
-                    android:text="取消"
-                    app:round_color="@{@color/color_BBBBBB}"
-                    app:round_radius="@{8}"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/sp16"
-                    tools:background="@color/color_BBBBBB" />
-
             </LinearLayout>
 
         </LinearLayout>

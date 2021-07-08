@@ -21,7 +21,7 @@ android {
         multiDexEnabled true
         resConfigs 'zh'
         resConfig 'xhdpi'
-        ndk { abiFilters 'armeabi-v7a','arm64-v8a' }
+        ndk { abiFilters 'armeabi-v7a', 'arm64-v8a' }
     }
 
     signingConfigs {

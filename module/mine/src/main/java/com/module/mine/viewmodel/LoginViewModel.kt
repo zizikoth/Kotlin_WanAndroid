@@ -18,7 +18,7 @@ import com.module.mine.data.UserRepository
 class LoginViewModel : BaseViewModel() {
 
     fun login(userName: String, password: String) {
-        request(
+        requestNoStatus(
             request = { UserRepository.login(userName, password) },
             onSuccess = {
                 UserManager.setUser(it)
@@ -28,7 +28,7 @@ class LoginViewModel : BaseViewModel() {
     }
 
     fun register(userName: String, password: String) {
-        request(
+        requestNoStatus(
             request = {
                 // 先注册
                 UserRepository.register(userName, password)
