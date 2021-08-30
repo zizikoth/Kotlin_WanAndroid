@@ -95,6 +95,8 @@ class TodoActivity : BaseVmActivity<TodoViewModel, ActivityTodoBinding>() {
 
         // 清单新增修改后刷新列表
         BusManager.get().todoLiveData.observeInActivity(mContext) { mBinding.mRefreshLayout.autoRefresh() }
+        // 登录返回
+        BusManager.get().loginLiveData.observeInActivity(mContext) { start() }
     }
 
     override fun start() {

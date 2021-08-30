@@ -68,8 +68,6 @@ class MineFragment : BaseVmFragment<MineViewModel, FragmentMineBinding>() {
             mItemShare.onClick { checkLogin { startActivity<MyShareActivity>() } }
             // 分享广场
             mItemSquare.onClick { startActivity<SquareActivity>() }
-            // 关于我们
-            mItemAbout.onClick { }
         }
         // 登陆后响应
         BusManager.get().loginLiveData.observeInFragment(this) {

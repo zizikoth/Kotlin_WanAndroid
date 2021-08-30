@@ -77,6 +77,8 @@ class CollectArticleActivity : BaseVmActivity<CollectArticleViewModel, LayoutTit
                 mBinding.mRefreshLayout.autoRefresh()
             }
         }
+        // 登录返回
+        BusManager.get().loginLiveData.observeInActivity(mContext) { start() }
 
         observe(mViewModel.collectionListLiveData, this::onCollectionList)
         observe(mViewModel.unCollectLiveData, this::onUnCollection)

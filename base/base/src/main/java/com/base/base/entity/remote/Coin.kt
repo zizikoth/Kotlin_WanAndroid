@@ -16,11 +16,8 @@ data class CoinInfo(
     val rank: String = "",
     val desc: String = "",
     val reason: String = "",
-    val nickname:String = "",
-    val username: String = ""
-){
-    fun getName() = if(nickname.isNotEmpty()) nickname else username
-}
+    val userName:String = ""
+)
 
 data class RankInfo(
     val coinCount: Int = 0,

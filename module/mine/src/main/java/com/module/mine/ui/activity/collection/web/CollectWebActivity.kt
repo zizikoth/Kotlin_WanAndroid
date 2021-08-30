@@ -2,6 +2,7 @@ package com.module.mine.ui.activity.collection.web
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.base.base.entity.remote.WebInfo
+import com.base.base.manager.BusManager
 import com.base.base.manager.DataManager
 import com.base.base.ui.BaseVmActivity
 import com.base.base.utils.*
@@ -84,6 +85,9 @@ class CollectWebActivity : BaseVmActivity<CollectWebViewModel, LayoutTitleRefres
         observe(mViewModel.addLiveData, this::onCollectionAdd)
         observe(mViewModel.updateLiveData, this::onCollectionUpdate)
         observe(mViewModel.deleteLiveData, this::onCollectionDelete)
+
+        // 登录返回
+        BusManager.get().loginLiveData.observeInActivity(mContext) { start() }
     }
 
     override fun start() {

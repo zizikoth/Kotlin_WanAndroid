@@ -3,8 +3,8 @@ package com.base.base.config
 import rxhttp.wrapper.annotation.DefaultDomain
 
 enum class RunMode {
-    //测试    预览    发布
-    Debug, Preview, Release
+    // 本地     测试   预览      发布
+    LocalTest, Debug, Preview, Release
 }
 
 object AppConfig {
@@ -18,6 +18,7 @@ object AppConfig {
     @DefaultDomain
     @JvmField
     var baseUrl: String = when (runMode) {
+        RunMode.LocalTest -> "https://www.wanandroid.com/"
         RunMode.Debug -> "https://www.wanandroid.com/"
         RunMode.Preview -> "https://www.wanandroid.com/"
         RunMode.Release -> "https://www.wanandroid.com/"

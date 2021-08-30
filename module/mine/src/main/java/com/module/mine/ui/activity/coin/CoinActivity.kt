@@ -3,6 +3,7 @@ package com.module.mine.ui.activity.coin
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.base.base.entity.remote.CoinInfo
 import com.base.base.entity.remote.PageList
+import com.base.base.manager.BusManager
 import com.base.base.ui.BaseVmActivity
 import com.base.base.utils.showEmpty
 import com.base.base.widget.recyclerview.RecyclerItemDecoration
@@ -54,6 +55,9 @@ class CoinActivity : BaseVmActivity<CoinViewModel, LayoutTitleRefreshListBinding
             mViewModel.getCoinList(page)
         })
         observe(mViewModel.coinLiveData, this::onCoin)
+
+        // 登录返回
+        BusManager.get().loginLiveData.observeInActivity(mContext) { start() }
     }
 
     override fun start() {

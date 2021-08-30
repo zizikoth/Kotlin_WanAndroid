@@ -55,7 +55,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dp20"
                         android:drawableTop="@drawable/ic_mine"
-                        android:drawablePadding="@dimen/dp5"
+                        android:drawablePadding="@dimen/dp15"
                         android:gravity="center"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
@@ -65,7 +65,7 @@
                         android:id="@+id/mItemCollect"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dp20"
+                        android:layout_marginTop="@dimen/dp10"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toLeftOf="@id/mItemCoin"
                         app:layout_constraintTop_toBottomOf="@id/mTvAvatar"
@@ -85,7 +85,7 @@
                         android:id="@+id/mItemCoin"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dp20"
+                        android:layout_marginTop="@dimen/dp10"
                         app:layout_constraintLeft_toRightOf="@id/mItemCollect"
                         app:layout_constraintRight_toLeftOf="@id/mItemRank"
                         app:layout_constraintTop_toBottomOf="@id/mTvAvatar"
@@ -105,7 +105,7 @@
                         android:id="@+id/mItemRank"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dp20"
+                        android:layout_marginTop="@dimen/dp10"
                         app:layout_constraintLeft_toRightOf="@id/mItemCoin"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/mTvAvatar"
@@ -166,16 +166,6 @@
                         app:item_divider_shown="true"
                         app:item_extra_drawable="@drawable/ic_arrows_gray_right"
                         app:item_main_text="分享广场"
-                        app:item_main_textBold="true" />
-
-
-                    <com.base.base.widget.itemview.ItemView
-                        android:id="@+id/mItemAbout"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:item_divider_shown="true"
-                        app:item_extra_drawable="@drawable/ic_arrows_gray_right"
-                        app:item_main_text="关于我们"
                         app:item_main_textBold="true" />
 
                 </LinearLayout>

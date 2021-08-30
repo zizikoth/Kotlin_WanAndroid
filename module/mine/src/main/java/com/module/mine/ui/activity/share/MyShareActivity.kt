@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.base.base.entity.remote.UserSquareShare
+import com.base.base.manager.BusManager
 import com.base.base.ui.BaseVmActivity
 import com.base.base.utils.onItemChildClick
 import com.base.base.utils.showEmpty
@@ -82,6 +83,8 @@ class MyShareActivity : BaseVmActivity<ShareViewModel, LayoutTitleRefreshListBin
 
         observe(mViewModel.listLiveData, this::onShareList)
         observe(mViewModel.resultLiveData, this::onShareResult)
+        // 登录返回
+        BusManager.get().loginLiveData.observeInActivity(mContext) { start() }
     }
 
     override fun start() {
